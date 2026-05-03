@@ -1,5 +1,10 @@
+import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
+
 export default function Bookmark() {
     return (
-        <span>This is the bookmark page</span>
+        <>
+            <SearchInput text='bookmarked shows' arraysToSearch={[]}/>
+            <span>This is the bookmark page</span>
+        </>
     )
 }

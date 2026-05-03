@@ -7,7 +7,6 @@ import './sass/main.scss';
 
 //components
 import NavBar from './components/atoms/NavBar/NavBar.jsx';
-import SearchInput from './components/atoms/SearchInput/SearchInput.jsx';
 import Home from './pages/Home/Home.jsx';
 import Movies from './pages/Movies/Movies.jsx';
 import TvSeries from './pages/TvSeries/TvSeries.jsx';
@@ -18,7 +17,6 @@ export default function App() {
     <div className={styles.page_wrapper}>
       <BrowserRouter>
         <NavBar />
-        <SearchInput />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/movies' element={<Movies />} />

@@ -4,6 +4,7 @@ import getAPIData from '../../js/api/api.js';
 //react libraries and components
 import { useState, useEffect } from 'react';
 import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
+import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 
 export default function TvSeries() {
     const [latestTvSeries, setLatestTvSeries] = useState([]);
@@ -12,5 +13,10 @@ export default function TvSeries() {
         getAPIData('latest_tv_series', setLatestTvSeries);
     }, [])
 
-    return <ContentGrid pageName={'TV series'} isTrending={false} array={latestTvSeries} />
+    return (
+        <>
+            <SearchInput text='TV series' arraysToSearch={[...latestTvSeries]}/>
+            <ContentGrid pageName={'TV series'} isTrending={false} array={latestTvSeries} />
+        </>
+    )
 }

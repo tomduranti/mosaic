@@ -5,6 +5,7 @@ import fisherYatesShuffle from '../../js/utils/shuffle/shuffle.js';
 //react libraries and components
 import { useState, useEffect } from 'react';
 import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
+import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 
 export default function Home() {
     const [trending, setTrending] = useState([]);
@@ -21,8 +22,9 @@ export default function Home() {
 
     return (
         <>
+            <SearchInput text='movies or TV series' arraysToSearch={[...trending, ...recommendedMovies, ...recommendedTvSeries]}/>
             <ContentGrid pageName={'trending'} isTrending={true} array={trending} />
-            <ContentGrid pageName={'Recommended for you'} isTrending={false} array={recommendedForYou} />
+            <ContentGrid pageName={'recommended for you'} isTrending={false} array={recommendedForYou} />
         </>
     );
 }
