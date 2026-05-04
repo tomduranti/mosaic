@@ -20,7 +20,7 @@ export default function SearchInput({ text, fetchedItems, search, userInput, set
                 className={`${styles.search_input__input}  text_preset_2`}
                 type='text'
                 placeholder={`Search for ${text}`}
-                onChange={(e) => setUserInput(e.target.value)}
+                onBlur={(e) => setUserInput(e.target.value)}
             />
         </div>
     )

@@ -36,7 +36,7 @@ export default function Home() {
                 userInput={userInput}
                 setUserInput={setUserInput}
             />
-            {storeUserInput.length > 0 && userInput.length > 0 ?
+            {storeUserInput && userInput.length > 0 ?
                 (
                     <ContentGrid pageName={`Found ${storeUserInput.length} ${result} for '${userInput}'`} isTrending={false} array={storeUserInput} />
                 ) : (
