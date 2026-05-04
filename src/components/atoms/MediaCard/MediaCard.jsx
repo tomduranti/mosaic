@@ -38,7 +38,7 @@ export default function MediaCard({ isTrending, release_date, poster_path, media
 
                         <div className={`${styles.mediacard__media_info}  ${styles.mediacard__text_outside}`}>
                             <div className={`${styles.mediacard__media_date_and_type}  text_preset_6  text_white--opaque_75`}>
-                                <span className={styles.separator}>{getYearFormat(release_date)}</span>
+                                <span className={styles.separator}>{release_date ? getYearFormat(release_date) : 'N/A'}</span>
                                 <div className={`${styles.mediacard__media_category}  ${styles['separator']}`}>
                                     <img src={video === false ? movie : tv} alt='' />
                                     <span className='text_capitalize'>{video === false ? 'movie' : 'tv'}</span>

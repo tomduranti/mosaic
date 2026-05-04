@@ -21,6 +21,12 @@ export default function SearchInput({ text, fetchedItems, search, userInput, set
                 type='text'
                 placeholder={`Search for ${text}`}
                 onBlur={(e) => setUserInput(e.target.value)}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                        setUserInput(e.target.value);
+                        fetchedItems([]);
+                        fetchMediaAPI(fetchedItems, e.target.value, search);
+                }}}
             />
         </div>
     )
