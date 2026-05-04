@@ -14,15 +14,13 @@ export default function Movies() {
         getDataAPI('latest_movies', setLatestMovies);
     }, [])
 
-    //JUST FOR TEST
-    useEffect(() => {
-        console.log(userSearch)
-    }, [userSearch]);
-
     return (
         <>
             <SearchInput text='movies' fetchedItems={setUserSearch} search='movies' />
-            <ContentGrid pageName={'Movies'} isTrending={false} array={latestMovies} />
+            {latestMovies.length > 0
+                ? <ContentGrid pageName={'Movies'} isTrending={false} array={latestMovies} />
+                : <span className='text_preset_1  text_white--opaque_50'>Loading...</span>
+            }
         </>
     )
 }

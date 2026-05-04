@@ -16,17 +16,13 @@ export default function Home() {
     const [userInput, setUserInput] = useState('');
     const [storeUserInput, setStoreUserInput] = useState([]);
 
-    const result =  storeUserInput.length === 1 ? 'result' : 'results';
+    const result = storeUserInput.length === 1 ? 'result' : 'results';
 
     useEffect(() => {
         getDataAPI('trending', setTrending);
         getDataAPI('recommended_movies', setRecommendedMovies);
         getDataAPI('recommended_tv_series', setRecommendedTvSeries);
     }, []);
-
-        useEffect(() => {
-        console.log(storeUserInput)
-    }, [storeUserInput]);
 
     return (
         <>
@@ -36,7 +32,7 @@ export default function Home() {
                 userInput={userInput}
                 setUserInput={setUserInput}
             />
-            {storeUserInput && userInput.length > 0 ?
+            {/* {storeUserInput  ?
                 (
                     <ContentGrid pageName={`Found ${storeUserInput.length} ${result} for '${userInput}'`} isTrending={false} array={storeUserInput} />
                 ) : (
@@ -45,7 +41,17 @@ export default function Home() {
                         <ContentGrid pageName={'Recommended for you'} isTrending={false} array={recommendedForYou} />
                     </>
                 )
+            } */}
+            {trending.length > 0
+                ? <ContentGrid pageName={'Trending'} isTrending={true} array={trending} />
+                : <span className='text_preset_1  text_white--opaque_50'>Loading...</span>
             }
+
+            {recommendedForYou.length > 0
+                ? <ContentGrid pageName={'Recommended for you'} isTrending={false} array={recommendedForYou} />
+                : <span className='text_preset_1  text_white--opaque_50'>Loading...</span>
+            }
+
         </>
     );
 }

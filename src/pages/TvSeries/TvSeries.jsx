@@ -14,15 +14,13 @@ export default function TvSeries() {
         getDataAPI('latest_tv_series', setLatestTvSeries);
     }, [])
 
-    //JUST FOR TEST
-    useEffect(() => {
-        console.log(userSearch)
-    }, [userSearch]);
-
     return (
         <>
             <SearchInput text='TV series' fetchedItems={setUserSearch} search='tv_series' />
-            <ContentGrid pageName={'TV Series'} isTrending={false} array={latestTvSeries} />
+            {latestTvSeries.length > 0
+                ? <ContentGrid pageName={'TV Series'} isTrending={false} array={latestTvSeries} />
+                : <span className='text_preset_1  text_white--opaque_50'>Loading...</span>
+            }
         </>
     )
 }
