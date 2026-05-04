@@ -1,5 +1,5 @@
 //functions
-import getAPIData from '../../js/api/api.js';
+import getDataAPI from '../../js/api/api.js';
 import fisherYatesShuffle from '../../js/utils/shuffle/shuffle.js';
 
 //react libraries and components
@@ -11,20 +11,41 @@ export default function Home() {
     const [trending, setTrending] = useState([]);
     const [recommendedMovies, setRecommendedMovies] = useState([]);
     const [recommendedTvSeries, setRecommendedTvSeries] = useState([]);
-
     const recommendedForYou = fisherYatesShuffle([...recommendedMovies, ...recommendedTvSeries]);
+    //user inputs from research bar
+    const [userInput, setUserInput] = useState('');
+    const [storeUserInput, setStoreUserInput] = useState([]);
+
+    const result =  storeUserInput.length === 1 ? 'result' : 'results';
 
     useEffect(() => {
-        getAPIData('trending', setTrending);
-        getAPIData('recommended_movies', setRecommendedMovies);
-        getAPIData('recommended_tv_series', setRecommendedTvSeries);
+        getDataAPI('trending', setTrending);
+        getDataAPI('recommended_movies', setRecommendedMovies);
+        getDataAPI('recommended_tv_series', setRecommendedTvSeries);
     }, []);
+
+        useEffect(() => {
+        console.log(storeUserInput)
+    }, [storeUserInput]);
 
     return (
         <>
-            <SearchInput text='movies or TV series' arraysToSearch={[...trending, ...recommendedMovies, ...recommendedTvSeries]}/>
-            <ContentGrid pageName={'trending'} isTrending={true} array={trending} />
-            <ContentGrid pageName={'recommended for you'} isTrending={false} array={recommendedForYou} />
+            <SearchInput text='movies or TV series'
+                fetchedItems={setStoreUserInput}
+                search='global'
+                userInput={userInput}
+                setUserInput={setUserInput}
+            />
+            {storeUserInput.length > 0 && userInput.length > 0 ?
+                (
+                    <ContentGrid pageName={`Found ${storeUserInput.length} ${result} for '${userInput}'`} isTrending={false} array={storeUserInput} />
+                ) : (
+                    <>
+                        <ContentGrid pageName={'Trending'} isTrending={true} array={trending} />
+                        <ContentGrid pageName={'Recommended for you'} isTrending={false} array={recommendedForYou} />
+                    </>
+                )
+            }
         </>
     );
 }

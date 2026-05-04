@@ -1,5 +1,5 @@
 //functions
-import getAPIData from '../../js/api/api.js';
+import getDataAPI from '../../js/api/api.js';
 
 //react libraries and components
 import { useState, useEffect } from 'react';
@@ -8,15 +8,21 @@ import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 
 export default function Movies() {
     const [latestMovies, setLatestMovies] = useState([]);
+    const [userSearch, setUserSearch] = useState([]);
 
     useEffect(() => {
-        getAPIData('latest_movies', setLatestMovies);
+        getDataAPI('latest_movies', setLatestMovies);
     }, [])
+
+    //JUST FOR TEST
+    useEffect(() => {
+        console.log(userSearch)
+    }, [userSearch]);
 
     return (
         <>
-            <SearchInput text='movies' arraysToSearch={[...latestMovies]}/>
-            <ContentGrid pageName={'movies'} isTrending={false} array={latestMovies} />
+            <SearchInput text='movies' fetchedItems={setUserSearch} search='movies' />
+            <ContentGrid pageName={'Movies'} isTrending={false} array={latestMovies} />
         </>
     )
 }

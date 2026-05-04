@@ -1,5 +1,5 @@
 //functions
-import getAPIData from '../../js/api/api.js';
+import getDataAPI from '../../js/api/api.js';
 
 //react libraries and components
 import { useState, useEffect } from 'react';
@@ -8,15 +8,21 @@ import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 
 export default function TvSeries() {
     const [latestTvSeries, setLatestTvSeries] = useState([]);
+    const [userSearch, setUserSearch] = useState([]);
 
     useEffect(() => {
-        getAPIData('latest_tv_series', setLatestTvSeries);
+        getDataAPI('latest_tv_series', setLatestTvSeries);
     }, [])
+
+    //JUST FOR TEST
+    useEffect(() => {
+        console.log(userSearch)
+    }, [userSearch]);
 
     return (
         <>
-            <SearchInput text='TV series' arraysToSearch={[...latestTvSeries]}/>
-            <ContentGrid pageName={'TV series'} isTrending={false} array={latestTvSeries} />
+            <SearchInput text='TV series' fetchedItems={setUserSearch} search='tv_series' />
+            <ContentGrid pageName={'TV Series'} isTrending={false} array={latestTvSeries} />
         </>
     )
 }

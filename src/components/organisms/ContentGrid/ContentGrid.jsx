@@ -24,7 +24,7 @@ export default function ContentGrid({ pageName, isTrending, array }) {
     return (
         <>
             <section className={stylesApp.section}>
-                <h2 className={`${stylesApp.section__title}  text_preset_1  text_white  text_capitalize`}>{pageName}</h2>
+                <h2 className={`${stylesApp.section__title}  text_preset_1  text_white`}>{pageName}</h2>
 
                 {array ? (
                     (isTrending ? (
