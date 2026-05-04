@@ -3,7 +3,7 @@ import getDataAPI from '../../api/api.js'
 export default function fetchMediaAPI(callback, query, search) {
 
     switch (search) {
-        case 'global':
+        case 'all':
             getDataAPI('search_movie', callback, query);
             getDataAPI('search_tv_series', callback, query);
             break;

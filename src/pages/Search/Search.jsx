@@ -1,0 +1,34 @@
+//react libraries and components
+import { useState, useEffect } from 'react';
+import { useSearchParams } from "react-router";
+import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
+import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
+
+//functions
+import fetchMediaAPI from '../../js/utils/fetch/fetch.js';
+
+export default function Search({ userInput, setUserInput }) {
+    const [userSearch, setUserSearch] = useState([]);
+    const [searchParams] = useSearchParams();
+    const query = searchParams.get('q');
+    const type = searchParams.get('type');
+
+    useEffect(() => {
+        fetchMediaAPI(setUserSearch, query, type)
+    }, [query])
+
+    return (
+        <>
+            <SearchInput
+                text='movies or TV series'
+                type={type}
+                userInput={userInput}
+                setUserInput={setUserInput}
+            />
+            {userSearch.length > 0
+                ? <ContentGrid pageName={''} isTrending={false} array={userSearch} />
+                : <span className='text_preset_1  text_white--opaque_50'>Loading...</span>
+            }
+        </>
+    )
+}
