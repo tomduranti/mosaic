@@ -1,13 +1,13 @@
-//scss
-import stylesApp from '../../../sass/base/_App.module.scss';
-import stylesHome from '../../../pages/Home/_Home.module.scss';
-
 //react libraries and components
 import { useState, useEffect } from 'react';
 import React from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import MediaCard from '../../atoms/MediaCard/MediaCard.jsx';
+
+//scss
+import stylesApp from '../../../sass/base/_App.module.scss';
+import stylesHome from '../../../pages/Home/_Home.module.scss';
 
 export default function ContentGrid({ pageName, isTrending, array }) {
 
