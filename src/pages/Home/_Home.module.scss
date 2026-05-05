@@ -4,13 +4,6 @@
 
 .carousel {
   min-width: 0;
-  $slide_size: $inline_size--lg;
-  $slide-spacing: $padding_inline_control--sm;
-
-  @include respond_to(min, m_screen) {
-    $slide_size: $inline_size--xlg;
-    $slide-spacing: $padding_inline_control--xxlg;
-  }
 
   &__viewport {
     overflow: hidden;
@@ -20,13 +13,22 @@
   &__container {
     display: flex;
     touch-action: pan-y pinch-zoom;
-    margin-left: calc($slide-spacing * -1);
+    margin-left: calc($padding_inline_control--sm * -1);
+
+    @include respond_to(min, m_screen) {
+      margin-left: calc($padding_inline_control--xxlg * -1);
+    }
   }
 
 
   &__item {
-    flex: 0 0 $slide_size;
+    flex: 0 0 $inline_size--lg;
     min-width: 0;
-    padding-inline-start: $slide-spacing;
+    padding-inline-start: $padding_inline_control--sm;
+
+    @include respond_to(min, m_screen) {
+      flex: 0 0 $inline_size--xlg;
+      padding-inline-start: $padding_inline_control--xxlg;
+    }
   }
 }
