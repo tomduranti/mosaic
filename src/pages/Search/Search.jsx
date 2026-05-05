@@ -13,12 +13,12 @@ export default function Search({ userInput, setUserInput }) {
     const query = searchParams.get('q');
     const type = searchParams.get('type');
     const text = type === 'all' && 'movies or TV series'
-                || type === 'movies' && 'movies'
-                || type === 'tv_series' && 'TV Series';
-    
+        || type === 'movies' && 'movies'
+        || type === 'tv_series' && 'TV Series';
+    const result = userSearch.length === 1 ? 'result' : 'results';
 
     useEffect(() => {
-        fetchMediaAPI(setUserSearch, query, type)
+        fetchMediaAPI(setUserSearch, query, type);
     }, [query])
 
     return (
@@ -29,9 +29,12 @@ export default function Search({ userInput, setUserInput }) {
                 userInput={userInput}
                 setUserInput={setUserInput}
             />
-            {userSearch.length > 0
-                ? <ContentGrid pageName={''} isTrending={false} array={userSearch} />
-                : <span className='text_preset_1  text_white--opaque_50'>Loading...</span>
+            {userSearch
+                ? (
+                    <ContentGrid pageName={`Found ${userSearch.length} ${result} for '${userInput}'`} isTrending={false} array={userSearch} />
+                ) : (
+                    <span className='text_preset_1  text_white--opaque_50'>Loading...</span>
+                )
             }
         </>
     )
