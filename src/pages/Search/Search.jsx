@@ -12,6 +12,10 @@ export default function Search({ userInput, setUserInput }) {
     const [searchParams] = useSearchParams();
     const query = searchParams.get('q');
     const type = searchParams.get('type');
+    const text = type === 'all' && 'movies or TV series'
+                || type === 'movies' && 'movies'
+                || type === 'tv_series' && 'TV Series';
+    
 
     useEffect(() => {
         fetchMediaAPI(setUserSearch, query, type)
@@ -20,7 +24,7 @@ export default function Search({ userInput, setUserInput }) {
     return (
         <>
             <SearchInput
-                text='movies or TV series'
+                text={text}
                 type={type}
                 userInput={userInput}
                 setUserInput={setUserInput}
