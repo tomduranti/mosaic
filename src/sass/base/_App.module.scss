@@ -76,7 +76,7 @@ body {
   gap: $gap_inline_control--sm;
 
   @include respond_to(min, m_screen) {
-    grid-template-columns: repeat(auto-fit, minmax(min(200px, 470px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 280px), 1fr));
     grid-column-gap: $gap_inline_control--lg_30;
     grid-row-gap: $gap_block_control--md;
   }

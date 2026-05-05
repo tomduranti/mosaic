@@ -4,12 +4,16 @@
 
 .mediacard {
     inline-size: 100%;
+    
+    // @include respond_to(min, m_screen) {
+    //     max-inline-size: $inline_size--xlg;
+    // }
 
     &--trending {
         max-inline-size: $inline_size--lg;
 
         @include respond_to(min, m_screen) {
-            max-inline-size: $inline_size--xlg;
+            max-inline-size: $inline_size--xxlg;
         }
     }
 
