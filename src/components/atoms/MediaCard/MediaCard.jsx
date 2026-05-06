@@ -7,7 +7,7 @@ import noImageAvailable from '../../../assets/no_image_available/no_image_availa
 //sass
 import styles from './_MediaCard.module.scss';
 import '../../../sass/abstract/_utils.scss';
-import  variables from '../../../sass/abstract/_export.module.scss';
+import variables from '../../../sass/abstract/_export.module.scss';
 
 //functions
 import getYearFormat from '../../../js/utils/date/date.js';
@@ -16,7 +16,7 @@ export default function MediaCard({ isTrending, release_date, poster_path, media
 
     return (
         <>
-            {isTrending ?
+            { isTrending ?
                 (
                     <article className={`${styles.mediacard}  ${styles['mediacard--trending']}`}>
                         <div className={styles.mediacard__container} style={{ backgroundImage: !poster_path ? `url(${noImageAvailable})` : `${variables.gradient}, url(https://image.tmdb.org/t/p/w500${poster_path})` }}>

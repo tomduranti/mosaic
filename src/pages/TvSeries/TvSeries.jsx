@@ -5,6 +5,7 @@ import getDataAPI from '../../js/api/api.js';
 import { useState, useEffect } from 'react';
 import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
 import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
+import Loading from '../../components/atoms/Loading/Loading.jsx';
 
 export default function TvSeries({ userInput, setUserInput }) {
     const [latestTvSeries, setLatestTvSeries] = useState([]);
@@ -23,7 +24,7 @@ export default function TvSeries({ userInput, setUserInput }) {
             />
             {latestTvSeries.length > 0
                 ? <ContentGrid pageName={'TV Series'} isTrending={false} array={latestTvSeries} />
-                : <span className='text_preset_1  text_white--opaque_50'>Loading...</span>
+                : <Loading />
             }
         </>
     )

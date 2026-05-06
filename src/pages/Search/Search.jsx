@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from "react-router";
 import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
 import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
+import Loading from '../../components/atoms/Loading/Loading.jsx';
 
 //functions
 import fetchMediaAPI from '../../js/utils/fetch/fetch.js';
@@ -29,11 +30,11 @@ export default function Search({ userInput, setUserInput }) {
                 userInput={userInput}
                 setUserInput={setUserInput}
             />
-            {userSearch
+            {userSearch || !isLoading
                 ? (
                     <ContentGrid pageName={`Found ${userSearch.length} ${result} for '${userInput}'`} isTrending={false} array={userSearch} />
                 ) : (
-                    <span className='text_preset_1  text_white--opaque_50'>Loading...</span>
+                    <Loading />
                 )
             }
         </>

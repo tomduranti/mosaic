@@ -5,6 +5,7 @@ import getDataAPI from '../../js/api/api.js';
 import { useState, useEffect } from 'react';
 import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
 import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
+import Loading from '../../components/atoms/Loading/Loading.jsx';
 
 export default function Movies({ userInput, setUserInput }) {
     const [latestMovies, setLatestMovies] = useState([]);
@@ -23,7 +24,7 @@ export default function Movies({ userInput, setUserInput }) {
             />
             {latestMovies.length > 0
                 ? <ContentGrid pageName={'Movies'} isTrending={false} array={latestMovies} />
-                : <span className='text_preset_1  text_white--opaque_50'>Loading...</span>
+                : <Loading />
             }
         </>
     )

@@ -6,6 +6,7 @@ import fisherYatesShuffle from '../../js/utils/shuffle/shuffle.js';
 import { useState, useEffect } from 'react';
 import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
 import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
+import Loading from '../../components/atoms/Loading/Loading.jsx';
 
 export default function Home({ userInput, setUserInput }) {
     const [trending, setTrending] = useState([]);
@@ -27,14 +28,15 @@ export default function Home({ userInput, setUserInput }) {
                 userInput={userInput}
                 setUserInput={setUserInput}
             />
-            {trending.length > 0
-                ? <ContentGrid pageName={'Trending'} isTrending={true} array={trending} />
-                : <span className='text_preset_1  text_white--opaque_50'>Loading...</span>
-            }
-
-            {recommendedForYou.length > 0
-                ? <ContentGrid pageName={'Recommended for you'} isTrending={false} array={recommendedForYou} />
-                : <span className='text_preset_1  text_white--opaque_50'>Loading...</span>
+            {trending.length > 0 && recommendedForYou.length > 0
+                ? (
+                    <>
+                        <ContentGrid pageName={'Trending'} isTrending={true} array={trending} />
+                        <ContentGrid pageName={'Recommended for you'} isTrending={false} array={recommendedForYou} />
+                    </>
+                ) : (
+                    <Loading />
+                )
             }
 
         </>
