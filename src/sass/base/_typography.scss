@@ -22,7 +22,7 @@ $presets: (
 }
 
 
-@media screen and (min-width: to_rem(768)) {
+@include respond_to(min, m_screen) {
     .text_preset_1 {
         font-size: to_rem(32);
         line-height: -0.5px;

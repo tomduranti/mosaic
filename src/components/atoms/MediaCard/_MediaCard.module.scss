@@ -4,16 +4,16 @@
 
 .mediacard {
     inline-size: 100%;
-    
-    // @include respond_to(min, m_screen) {
-    //     max-inline-size: $inline_size--xlg;
-    // }
 
     &--trending {
         max-inline-size: $inline_size--lg;
 
         @include respond_to(min, m_screen) {
             max-inline-size: $inline_size--xlg;
+        }
+
+        @include respond_to(min, l_screen) {
+            max-inline-size: $inline_size--xxlg;
         }
     }
 
@@ -43,6 +43,13 @@
         border-radius: $radius_pill--xs;
 
         padding: $padding_block_control--xsm $padding_inline_control--xsm $padding_block_control--sm_14 $padding_block_control--sm;
+
+        &--trending {
+            @include respond_to(min, l_screen) {
+                padding-block: $padding_block_control--sm_14 $padding_block_control--md;
+                padding-inline: $padding_inline_control--sm;
+            }
+        }
     }
 
 

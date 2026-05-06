@@ -31,7 +31,7 @@ body {
         margin-block: 32px 69px;
 
         inline-size: 100%;
-        max-inline-size: 1377px;
+        max-inline-size: 92.84%;
 
         &:nth-child(1) {
             grid-column-start: 1;
@@ -79,5 +79,10 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(min(200px, 280px), 1fr));
     grid-column-gap: $gap_inline_control--lg_30;
     grid-row-gap: $gap_block_control--md;
+  }
+
+  @include respond_to(min, l_screen) {
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 320px), 1fr));
+    grid-column-gap: $gap_inline_control--xlg;
   }
 }
