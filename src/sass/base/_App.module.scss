@@ -85,4 +85,9 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(min(280px, 320px), 1fr));
     grid-column-gap: $gap_inline_control--xlg;
   }
+
+
+  &__link {
+    inline-size: 100%;
+  }
 }
