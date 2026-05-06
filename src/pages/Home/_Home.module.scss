@@ -27,7 +27,7 @@
     padding-inline-start: $padding_inline_control--sm;
 
     @include respond_to(min, m_screen) {
-      flex: 0 0 $inline_size--xxlg;
+      flex: 0 0 $inline_size--xlg;
       padding-inline-start: $padding_inline_control--xxlg;
     }
   }

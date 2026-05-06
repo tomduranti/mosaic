@@ -14,6 +14,7 @@ export default function ContentGrid({ pageName, isTrending, array }) {
     const [emblaRef, emblaApi] = useEmblaCarousel({
         loop: false,
         dragFree: true,
+        align: 'start',
     }, [Autoplay()])
 
     useEffect(() => {
