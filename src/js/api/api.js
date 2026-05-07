@@ -1,4 +1,4 @@
-export default function getDataAPI(category, function_wrapper, input='') {
+export default function getAPIData(category, function_wrapper) {
 
   let url;
 
@@ -13,7 +13,7 @@ export default function getDataAPI(category, function_wrapper, input='') {
   switch (category) {
     case 'search_movie':
       url = new URL('/api/search/movie', window.location.origin);
-      url.searchParams.set('query', input);
+      url.searchParams.set('query', userInput);
       break;
     case 'latest_movies':
       url = new URL('/api/trending/movie/day', window.location.origin);
@@ -23,7 +23,7 @@ export default function getDataAPI(category, function_wrapper, input='') {
       break;
     case 'search_tv_series':
       url = new URL('/api/search/tv', window.location.origin);
-      url.searchParams.set('query', input);
+      url.searchParams.set('query', userInput);
       break;
     case 'latest_tv_series':
       url = new URL('/api/trending/tv/day', window.location.origin);

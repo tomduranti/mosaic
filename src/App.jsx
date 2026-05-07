@@ -26,9 +26,8 @@ export default function App() {
         <Routes>
           <Route path='/' element={<Home userInput={userInput} setUserInput={setUserInput} />} />
           <Route path='movie' element={<Movies userInput={userInput} setUserInput={setUserInput} />} />
-          <Route path='movie/:id' element={<Details />} />
           <Route path='tv' element={<TvSeries userInput={userInput} setUserInput={setUserInput} />} />
-          <Route path='tv/:id' element={<Details />} />
+          <Route path=':type/:id' element={<Details />} />
           <Route path='bookmark' element={<BookmarkMedia userInput={userInput} setUserInput={setUserInput} />} />
           <Route path='search' element={<Search userInput={userInput} setUserInput={setUserInput} /> } />
         </Routes>

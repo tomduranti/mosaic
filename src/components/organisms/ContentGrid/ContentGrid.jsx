@@ -41,7 +41,7 @@ export default function ContentGrid({ pageName, isTrending, array }) {
                                             release_date={item.first_air_date || item.release_date}
                                             poster_path={item.poster_path}
                                             media_type={item.media_type}
-                                            video={item.video}
+                                            type={item.video}
                                             id={item.id}
                                             avg_rating={item.vote_average}
                                             title={item.title || item.name}
@@ -60,7 +60,7 @@ export default function ContentGrid({ pageName, isTrending, array }) {
                                     release_date={item.first_air_date || item.release_date}
                                     poster_path={item.poster_path}
                                     media_type={item.media_type}
-                                    video={item.video}
+                                    type={item.video}
                                     id={item.id}
                                     avg_rating={item.vote_average}
                                     title={item.title || item.name}
