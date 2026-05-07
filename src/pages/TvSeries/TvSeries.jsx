@@ -1,5 +1,5 @@
 //functions
-import getDataAPI from '../../js/api/api.js';
+import getDataFromApi from '../../js/api/getDataFromApi.js';
 
 //react libraries and components
 import { useState, useEffect } from 'react';
@@ -11,7 +11,7 @@ export default function TvSeries({ userInput, setUserInput }) {
     const [latestTvSeries, setLatestTvSeries] = useState([]);
 
     useEffect(() => {
-        getDataAPI('latest_tv_series', setLatestTvSeries);
+        getDataFromApi('latest_tv_series', setLatestTvSeries);
     }, [])
 
     return (

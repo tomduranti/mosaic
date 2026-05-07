@@ -1,5 +1,5 @@
 //functions
-import getDataAPI from '../../js/api/api.js';
+import getDataFromApi from '../../js/api/getDataFromApi.js';
 import fisherYatesShuffle from '../../js/utils/shuffle/shuffle.js';
 
 //react libraries and components
@@ -15,9 +15,9 @@ export default function Home({ userInput, setUserInput }) {
     const recommendedForYou = fisherYatesShuffle([...recommendedMovies, ...recommendedTvSeries]);
 
     useEffect(() => {
-        getDataAPI('trending', setTrending);
-        getDataAPI('recommended_movies', setRecommendedMovies);
-        getDataAPI('recommended_tv_series', setRecommendedTvSeries);
+        getDataFromApi('trending', setTrending);
+        getDataFromApi('recommended_movies', setRecommendedMovies);
+        getDataFromApi('recommended_tv_series', setRecommendedTvSeries);
     }, []);
 
     return (

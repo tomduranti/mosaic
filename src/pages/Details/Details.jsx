@@ -1,5 +1,5 @@
 //functions
-import getDataAPI from '../../js/api/api.js';
+import getDetailFromApi from '../../js/api/getDetailFromApi.js';
 
 //react libraries and components
 import { useState, useEffect } from 'react';
@@ -10,18 +10,7 @@ export default function Details() {
     const { id, type } = useParams();
 
     useEffect(() => {
-        const options = {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-                Authorization: '',
-                }
-            };
-
-            fetch(`https://api.themoviedb.org/3/${type}/${id}?language=en-US`, options)
-            .then(res => res.json())
-            .then(res => setMediaDetails(res))
-            .catch(err => console.error(err));
+        getDetailFromApi(setMediaDetails, type, id);
     }, [id])
 
     return (

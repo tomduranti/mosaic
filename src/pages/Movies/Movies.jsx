@@ -1,5 +1,5 @@
 //functions
-import getDataAPI from '../../js/api/api.js';
+import getDataFromApi from '../../js/api/getDataFromApi.js';
 
 //react libraries and components
 import { useState, useEffect } from 'react';
@@ -11,7 +11,7 @@ export default function Movies({ userInput, setUserInput }) {
     const [latestMovies, setLatestMovies] = useState([]);
 
     useEffect(() => {
-        getDataAPI('latest_movies', setLatestMovies);
+        getDataFromApi('latest_movies', setLatestMovies);
     }, [])
 
     return (

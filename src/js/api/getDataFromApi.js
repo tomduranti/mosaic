@@ -1,19 +1,13 @@
-export default function getAPIData(category, function_wrapper) {
+import { options } from './options.js';
+
+export default function getDataFromApi(category, function_wrapper, input='') {
 
   let url;
-
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: `${import.meta.env.VITE_API_KEY}`,
-    }
-  };
 
   switch (category) {
     case 'search_movie':
       url = new URL('/api/search/movie', window.location.origin);
-      url.searchParams.set('query', userInput);
+      url.searchParams.set('query', input);
       break;
     case 'latest_movies':
       url = new URL('/api/trending/movie/day', window.location.origin);
@@ -23,7 +17,7 @@ export default function getAPIData(category, function_wrapper) {
       break;
     case 'search_tv_series':
       url = new URL('/api/search/tv', window.location.origin);
-      url.searchParams.set('query', userInput);
+      url.searchParams.set('query', input);
       break;
     case 'latest_tv_series':
       url = new URL('/api/trending/tv/day', window.location.origin);
