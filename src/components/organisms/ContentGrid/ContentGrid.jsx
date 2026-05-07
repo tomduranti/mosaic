@@ -1,7 +1,6 @@
 //react libraries and components
 import { useState, useEffect } from 'react';
-import { useNavigate } from "react-router";
-import { Link } from "react-router";
+
 import React from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
@@ -26,8 +25,6 @@ export default function ContentGrid({ pageName, isTrending, array }) {
         emblaApi.plugins().autoplay?.play()
     }, [array])
 
-    const navigate = useNavigate();
-
     return (
         <>
             <section className={stylesApp.section}>
@@ -39,17 +36,16 @@ export default function ContentGrid({ pageName, isTrending, array }) {
                             <ul className={stylesHome.carousel__container}>
                                 {array.map(item =>
                                     <li className={stylesHome.carousel__item} key={item.id}>
-                                        <Link className={stylesApp.grid__link} to={`/${item.video === false ? 'movie' : 'tv'}/${item.id}`}>
-                                            <MediaCard
-                                                isTrending={true}
-                                                release_date={item.first_air_date || item.release_date}
-                                                poster_path={item.poster_path}
-                                                media_type={item.media_type}
-                                                video={item.video}
-                                                avg_rating={item.vote_average}
-                                                title={item.title || item.name}
-                                            />
-                                        </Link>
+                                        <MediaCard
+                                            isTrending={true}
+                                            release_date={item.first_air_date || item.release_date}
+                                            poster_path={item.poster_path}
+                                            media_type={item.media_type}
+                                            video={item.video}
+                                            id={item.id}
+                                            avg_rating={item.vote_average}
+                                            title={item.title || item.name}
+                                        />
                                     </li>
                                 )}
                             </ul>
@@ -59,17 +55,16 @@ export default function ContentGrid({ pageName, isTrending, array }) {
                     <ul className={stylesApp.grid}>
                         {array.map(item =>
                             <li className={stylesApp.grid__item} key={item.id}>
-                                <Link className={stylesApp.grid__link} to={`/${item.video === false ? 'movie' : 'tv'}/${item.id}`}>
-                                    <MediaCard
-                                        isTrending={false}
-                                        release_date={item.first_air_date || item.release_date}
-                                        poster_path={item.poster_path}
-                                        media_type={item.media_type}
-                                        video={item.video}
-                                        avg_rating={item.vote_average}
-                                        title={item.title || item.name}
-                                    />
-                                </Link>
+                                <MediaCard
+                                    isTrending={false}
+                                    release_date={item.first_air_date || item.release_date}
+                                    poster_path={item.poster_path}
+                                    media_type={item.media_type}
+                                    video={item.video}
+                                    id={item.id}
+                                    avg_rating={item.vote_average}
+                                    title={item.title || item.name}
+                                />
                             </li>
                         )}
                     </ul>

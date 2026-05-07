@@ -5,6 +5,8 @@
 .mediacard {
     inline-size: 100%;
 
+    position: relative;
+
     &--trending {
         max-inline-size: $inline_size--lg;
 
@@ -19,13 +21,16 @@
 
 
     &__button {
-        align-self: end;
+        position: absolute;
 
-        order: 1;
+        top: 2%;
+        right: 4%;
 
-        &--untrending {
-            margin-bottom: $margin_block_control--lg;
-        }
+        z-index: 1;
+    }
+
+    &__link {
+        inline-size: 100%;
     }
 
 
@@ -33,8 +38,7 @@
         aspect-ratio: 2 / 3;
 
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        flex-direction: column-reverse;
 
         background-position: top center;
         background-repeat: no-repeat;
@@ -42,9 +46,10 @@
 
         border-radius: $radius_pill--xs;
 
-        padding: $padding_block_control--xsm $padding_inline_control--xsm $padding_block_control--sm_14 $padding_block_control--sm;
-
         &--trending {
+            padding-inline-start: $padding_inline_control--sm;
+            padding-block-end: $padding_block_control--sm_14;
+
             @include respond_to(min, l_screen) {
                 padding-block: $padding_block_control--sm_14 $padding_block_control--md;
                 padding-inline: $padding_inline_control--sm;
