@@ -16,6 +16,7 @@ export default function Details() {
     return (
         <>
             <span className='text_white'>This is the details page</span>
+            <iframe src="https://www.youtube.com/embed/sGbxmsDFVnE" title="W3Schools Free Online Web Tutorials"></iframe>
         </>
     )
 }

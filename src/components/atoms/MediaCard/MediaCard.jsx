@@ -21,8 +21,8 @@ export default function MediaCard({ isTrending, release_date, poster_path, media
                 (
                     <article className={`${styles.mediacard}  ${styles['mediacard--trending']}`}>
                         <BookmarkItem className={`${styles.mediacard__button}`} />
-                        <Link className={styles.mediacard__link} to={`/${type === false ? 'movie' : 'tv'}/${id}`}>
-                            <div className={`${styles.mediacard__container}  ${styles['mediacard__container--trending']}`} style={{ backgroundImage: !poster_path ? `url(${noImageAvailable})` : `${variables.gradient}, url(https://image.tmdb.org/t/p/w500${poster_path})` }}>
+                        <Link className={styles.mediacard__link} to={`/${type === false ? 'movie' : 'tv'}/${id}`} style={{ backgroundImage: !poster_path ? `url(${noImageAvailable})` : `${variables.gradient}, url(https://image.tmdb.org/t/p/w500${poster_path})` }}>
+                            <div className={`${styles.mediacard__container}  ${styles['mediacard__container--trending']}`} >
                                 <div className={styles.mediacard__media_info}>
                                     <div className={`${styles.mediacard__media_date_and_type}  text_preset_5  text_white--opaque_75`}>
                                         <span className={`${styles.separator}  ${styles['separator--trending']}`}>{getYearFormat(release_date)}</span>
@@ -40,8 +40,8 @@ export default function MediaCard({ isTrending, release_date, poster_path, media
                 ) : (
                     <article className={styles.mediacard}>
                         <BookmarkItem className={`${styles.mediacard__button}`} />
-                        <Link className={styles.mediacard__link} to={`/${type === false ? 'movie' : 'tv'}/${id}`}>
-                            <div className={`${styles.mediacard__container}`} style={{ backgroundImage: !poster_path ? `url(${noImageAvailable})` : `url(https://image.tmdb.org/t/p/w500${poster_path})` }}></div>
+                        <Link className={styles.mediacard__link} to={`/${type === false ? 'movie' : 'tv'}/${id}`} style={{ backgroundImage: !poster_path ? `url(${noImageAvailable})` : `url(https://image.tmdb.org/t/p/w500${poster_path})` }}>
+                            <div className={`${styles.mediacard__container}`} ></div>
                         </Link>
 
                         <div className={`${styles.mediacard__media_info}  ${styles.mediacard__text_outside}`}>
