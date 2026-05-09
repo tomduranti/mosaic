@@ -3,27 +3,29 @@ import getDataFromApi from '../../js/api/getDataFromApi.js';
 
 //react libraries and components
 import { useState, useEffect } from 'react';
+import { Outlet } from "react-router";
 import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
 import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
 
 export default function Movies({ userInput, setUserInput }) {
-    const [latestMovies, setLatestMovies] = useState([]);
+    const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        getDataFromApi('latest_movies', setLatestMovies);
+        getDataFromApi('latest_movies', setMovies);
     }, [])
 
     return (
         <>
             <SearchInput
                 text='movies'
-                type='movies'
+                type='movie'
                 userInput={userInput}
                 setUserInput={setUserInput}
             />
-            {latestMovies.length > 0
-                ? <ContentGrid pageName={'Movies'} isTrending={false} array={latestMovies} />
+            <Outlet />
+            {movies.length > 0
+                ? <ContentGrid pageName={'Movies'} isTrending={false} array={movies} media_type='movie'/>
                 : <Loading />
             }
         </>

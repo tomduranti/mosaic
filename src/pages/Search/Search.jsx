@@ -24,12 +24,6 @@ export default function Search({ userInput, setUserInput }) {
 
     return (
         <>
-            <SearchInput
-                text={text}
-                type={type}
-                userInput={userInput}
-                setUserInput={setUserInput}
-            />
             {userSearch || !isLoading
                 ? (
                     <ContentGrid pageName={`Found ${userSearch.length} ${result} for '${userInput}'`} isTrending={false} array={userSearch} />

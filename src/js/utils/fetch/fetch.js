@@ -7,10 +7,10 @@ export default function fetchMediaAPI(callback, query, search) {
             getDataFromApi('search_movie', callback, query);
             getDataFromApi('search_tv_series', callback, query);
             break;
-        case 'movies':
+        case 'movie':
             getDataFromApi('search_movie', callback, query);
             break;
-        case 'tv_series':
+        case 'tv':
             getDataFromApi('search_tv_series', callback, query);
             break;
     }
