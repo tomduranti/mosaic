@@ -8,7 +8,7 @@ import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx'
 import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
 
-export default function TvSeries({ userInput, setUserInput }) {
+export default function TvSeries({ userInput, setUserInput, isSearchButtonPushed, setIsSearchButtonPushed }) {
     const [tvSeries, setTvSeries] = useState([]);
 
     useEffect(() => {
@@ -22,11 +22,14 @@ export default function TvSeries({ userInput, setUserInput }) {
                 type='tv'
                 userInput={userInput}
                 setUserInput={setUserInput}
+                setIsSearchButtonPushed={setIsSearchButtonPushed}
             />
-            <Outlet />
-            {tvSeries.length > 0
-                ? <ContentGrid pageName={'TV Series'} isTrending={false} array={tvSeries} />
-                : <Loading />
+
+            {userInput && isSearchButtonPushed
+                ? <Outlet />
+                : tvSeries.length > 0
+                    ? <ContentGrid pageName={'TV Series'} isTrending={false} array={tvSeries} />
+                    : <Loading />
             }
         </>
     )
