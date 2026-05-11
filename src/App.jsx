@@ -18,18 +18,24 @@ import Search from './pages/Search/Search.jsx';
 export default function App() {
 
   const [userInput, setUserInput] = useState('');
+  const [isSearchButtonPushed, setIsSearchButtonPushed] = useState(false);
 
   return (
     <div className={styles.page_wrapper}>
       <BrowserRouter>
-        <NavBar />
+        <NavBar setUserInput={setUserInput} />
         <Routes>
-          <Route path='/' element={<Home userInput={userInput} setUserInput={setUserInput} />} />
-          <Route path='movie' element={<Movies userInput={userInput} setUserInput={setUserInput} />} />
-          <Route path='tv' element={<TvSeries userInput={userInput} setUserInput={setUserInput} />} />
+          <Route path='home' element={<Home userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} >
+            <Route path='search' element={<Search userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} />
+          </Route>
+          <Route path='movie' element={<Movies userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} >
+            <Route path='search' element={<Search userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} />
+          </Route>
+          <Route path='tv' element={<TvSeries userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} >
+            <Route path='search' element={<Search userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} />
+          </Route>
           <Route path=':type/:id' element={<Details />} />
           <Route path='bookmark' element={<BookmarkMedia userInput={userInput} setUserInput={setUserInput} />} />
-          <Route path='search' element={<Search userInput={userInput} setUserInput={setUserInput} /> } />
         </Routes>
       </BrowserRouter>
     </div>
