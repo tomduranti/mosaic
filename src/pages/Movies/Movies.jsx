@@ -8,7 +8,7 @@ import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx'
 import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
 
-export default function Movies({ userInput, setUserInput }) {
+export default function Movies({ userInput, setUserInput, isSearchButtonPushed, setIsSearchButtonPushed }) {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
@@ -22,11 +22,14 @@ export default function Movies({ userInput, setUserInput }) {
                 type='movie'
                 userInput={userInput}
                 setUserInput={setUserInput}
+                setIsSearchButtonPushed={setIsSearchButtonPushed}
             />
-            <Outlet />
-            {movies.length > 0
-                ? <ContentGrid pageName={'Movies'} isTrending={false} array={movies} media_type='movie'/>
-                : <Loading />
+
+            {userInput && isSearchButtonPushed
+                ? <Outlet />
+                : movies.length > 0
+                    ? <ContentGrid pageName={'Movies'} isTrending={false} array={movies} />
+                    : <Loading />
             }
         </>
     )

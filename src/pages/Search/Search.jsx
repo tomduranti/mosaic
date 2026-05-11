@@ -13,7 +13,8 @@ export default function Search({ userInput, setUserInput }) {
     const [searchParams] = useSearchParams();
     const query = searchParams.get('q');
     const type = searchParams.get('type');
-    const text = type === 'all' && 'movies or TV series'
+    const text =
+           type === 'all' && 'movies or TV series'
         || type === 'movies' && 'movies'
         || type === 'tv_series' && 'TV Series';
     const result = userSearch.length === 1 ? 'result' : 'results';
@@ -24,12 +25,9 @@ export default function Search({ userInput, setUserInput }) {
 
     return (
         <>
-            {userSearch || !isLoading
-                ? (
-                    <ContentGrid pageName={`Found ${userSearch.length} ${result} for '${userInput}'`} isTrending={false} array={userSearch} />
-                ) : (
-                    <Loading />
-                )
+            {userSearch
+                ? <ContentGrid pageName={`Found ${userSearch.length} ${result} for '${userInput}'`} isTrending={false} array={userSearch} />
+                : <Loading />
             }
         </>
     )
