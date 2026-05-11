@@ -8,6 +8,7 @@ import './sass/main.scss';
 
 //components
 import NavBar from './components/atoms/NavBar/NavBar.jsx';
+import Navigate from './pages/Navigate/Navigate.jsx';
 import Home from './pages/Home/Home.jsx';
 import Movies from './pages/Movies/Movies.jsx';
 import TvSeries from './pages/TvSeries/TvSeries.jsx';
@@ -25,6 +26,7 @@ export default function App() {
       <BrowserRouter>
         <NavBar setUserInput={setUserInput} />
         <Routes>
+          <Route path='/' element={<Navigate to='/home' replace />} />
           <Route path='home' element={<Home userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} >
             <Route path='search' element={<Search userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} />
           </Route>
