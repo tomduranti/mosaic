@@ -30,12 +30,10 @@ export default function App() {
           <Route path='home' element={<Home userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} >
             <Route path='search' element={<Search userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} />
           </Route>
-          <Route path='movie' element={<Movies userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} >
-            <Route path='search' element={<Search userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} />
-          </Route>
-          <Route path='tv' element={<TvSeries userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} >
-            <Route path='search' element={<Search userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} />
-          </Route>
+          <Route path='movie' element={<Movies userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} />
+          <Route path='movie/search' element={<Search userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} />
+          <Route path='tv' element={<TvSeries userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} />
+          <Route path='tv/search' element={<Search userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} />
           <Route path=':type/:id' element={<Details />} />
           <Route path='bookmark' element={<BookmarkMedia userInput={userInput} setUserInput={setUserInput} />} />
         </Routes>
