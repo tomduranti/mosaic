@@ -12,7 +12,7 @@ export default function Movies({ userInput, setUserInput, isSearchButtonPushed, 
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        getDataFromApi('latest_movies', setMovies);
+        getDataFromApi('recommended_movies', setMovies);
     }, [])
 
     return (

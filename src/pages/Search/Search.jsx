@@ -6,7 +6,7 @@ import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
 
 //functions
-import fetchMediaAPI from '../../js/utils/fetch/fetch.js';
+import getDataFromApi from '../../js/api/getDataFromApi.js';
 
 export default function Search({ userInput, setUserInput }) {
     const [userSearch, setUserSearch] = useState([]);
@@ -14,19 +14,28 @@ export default function Search({ userInput, setUserInput }) {
     const query = searchParams.get('q');
     const type = searchParams.get('type');
     const text =
-           type === 'all' && 'movies or TV series'
+           type === 'multi' && 'movies or TV series'
         || type === 'movies' && 'movies'
         || type === 'tv_series' && 'TV Series';
-    const result = userSearch.length === 1 ? 'result' : 'results';
 
     useEffect(() => {
-        fetchMediaAPI(setUserSearch, query, type);
+        switch (type) {
+            case 'multi':
+                getDataFromApi('multi', setUserSearch, query);
+                break;
+            case 'movie':
+                getDataFromApi('search_movie', setUserSearch, query);
+                break;
+            case 'tv':
+                getDataFromApi('search_tv_series', setUserSearch, query);
+                break;
+        }
     }, [query])
 
     return (
         <>
             {userSearch
-                ? <ContentGrid pageName={`Found ${userSearch.length} ${result} for '${query}'`} isTrending={false} array={userSearch} />
+                ? <ContentGrid pageName={`Found ${userSearch.length} ${userSearch.length === 1 ? 'result' : 'results'} for '${query}'`} isTrending={false} array={userSearch} />
                 : <Loading />
             }
         </>

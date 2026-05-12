@@ -11,21 +11,21 @@ import Loading from '../../components/atoms/Loading/Loading.jsx';
 
 export default function Home({ userInput, setUserInput, isSearchButtonPushed, setIsSearchButtonPushed }) {
     const [trending, setTrending] = useState([]);
-    const [recommendedMovies, setRecommendedMovies] = useState([]);
-    const [recommendedTvSeries, setRecommendedTvSeries] = useState([]);
-    const recommendedForYou = fisherYatesShuffle([...recommendedMovies, ...recommendedTvSeries]);
+    const [movies, setMovies] = useState([]);
+    const [tvSeries, setTvSeries] = useState([]);
+    const recommendedForYou = fisherYatesShuffle([...movies, ...tvSeries]);
 
     useEffect(() => {
         getDataFromApi('trending', setTrending);
-        getDataFromApi('recommended_movies', setRecommendedMovies);
-        getDataFromApi('recommended_tv_series', setRecommendedTvSeries);
+        getDataFromApi('latest_movies', setMovies);
+        getDataFromApi('latest_tv_series', setTvSeries);
     }, []);
 
     return (
         <>
             <SearchInput
                 text='movies or TV series'
-                type='all'
+                type='multi'
                 userInput={userInput}
                 setUserInput={setUserInput}
                 setIsSearchButtonPushed={setIsSearchButtonPushed}

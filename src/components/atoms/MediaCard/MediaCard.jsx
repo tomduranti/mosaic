@@ -55,7 +55,7 @@ export default function MediaCard({ isTrending, release_date, poster_path, media
                                         <img src={isMovie ? movie : tv} alt='' />
                                         <span className='text_capitalize'>{isMovie ? 'movie' : 'tv'}</span>
                                     </div>
-                                    <span className='text_uppercase'>{avg_rating.toFixed(1)}</span>
+                                    <span className='text_uppercase'>{avg_rating?.toFixed(1)}</span>
                                 </div>
                                 <h3 className='text_preset_3  text_white  text_capitalize'>{title}</h3>
                             </div>
