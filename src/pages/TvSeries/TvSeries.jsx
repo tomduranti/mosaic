@@ -12,7 +12,7 @@ export default function TvSeries({ userInput, setUserInput, isSearchButtonPushed
     const [tvSeries, setTvSeries] = useState([]);
 
     useEffect(() => {
-        getDataFromApi('latest_tv_series', setTvSeries);
+        getDataFromApi('recommended_tv_series', setTvSeries);
     }, [])
 
     return (

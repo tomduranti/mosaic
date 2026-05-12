@@ -11,14 +11,26 @@ import Loading from '../../components/atoms/Loading/Loading.jsx';
 
 export default function Home({ userInput, setUserInput, isSearchButtonPushed, setIsSearchButtonPushed }) {
     const [trending, setTrending] = useState([]);
-    const [movies, setMovies] = useState([]);
-    const [tvSeries, setTvSeries] = useState([]);
-    const recommendedForYou = fisherYatesShuffle([...movies, ...tvSeries]);
+    const [movieAndTvSeries, setMovieAndTvSeries] = useState({
+        movies: [],
+        tv_series: []
+    });
+    const recommendedForYou = fisherYatesShuffle([...movieAndTvSeries.movies, ...movieAndTvSeries.tv_series]);
 
     useEffect(() => {
         getDataFromApi('trending', setTrending);
-        getDataFromApi('latest_movies', setMovies);
-        getDataFromApi('latest_tv_series', setTvSeries);
+        getDataFromApi('trending_movies', data => {
+            setMovieAndTvSeries(prev =>
+                ({ ...prev, movies: data })
+            )
+        }
+        );
+        getDataFromApi('trending_tv_series', data => {
+            setMovieAndTvSeries(prev =>
+                ({ ...prev, tv_series: data })
+            )
+        }
+        );
     }, []);
 
     return (

@@ -9,10 +9,10 @@ export default function getDataFromApi(category, function_wrapper, input='') {
     case 'trending':
       url = new URL('/api/trending/all/week', window.location.origin);
       break;
-    case 'latest_movies':
+    case 'trending_movies':
       url = new URL('/api/trending/movie/day', window.location.origin);
       break;
-    case 'latest_tv_series':
+    case 'trending_tv_series':
       url = new URL('/api/trending/tv/day', window.location.origin);
       break;
     case 'multi':
