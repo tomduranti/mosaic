@@ -10,32 +10,38 @@ import './sass/main.scss';
 import NavBar from './components/atoms/NavBar/NavBar.jsx';
 import Navigate from './pages/Navigate/Navigate.jsx';
 import Home from './pages/Home/Home.jsx';
+import HomePopular from './pages/Home/HomePopular.jsx';
+import HomeSearch from './pages/Home/HomeSearch.jsx';
 import Movies from './pages/Movies/Movies.jsx';
+import MoviesPopular from './pages/Movies/MoviesPopular.jsx';
+import MoviesSearch from './pages/Movies/MoviesSearch.jsx';
 import TvSeries from './pages/TvSeries/TvSeries.jsx';
+import TvSeriesPopular from './pages/TvSeries/TvSeriesPopular.jsx';
+import TvSeriesSearch from './pages/TvSeries/TvSeriesSearch.jsx';
 import Details from './pages/Details/Details.jsx';
 import BookmarkMedia from './pages/BookmarkMedia/BookmarkMedia.jsx';
-import Search from './pages/Search/Search.jsx';
 
 export default function App() {
-
-  const [userInput, setUserInput] = useState('');
-  const [isSearchButtonPushed, setIsSearchButtonPushed] = useState(false);
-
   return (
     <div className={styles.page_wrapper}>
       <BrowserRouter>
-        <NavBar setUserInput={setUserInput} />
+        <NavBar />
         <Routes>
           <Route path='/' element={<Navigate to='/home' replace />} />
-          <Route path='home' element={<Home userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} >
-            <Route path='search' element={<Search userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} />
+          <Route path='home' element={<Home />} >
+            <Route index element={<HomePopular />} />
+            <Route path='search' element={<HomeSearch />} />
           </Route>
-          <Route path='movie' element={<Movies userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} />
-          <Route path='movie/search' element={<Search userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} />
-          <Route path='tv' element={<TvSeries userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} />
-          <Route path='tv/search' element={<Search userInput={userInput} setUserInput={setUserInput} isSearchButtonPushed={isSearchButtonPushed} setIsSearchButtonPushed={setIsSearchButtonPushed} />} />
+          <Route path='movie' element={<Movies />} >
+            <Route index element={<MoviesPopular />} />
+            <Route path='search' element={<MoviesSearch />} />
+          </Route>
+          <Route path='tv' element={<TvSeries />} >
+            <Route index element={<TvSeriesPopular />} />
+            <Route path='search' element={<TvSeriesSearch />} />
+          </Route>
           <Route path=':type/:id' element={<Details />} />
-          <Route path='bookmark' element={<BookmarkMedia userInput={userInput} setUserInput={setUserInput} />} />
+          <Route path='bookmark' element={<BookmarkMedia />} />
         </Routes>
       </BrowserRouter>
     </div>

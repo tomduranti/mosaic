@@ -1,6 +1,5 @@
-//react libraries and components
 import { useState, useEffect } from 'react';
-import { useSearchParams } from "react-router";
+import { useOutletContext, useSearchParams } from "react-router";
 import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
 import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
@@ -8,36 +7,28 @@ import Loading from '../../components/atoms/Loading/Loading.jsx';
 //functions
 import getDataFromApi from '../../js/api/getDataFromApi.js';
 
-export default function Search({ userInput, setUserInput }) {
+export default function MoviesSearch() {
     const [userSearch, setUserSearch] = useState([]);
     const [searchParams] = useSearchParams();
+    //reading parameter q from url to keep url path intact VS useState being destroyed upon page refresh
     const query = searchParams.get('q');
-    const type = searchParams.get('type');
-    const text =
-           type === 'multi' && 'movies or TV series'
-        || type === 'movies' && 'movies'
-        || type === 'tv_series' && 'TV Series';
+
+    const { setIsSearchButtonPushed } = useOutletContext();
 
     useEffect(() => {
-        switch (type) {
-            case 'multi':
-                getDataFromApi('multi', setUserSearch, query);
-                break;
-            case 'movie':
-                getDataFromApi('search_movie', setUserSearch, query);
-                break;
-            case 'tv':
-                getDataFromApi('search_tv_series', setUserSearch, query);
-                break;
-        }
+        setIsSearchButtonPushed(false);
+    }, [])
+
+    useEffect(() => {
+        getDataFromApi('search_movie', setUserSearch, query);
     }, [query])
 
     return (
         <>
-            {userSearch
+            {userSearch.length > 0
                 ? <ContentGrid pageName={`Found ${userSearch.length} ${userSearch.length === 1 ? 'result' : 'results'} for '${query.trim()}'`} isTrending={false} array={userSearch} />
                 : <Loading />
             }
         </>
-    )
-}
+    );
+};
