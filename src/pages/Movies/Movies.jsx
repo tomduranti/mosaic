@@ -20,6 +20,10 @@ export default function Movies() {
         }
     }, [isSearchButtonPushed]);
 
+    useEffect(() => {
+        setIsSearchButtonPushed(false);
+    }, [userInput]);
+
     return (
         <>
             <SearchInput

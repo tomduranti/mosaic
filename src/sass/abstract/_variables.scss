@@ -106,7 +106,7 @@ $inline_size--sm: map.get($spacing, 32);
 $inline_size--md: calc(map.get($spacing, 80) * 2 + map.get($special_spacing, 4));
 $inline_size--lg: calc(map.get($spacing, 80) * 3);
 $inline_size--xlg: calc(map.get($spacing, 80) * 4);
-$inline_size--xxlg: calc(map.get($spacing, 80) * 5);
+$inline_size--xxlg: calc(map.get($spacing, 80) * (4 + .3));
 
 $block_size--xsm: map.get($spacing, 24);
 $block_size--sm: map.get($spacing, 32);

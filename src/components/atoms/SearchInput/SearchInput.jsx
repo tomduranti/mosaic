@@ -6,6 +6,7 @@ import styles from './_SearchInput.module.scss';
 
 export default function SearchInput({ text, userInput, setUserInput, setIsSearchButtonPushed }) {
 
+
     return (
         <div className={styles.search_input}>
             <button className={styles.search_input__button} onClick={() => setIsSearchButtonPushed(true)} type='button' aria-label='Search'>
