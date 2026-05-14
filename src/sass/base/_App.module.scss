@@ -70,13 +70,35 @@ body {
 }
 
 
+.separator {
+  display: flex;
+  align-items: center;
+  gap: $gap_inline_control--xsm;
+
+
+  &:after {
+      content: '';
+      inline-size: 2px;
+      block-size: 2px;
+      background-color: $white--opaque_50;
+      border-radius: $radius_pill_full;
+  }
+
+
+  &--bigger:after {
+      inline-size: 3px;
+      block-size: 3px;
+  }
+}
+
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(130px, 200px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(130px, 200px), 1fr));
   gap: $gap_inline_control--sm;
 
   @include respond_to(min, m_screen) {
-    grid-template-columns: repeat(auto-fit, minmax(min(200px, 280px), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(200px, 280px), 1fr));
     grid-column-gap: $gap_inline_control--lg_30;
     grid-row-gap: $gap_block_control--md;
   }

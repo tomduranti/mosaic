@@ -1,6 +1,6 @@
 import { options } from './options.js';
 
-export default function getDataFromApi(category, function_wrapper, input='') {
+export default async function getDataFromApi(category, function_wrapper, input, type, id) {
 
   let url;
 
@@ -18,7 +18,7 @@ export default function getDataFromApi(category, function_wrapper, input='') {
     case 'multi':
       url = new URL('/api/search/multi', window.location.origin);
       url.searchParams.set('query', input);
-    break;
+      break;
 
     //Movies.jsx
     case 'recommended_movies':
@@ -32,15 +32,23 @@ export default function getDataFromApi(category, function_wrapper, input='') {
     //TvSeries.jsx
     case 'recommended_tv_series':
       url = new URL('/api/tv/popular', window.location.origin);
-      break;    
+      break;
     case 'search_tv_series':
       url = new URL('/api/search/tv', window.location.origin);
       url.searchParams.set('query', input);
       break;
+
+    //Details.jsx
+    case 'details':
+      url = new URL(`/api/${type}/${id}`, window.location.origin);
+      break;
+    case 'trailer':
+      url = new URL(`/api/${type}/${id}/videos`, window.location.origin);
+      break;
   }
 
-  return fetch(url, options)
+  return await fetch(url, options)
     .then(res => res.json())
-    .then(res => function_wrapper(res.results))
+    .then(res => function_wrapper(res.results ?? res))
     .catch(err => console.error(err));
 }

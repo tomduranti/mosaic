@@ -22,17 +22,17 @@
 
 
   &__item {
-    flex: 0 0 $inline_size--lg;
+    flex: 0 0 $inline_size_component--lg;
     min-width: 0;
     padding-inline-start: $padding_inline_control--sm;
 
     @include respond_to(min, m_screen) {
-      flex: 0 0 $inline_size--xlg;
+      flex: 0 0 $inline_size_component--xlg;
       padding-inline-start: $padding_inline_control--xxlg;
     }
 
     @include respond_to(min, l_screen) {
-      flex: 0 0 $inline_size--xxlg;
+      flex: 0 0 $inline_size_component--xxlg;
     }
   }
 }

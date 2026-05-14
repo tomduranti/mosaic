@@ -7,25 +7,30 @@
 
     position: relative;
 
-    &:hover {
-        .mediacard__container {
 
-            &::after,
-            &::before {
-                opacity: 1;
+    @media (pointer: fine) {
+    //glassmorphic effect doesn't activate upon finger touch
+        &:hover {
+            .mediacard__container {
+
+                &::after,
+                &::before {
+                    opacity: 1;
+                }
             }
         }
     }
 
+
     &--trending {
-        max-inline-size: $inline_size--lg;
+        max-inline-size: $inline_size_component--lg;
 
         @include respond_to(min, m_screen) {
-            max-inline-size: $inline_size--xlg;
+            max-inline-size: $inline_size_component--xlg;
         }
 
         @include respond_to(min, l_screen) {
-            max-inline-size: $inline_size--xxlg;
+            max-inline-size: $inline_size_component--xxlg;
         }
     }
 
@@ -38,6 +43,7 @@
 
         z-index: 3;
     }
+
 
     &__link {
         inline-size: 100%;
@@ -122,27 +128,4 @@
     &__text_outside {
         padding-block-start: $padding_block_control--xsm;
     }
-}
-
-
-.separator {
-    display: flex;
-    align-items: center;
-    gap: $gap_inline_control--xsm;
-
-
-    &:after {
-        content: '';
-        inline-size: 2px;
-        block-size: 2px;
-        background-color: $white--opaque_50;
-        border-radius: $radius_pill_full;
-    }
-
-
-    &--trending:after {
-        inline-size: 3px;
-        block-size: 3px;
-    }
-
 }

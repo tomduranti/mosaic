@@ -11,7 +11,7 @@ import Loading from '../../components/atoms/Loading/Loading.jsx';
 
 export default function Home() {
     const [userInput, setUserInput] = useState('');
-    const [isSearchButtonPushed, setIsSearchButtonPushed] = useState(false);
+    const [isSearchButtonPressed, setIsSearchButtonPressed] = useState(false);
     const [trending, setTrending] = useState([]);
     const [movieAndTvSeries, setMovieAndTvSeries] = useState({
         movies: [],
@@ -21,10 +21,14 @@ export default function Home() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (userInput && isSearchButtonPushed) {
+        if (userInput && isSearchButtonPressed) {
             navigate(`search?q=${userInput}&type=multi`);
         }
-    }, [isSearchButtonPushed]);
+    }, [isSearchButtonPressed]);
+
+    useEffect(() => {
+        setIsSearchButtonPressed(false);
+    }, [userInput]);
 
     return (
         <>
@@ -32,9 +36,9 @@ export default function Home() {
                 text='movies or TV series'
                 userInput={userInput}
                 setUserInput={setUserInput}
-                setIsSearchButtonPushed={setIsSearchButtonPushed}
+                setIsSearchButtonPressed={setIsSearchButtonPressed}
             />
-            <Outlet context={{ userInput, trending, setTrending, setMovieAndTvSeries, shuffleMovieAndTvSeries, setIsSearchButtonPushed }} />
+            <Outlet context={{ userInput, trending, setTrending, setMovieAndTvSeries, shuffleMovieAndTvSeries, setIsSearchButtonPressed }} />
         </>
     );
 }

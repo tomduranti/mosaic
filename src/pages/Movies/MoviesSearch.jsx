@@ -13,10 +13,10 @@ export default function MoviesSearch() {
     //reading parameter q from url to keep url path intact VS useState being destroyed upon page refresh
     const query = searchParams.get('q');
 
-    const { setIsSearchButtonPushed } = useOutletContext();
+    const { setIsSearchButtonPressed } = useOutletContext();
 
     useEffect(() => {
-        setIsSearchButtonPushed(false);
+        setIsSearchButtonPressed(false);
     }, [])
 
     useEffect(() => {

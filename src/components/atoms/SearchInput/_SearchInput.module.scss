@@ -6,6 +6,8 @@
     display: flex;
     gap: $gap_inline_control--sm;
 
+    position: relative;
+
 
     @include respond_to(min, m_screen) {
         gap: $gap_inline_control--md;
@@ -15,6 +17,7 @@
     @include respond_to(min, l_screen) {
         margin-block-start: 32px;
     }
+
 
     &:after {
         background-color: $blue--500;
@@ -27,7 +30,7 @@
         display: block;
 
         position: absolute;
-        top: 14%;
+        bottom: -5px;
 
         transition: 1s ease;
     }

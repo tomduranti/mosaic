@@ -18,7 +18,6 @@
     right: 50%;
 
     margin-inline: -50vw;
-    //
 
     @include respond_to(min, m_screen) {
         border-radius: $radius_pill--lg;

@@ -11,14 +11,14 @@ import Loading from '../../components/atoms/Loading/Loading.jsx';
 export default function TvSeries() {
     const [tvSeries, setTvSeries] = useState([]);
     const [userInput, setUserInput] = useState('');
-    const [isSearchButtonPushed, setIsSearchButtonPushed] = useState(false);
+    const [isSearchButtonPressed, setIsSearchButtonPressed] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (userInput && isSearchButtonPushed) {
+        if (userInput && isSearchButtonPressed) {
             navigate(`search?q=${userInput}&type=tv`);
         }
-    }, [isSearchButtonPushed]);
+    }, [isSearchButtonPressed]);
 
     return (
         <>
@@ -27,9 +27,9 @@ export default function TvSeries() {
                 type='tv'
                 userInput={userInput}
                 setUserInput={setUserInput}
-                setIsSearchButtonPushed={setIsSearchButtonPushed}
+                setIsSearchButtonPressed={setIsSearchButtonPressed}
             />
-            <Outlet context={{ userInput, tvSeries, setTvSeries, setIsSearchButtonPushed }} />
+            <Outlet context={{ userInput, tvSeries, setTvSeries, setIsSearchButtonPressed }} />
         </>
     )
 }

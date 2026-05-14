@@ -68,6 +68,7 @@ $gap_inline_control--lg_30: calc(map.get($spacing, 32) - map.get($special_spacin
 $gap_inline_control--lg: map.get($spacing, 32);
 $gap_inline_control--xlg: map.get($spacing, 40);
 
+$gap_block_control--xsm: map.get($spacing, 12);
 $gap_block_control--sm: map.get($spacing, 16);
 $gap_block_control--md: map.get($spacing, 24);
 $gap_block_control--lg_30: calc(map.get($spacing, 32) - map.get($special_spacing, 2));
@@ -103,13 +104,19 @@ $margin_block_layout--lg_34: calc(map.get($spacing, 32) + map.get($special_spaci
 //Inline/Block size
 $inline_size--xsm: map.get($spacing, 24);
 $inline_size--sm: map.get($spacing, 32);
-$inline_size--md: calc(map.get($spacing, 80) * 2 + map.get($special_spacing, 4));
-$inline_size--lg: calc(map.get($spacing, 80) * 3);
-$inline_size--xlg: calc(map.get($spacing, 80) * 4);
-$inline_size--xxlg: calc(map.get($spacing, 80) * (4 + .3));
+$inline_size_component--md: map.get($spacing, 40);
+$inline_size_component--lg: calc(map.get($spacing, 56) + map.get($special_spacing, 4));
+$inline_size_component--xlg: calc(map.get($spacing, 40) * 2);
+
+$inline_size_component--lg: calc(map.get($spacing, 80) * 3);
+$inline_size_component--xlg: calc(map.get($spacing, 80) * 4);
+$inline_size_component--xxlg: calc(map.get($spacing, 80) * (4 + .3));
 
 $block_size--xsm: map.get($spacing, 24);
 $block_size--sm: map.get($spacing, 32);
+$block_size_component--md: map.get($spacing, 40);
+$block_size_component--lg: calc(map.get($spacing, 56) + map.get($special_spacing, 4));
+$block_size_component--xlg: calc(map.get($spacing, 40) * 2);
 
 //Container
 
