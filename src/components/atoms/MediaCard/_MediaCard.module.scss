@@ -22,7 +22,7 @@
     }
 
 
-    &--trending {
+    &--bigger {
         max-inline-size: $inline_size_component--lg;
 
         @include respond_to(min, m_screen) {
@@ -98,7 +98,7 @@
         }
 
 
-        &--trending {
+        &--bigger {
             padding-inline-start: $padding_inline_control--sm;
             padding-block-end: $padding_block_control--sm_14;
 
