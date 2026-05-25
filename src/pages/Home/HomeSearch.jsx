@@ -14,6 +14,8 @@ export default function HomeSearch() {
     const query = searchParams.get('q');
 
     const { setIsSearchButtonPressed } = useOutletContext();
+    //this filtered array to exclude meaningless results
+    const filteredUserSearch = userSearch.filter(item => item.video !== undefined && item.vote_average !== 0);
 
     useEffect(() => {
         setIsSearchButtonPressed(false);
@@ -25,8 +27,8 @@ export default function HomeSearch() {
 
     return (
         <>
-            {userSearch.length > 0
-                ? <ContentGrid pageName={`Found ${userSearch.length} ${userSearch.length === 1 ? 'result' : 'results'} for '${query.trim()}'`} isTrending={false} array={userSearch} />
+            {filteredUserSearch
+                ? <ContentGrid pageName={`Found ${filteredUserSearch.length} ${filteredUserSearch.length === 1 ? 'result' : 'results'} for '${query.trim()}'`} isTrending={false} array={filteredUserSearch} />
                 : <Loading />
             }
         </>

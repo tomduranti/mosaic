@@ -3,7 +3,7 @@ import getDataFromApi from '../../js/api/getDataFromApi.js';
 import fisherYatesShuffle from '../../js/utils/shuffle/shuffle.js';
 
 //react libraries and components
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Outlet, useNavigate } from "react-router";
 import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
 import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
@@ -17,7 +17,10 @@ export default function Home() {
         movies: [],
         tv_series: []
     });
-    const shuffleMovieAndTvSeries = fisherYatesShuffle([...movieAndTvSeries.movies, ...movieAndTvSeries.tv_series]);
+    const shuffleMovieAndTvSeries = useMemo(() => {
+       return fisherYatesShuffle([...movieAndTvSeries.movies, ...movieAndTvSeries.tv_series])
+        }, [movieAndTvSeries.movies, movieAndTvSeries.tv_series]
+    )
     const navigate = useNavigate();
 
     useEffect(() => {

@@ -22,7 +22,6 @@ export default function Details() {
     const [key, setKey] = useState('');
     const [isKeyEmpty, setIsKeyEmpty] = useState(true);
     const [isLoading, setIsLoading] = useState(true);
-    const [isIframeReady, setIsIframeReady] = useState(false);
     const { id, type } = useParams();
     let trailer = [];
     let teaser = [];
@@ -55,8 +54,6 @@ export default function Details() {
             }
         }
 
-        setIsIframeReady(true);
-
     }, [isLoading])
 
     function ProgressProvider({ valueStart, valueEnd, children }) {
@@ -77,15 +74,11 @@ export default function Details() {
                 <section className={`${stylesApp.section}  ${stylesApp['media']}`}>
 
                     <div className={stylesDetail.media__visual_content}>
-                        {isIframeReady
-                            ?
-                            <iframe className={stylesDetail.iframe}
-                                src={`https://www.youtube.com/embed/${key}?autoplay=1&controls=1&mute=1&playlist=${key}`}
-                                title='Trailer or teaser'
-                                allow='autoplay'
-                            ></iframe>
-                            : <div className={stylesDetail.iframe}>Trailer unavailable</div>
-                        }
+                        <iframe className={stylesDetail.iframe}
+                            src={`https://www.youtube.com/embed/${key}?autoplay=1&controls=1&mute=1&playlist=${key}`}
+                            title='Trailer or teaser'
+                            allow='autoplay'
+                        ></iframe>
                     </div>
 
                     <div className={stylesDetail.media__body}>

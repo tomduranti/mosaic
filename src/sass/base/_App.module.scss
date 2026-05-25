@@ -2,62 +2,66 @@
 @use '../abstract/mixins' as *;
 
 body {
-    background-color: $background_color_blue--950;
-    block-size: 100%;
+  background-color: $background_color_blue--950;
+  block-size: 100%;
 }
 
 
 .page_wrapper {
-    display: grid;
-    gap: $gap_block_control--md;
+  display: grid;
+  gap: $gap_block_control--md;
 
-    inline-size: 91.5%;
-    
-    margin-inline: auto;
-    margin-block-end: $margin_block_layout--sm_13;
+  inline-size: 91.5%;
 
-    @include respond_to(min, m_screen) {
-        gap: $gap_block_control--lg;
+  margin-inline: auto;
+  margin-block-end: $margin_block_layout--sm_13;
 
-        inline-size: 93.5%;
+  @include respond_to(min, m_screen) {
+    gap: $gap_block_control--lg;
 
-        margin-block: $margin_block_layout--lg_23 $margin_block_layout--lg_34;
+    inline-size: 93.5%;
+
+    margin-block: $margin_block_layout--lg_23 $margin_block_layout--lg_34;
+  }
+
+
+  @include respond_to(min, l_screen) {
+    grid-template-columns: 96px minmax(0, 1fr);
+
+    margin-block: 32px 69px;
+
+    inline-size: 100%;
+    max-inline-size: 92.84%;
+
+    &:nth-child(1) {
+      grid-column-start: 1;
     }
 
-
-    @include respond_to(min, l_screen) {
-        grid-template-columns: 96px minmax(0, 1fr);
-
-        margin-block: 32px 69px;
-
-        inline-size: 100%;
-        max-inline-size: 92.84%;
-
-        &:nth-child(1) {
-            grid-column-start: 1;
-        }
-
-        &:nth-child(2) {
-            grid-column-start: 2;
-        }
-
-        &:nth-child(3) {
-            grid-column-start: 2;
-        }
-
-        &:nth-child(4) {
-            grid-column-start: 2;
-            grid-row-start: 3;
-        }
+    &:nth-child(2) {
+      grid-column-start: 2;
     }
+
+    &:nth-child(3) {
+      grid-column-start: 2;
+    }
+
+    &:nth-child(4) {
+      grid-column-start: 2;
+      grid-row-start: 3;
+    }
+  }
 }
 
 
 .section {
   min-inline-size: 0;
-  
+
   @include respond_to(min, m_screen) {
     margin-block-end: $margin_block_control--xsm;
+  }
+
+  @include respond_to(min, l_screen) {
+    max-inline-size: $container_for_section_l_screen;
   }
 
   &__title {
@@ -77,17 +81,17 @@ body {
 
 
   &:after {
-      content: '';
-      inline-size: 2px;
-      block-size: 2px;
-      background-color: $white--opaque_50;
-      border-radius: $radius_pill_full;
+    content: '';
+    inline-size: 2px;
+    block-size: 2px;
+    background-color: $white--opaque_50;
+    border-radius: $radius_pill_full;
   }
 
 
   &--bigger:after {
-      inline-size: 3px;
-      block-size: 3px;
+    inline-size: 3px;
+    block-size: 3px;
   }
 }
 

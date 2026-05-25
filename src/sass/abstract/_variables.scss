@@ -75,7 +75,6 @@ $gap_block_control--lg_30: calc(map.get($spacing, 32) - map.get($special_spacing
 $gap_block_control--lg: map.get($spacing, 32);
 $gap_block_control--xlg: map.get($spacing, 40);
 
-
 //Padding & margin
 $padding_inline_control--xsm: map.get($spacing, 8);
 $padding_inline_control--sm_special: calc(map.get($spacing, 16) + .33px);
@@ -119,6 +118,7 @@ $block_size_component--lg: calc(map.get($spacing, 56) + map.get($special_spacing
 $block_size_component--xlg: calc(map.get($spacing, 40) * 2);
 
 //Container
+$container_for_section_l_screen: 86.8%;
 
 //Radius
 $radius_pill--xs: to_rem(6);

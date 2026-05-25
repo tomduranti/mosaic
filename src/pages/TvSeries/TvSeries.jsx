@@ -20,6 +20,10 @@ export default function TvSeries() {
         }
     }, [isSearchButtonPressed]);
 
+    useEffect(() => {
+        setIsSearchButtonPressed(false);
+    }, [userInput]);
+
     return (
         <>
             <SearchInput
