@@ -22,7 +22,7 @@ export default function MediaCard({ isTrending, release_date, poster_path, media
             {isTrending ?
                 (
                     <article className={`${styles.mediacard}  ${styles['mediacard--bigger']}`}>
-                        <BookmarkItem className={styles.mediacard__button} />
+                        <BookmarkItem className={styles.mediacard__button}  id={id}/>
                         <Link className={styles.mediacard__link} to={`/${isMovie ? 'movie' : 'tv'}/${id}`} style={{ backgroundImage: !poster_path ? `url(${noImageAvailable})` : `${variables.gradient}, url(https://image.tmdb.org/t/p/w500${poster_path})` }}>
                             <div className={`${styles.mediacard__container}  ${styles['mediacard__container--bigger']}`} >
                                 <div className={styles.mediacard__media_info}>
@@ -43,7 +43,7 @@ export default function MediaCard({ isTrending, release_date, poster_path, media
                     <>
                         <article >
                             <div className={styles.mediacard}>
-                                <BookmarkItem className={styles.mediacard__button} />
+                                <BookmarkItem className={styles.mediacard__button}  id={id}/>
                                 <Link className={styles.mediacard__link} to={`/${isMovie ? 'movie' : 'tv'}/${id}`} style={{ backgroundImage: !poster_path ? `url(${noImageAvailable})` : `url(https://image.tmdb.org/t/p/w500${poster_path})` }}>
                                     <div className={styles.mediacard__container} ></div>
                                 </Link>

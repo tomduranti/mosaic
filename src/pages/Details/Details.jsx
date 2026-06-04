@@ -112,7 +112,7 @@ export default function Details() {
                             </div>
 
                             <div className={stylesDetail.media__info}>
-                                <BookmarkItem />
+                                <BookmarkItem id={mediaDetails.id} />
                             </div>
                         </div>
                         <p className={`${stylesDetail.media__overview}  text_preset_3--light  text_white`}>{mediaDetails.overview}</p>

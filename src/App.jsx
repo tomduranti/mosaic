@@ -1,5 +1,4 @@
 //react
-import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router';
 
 //sass
@@ -22,6 +21,7 @@ import Details from './pages/Details/Details.jsx';
 import BookmarkMedia from './pages/BookmarkMedia/BookmarkMedia.jsx';
 
 export default function App() {
+
   return (
     <div className={styles.page_wrapper}>
       <BrowserRouter>
