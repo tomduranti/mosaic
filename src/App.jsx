@@ -19,6 +19,7 @@ import TvSeriesPopular from './pages/TvSeries/TvSeriesPopular.jsx';
 import TvSeriesSearch from './pages/TvSeries/TvSeriesSearch.jsx';
 import Details from './pages/Details/Details.jsx';
 import BookmarkMedia from './pages/BookmarkMedia/BookmarkMedia.jsx';
+import BookmarkMediaDisplay from './pages/BookmarkMedia/BookmarkMediaDisplay.jsx';
 
 export default function App() {
 
@@ -41,7 +42,9 @@ export default function App() {
             <Route path='search' element={<TvSeriesSearch />} />
           </Route>
           <Route path=':type/:id' element={<Details />} />
-          <Route path='bookmark' element={<BookmarkMedia />} />
+          <Route path='bookmark' element={<BookmarkMedia />} >
+            <Route index element={<BookmarkMediaDisplay />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

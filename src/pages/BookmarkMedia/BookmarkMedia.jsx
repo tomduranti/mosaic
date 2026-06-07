@@ -5,8 +5,11 @@ import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx'
 import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
 
+//functions
+import getDataFromApi from '../../js/api/getDataFromApi.js';
+
 export default function BookmarkMedia() {
-    const [movies, setMovies] = useState([]);
+    const [bookmarkedMedia, setBookmarkedMedia] = useState([]);
     const [userInput, setUserInput] = useState('');
     const [isSearchButtonPressed, setIsSearchButtonPressed] = useState(false);
     const navigate = useNavigate();
@@ -21,6 +24,14 @@ export default function BookmarkMedia() {
         setIsSearchButtonPressed(false);
     }, [userInput]);
 
+    useEffect(() => {
+        const tempArr = JSON.parse(localStorage.getItem("storedId"));
+        Promise.all(
+            tempArr.map(obj => getDataFromApi('details', res => res, '', obj.type, obj.id))
+        ).then(results => setBookmarkedMedia(results));
+    }, []);
+
+
     return (
         <>
             <SearchInput
@@ -29,7 +40,7 @@ export default function BookmarkMedia() {
                 setUserInput={setUserInput}
                 setIsSearchButtonPressed={setIsSearchButtonPressed}
             />
-            <Outlet context={{ userInput, movies, setMovies, setIsSearchButtonPressed }} />
+            <Outlet context={{ userInput, bookmarkedMedia, setIsSearchButtonPressed }} />
         </>
     )
 }
