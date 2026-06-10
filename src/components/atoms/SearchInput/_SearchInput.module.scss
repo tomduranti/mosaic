@@ -15,7 +15,7 @@
     
 
     @include respond_to(min, l_screen) {
-        margin-block-start: 32px;
+        margin-block-start: $margin_block_control--xlg;
     }
 
 
@@ -42,12 +42,12 @@
     
 
     &__button {
-        inline-size: 24px;
-        block-size: 24px;
+        inline-size: $inline_size--xsm;
+        block-size: $block_size--xsm;
 
         @include respond_to(min, m_screen) {
-            inline-size: 32px;
-            block-size: 32px;
+            inline-size: $inline_size--sm;
+            block-size: $block_size--sm;
         }
     }
 

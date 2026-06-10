@@ -93,6 +93,7 @@ $margin_block_control--xsm: map.get($spacing, 8);
 $margin_block_control--sm: map.get($spacing, 16);
 $margin_block_control--lg: map.get($spacing, 24);
 $margin_block_control--lg_30: calc(map.get($spacing, 32) - map.get($special_spacing, 2));
+$margin_block_control--xlg: map.get($spacing, 32);
 $margin_block_control--xxlg: map.get($spacing, 40);
 $margin_block_control--xxxlg: map.get($spacing, 72);
 
@@ -103,6 +104,7 @@ $margin_block_layout--lg_34: calc(map.get($spacing, 32) + map.get($special_spaci
 //Inline/Block size
 $inline_size--xsm: map.get($spacing, 24);
 $inline_size--sm: map.get($spacing, 32);
+$inline_size--md: map.get($spacing, 40);
 $inline_size_component--md: map.get($spacing, 40);
 $inline_size_component--lg: calc(map.get($spacing, 56) + map.get($special_spacing, 4));
 $inline_size_component--xlg: calc(map.get($spacing, 40) * 2);
@@ -113,12 +115,16 @@ $inline_size_component--xxlg: calc(map.get($spacing, 80) * (4 + .3));
 
 $block_size--xsm: map.get($spacing, 24);
 $block_size--sm: map.get($spacing, 32);
+$block_size--md: map.get($spacing, 40);
 $block_size_component--md: map.get($spacing, 40);
 $block_size_component--lg: calc(map.get($spacing, 56) + map.get($special_spacing, 4));
 $block_size_component--xlg: calc(map.get($spacing, 40) * 2);
 
 //Container
 $container_for_section_l_screen: 86.8%;
+$container_for_page_s_screen: 91.5%;
+$container_for_page_m_screen: 93.5%;
+$container_for_page_l_screen: 92.84%;
 
 //Radius
 $radius_pill--xs: to_rem(6);

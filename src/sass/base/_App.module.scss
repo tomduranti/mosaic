@@ -11,7 +11,7 @@ body {
   display: grid;
   gap: $gap_block_control--md;
 
-  inline-size: 91.5%;
+  inline-size: $container_for_page_s_screen;
 
   margin-inline: auto;
   margin-block-end: $margin_block_layout--sm_13;
@@ -19,7 +19,7 @@ body {
   @include respond_to(min, m_screen) {
     gap: $gap_block_control--lg;
 
-    inline-size: 93.5%;
+    inline-size: $container_for_page_m_screen;
 
     margin-block: $margin_block_layout--lg_23 $margin_block_layout--lg_34;
   }
@@ -31,7 +31,7 @@ body {
     margin-block: 32px 69px;
 
     inline-size: 100%;
-    max-inline-size: 92.84%;
+    max-inline-size: $container_for_page_l_screen;
 
     &:nth-child(1) {
       grid-column-start: 1;

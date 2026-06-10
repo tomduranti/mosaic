@@ -1,12 +1,7 @@
-//functions
-import getDataFromApi from '../../js/api/getDataFromApi.js';
-import random from '../../js/utils/random/random.js';
-import { formatYear, formatRuntime } from '../../js/utils/date/date.js';
-import { toPercentage } from '../../js/utils/math/math.js';
-
 //react libraries and components
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
+import DocumentTitle from 'react-document-title';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
 import BookmarkItem from '../../components/atoms/BookmarkItem/BookmarkItem.jsx';
@@ -15,6 +10,12 @@ import BookmarkItem from '../../components/atoms/BookmarkItem/BookmarkItem.jsx';
 import stylesDetail from './_Details.module.scss';
 import stylesApp from '../../sass/base/_App.module.scss';
 import 'react-circular-progressbar/dist/styles.css';
+
+//functions
+import getDataFromApi from '../../js/api/getDataFromApi.js';
+import random from '../../js/utils/random/random.js';
+import { formatYear, formatRuntime } from '../../js/utils/date/date.js';
+import { toPercentage } from '../../js/utils/math/math.js';
 
 export default function Details() {
     const [mediaDetails, setMediaDetails] = useState([]);
@@ -67,7 +68,7 @@ export default function Details() {
     };
 
     return (
-        <>
+        <DocumentTitle title='Details of the selected item'>
             {isLoading
                 ? <Loading />
                 :
@@ -76,7 +77,8 @@ export default function Details() {
                     <div className={stylesDetail.media__visual_content}>
                         <iframe className={stylesDetail.iframe}
                             src={`https://www.youtube.com/embed/${key}?autoplay=1&controls=1&mute=1&playlist=${key}`}
-                            title='Trailer or teaser'
+                            title={mediaDetails.title || mediaDetails.name}
+                            scrolling="auto"
                             allow='autoplay'
                         ></iframe>
                     </div>
@@ -119,6 +121,6 @@ export default function Details() {
                     </div>
                 </section>
             }
-        </>
+        </DocumentTitle>
     )
 }

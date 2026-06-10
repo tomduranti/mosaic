@@ -1,13 +1,14 @@
-//functions
-import getDataFromApi from '../../js/api/getDataFromApi.js';
-import fisherYatesShuffle from '../../js/utils/shuffle/shuffle.js';
-
 //react libraries and components
 import { useState, useEffect, useMemo } from 'react';
 import { Outlet, useNavigate } from "react-router";
+import DocumentTitle from 'react-document-title';
 import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
 import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
+
+//functions
+import getDataFromApi from '../../js/api/getDataFromApi.js';
+import fisherYatesShuffle from '../../js/utils/shuffle/shuffle.js';
 
 export default function Home() {
     const [userInput, setUserInput] = useState('');
@@ -34,7 +35,7 @@ export default function Home() {
     }, [userInput]);
 
     return (
-        <>
+        <DocumentTitle title='Home page'>
             <SearchInput
                 text='movies or TV series'
                 userInput={userInput}
@@ -42,6 +43,6 @@ export default function Home() {
                 setIsSearchButtonPressed={setIsSearchButtonPressed}
             />
             <Outlet context={{ userInput, trending, setTrending, setMovieAndTvSeries, shuffleMovieAndTvSeries, setIsSearchButtonPressed }} />
-        </>
+        </DocumentTitle>
     );
 }

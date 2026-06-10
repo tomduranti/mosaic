@@ -1,12 +1,13 @@
-//functions
-import getDataFromApi from '../../js/api/getDataFromApi.js';
-
 //react libraries and components
 import { useState, useEffect } from 'react';
 import { Outlet, useNavigate } from "react-router";
+import DocumentTitle from 'react-document-title';
 import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
 import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
+
+//functions
+import getDataFromApi from '../../js/api/getDataFromApi.js';
 
 export default function TvSeries() {
     const [tvSeries, setTvSeries] = useState([]);
@@ -25,7 +26,7 @@ export default function TvSeries() {
     }, [userInput]);
 
     return (
-        <>
+        <DocumentTitle title='TV Series page'>
             <SearchInput
                 text='TV series'
                 type='tv'
@@ -34,6 +35,6 @@ export default function TvSeries() {
                 setIsSearchButtonPressed={setIsSearchButtonPressed}
             />
             <Outlet context={{ userInput, tvSeries, setTvSeries, setIsSearchButtonPressed }} />
-        </>
+        </DocumentTitle>
     )
 }
