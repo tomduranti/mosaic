@@ -1,6 +1,6 @@
 //react libraries and components
 import { useState, useEffect } from 'react';
-import DocumentTitle from 'react-document-title';
+import { Helmet } from 'react-helmet-async';
 import { Outlet, useNavigate } from "react-router";
 import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
 import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
@@ -34,7 +34,11 @@ export default function BookmarkMedia() {
 
 
     return (
-        <DocumentTitle title='Bookmarked item page'>
+        <>
+            <Helmet>
+                <title>Bookmarked item page</title>
+            </Helmet>
+
             <SearchInput
                 text='bookmarked items'
                 userInput={userInput}
@@ -42,6 +46,6 @@ export default function BookmarkMedia() {
                 setIsSearchButtonPressed={setIsSearchButtonPressed}
             />
             <Outlet context={{ userInput, bookmarkedMedia, setIsSearchButtonPressed }} />
-        </DocumentTitle>
+        </>
     )
 }

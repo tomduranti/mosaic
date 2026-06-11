@@ -1,5 +1,6 @@
 //react
 import { BrowserRouter, Routes, Route } from 'react-router';
+import { HelmetProvider } from 'react-helmet-async';
 
 //sass
 import styles from './sass/base/_App.module.scss';
@@ -24,29 +25,31 @@ import BookmarkMediaDisplay from './pages/BookmarkMedia/BookmarkMediaDisplay.jsx
 export default function App() {
 
   return (
-    <div className={styles.page_wrapper}>
-      <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route path='/' element={<Navigate to='/home' replace />} />
-          <Route path='home' element={<Home />} >
-            <Route index element={<HomePopular />} />
-            <Route path='search' element={<HomeSearch />} />
-          </Route>
-          <Route path='movie' element={<Movies />} >
-            <Route index element={<MoviesPopular />} />
-            <Route path='search' element={<MoviesSearch />} />
-          </Route>
-          <Route path='tv' element={<TvSeries />} >
-            <Route index element={<TvSeriesPopular />} />
-            <Route path='search' element={<TvSeriesSearch />} />
-          </Route>
-          <Route path=':type/:id' element={<Details />} />
-          <Route path='bookmark' element={<BookmarkMedia />} >
-            <Route index element={<BookmarkMediaDisplay />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <HelmetProvider>
+      <div className={styles.page_wrapper}>
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route path='/' element={<Navigate to='/home' replace />} />
+            <Route path='home' element={<Home />} >
+              <Route index element={<HomePopular />} />
+              <Route path='search' element={<HomeSearch />} />
+            </Route>
+            <Route path='movie' element={<Movies />} >
+              <Route index element={<MoviesPopular />} />
+              <Route path='search' element={<MoviesSearch />} />
+            </Route>
+            <Route path='tv' element={<TvSeries />} >
+              <Route index element={<TvSeriesPopular />} />
+              <Route path='search' element={<TvSeriesSearch />} />
+            </Route>
+            <Route path=':type/:id' element={<Details />} />
+            <Route path='bookmark' element={<BookmarkMedia />} >
+              <Route index element={<BookmarkMediaDisplay />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </HelmetProvider>
   )
 }

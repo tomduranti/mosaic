@@ -1,7 +1,7 @@
 //react libraries and components
 import { useState, useEffect, useMemo } from 'react';
 import { Outlet, useNavigate } from "react-router";
-import DocumentTitle from 'react-document-title';
+import { Helmet } from 'react-helmet-async';
 import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
 import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
@@ -35,7 +35,11 @@ export default function Home() {
     }, [userInput]);
 
     return (
-        <DocumentTitle title='Home page'>
+        <>
+            <Helmet>
+                <title>Home page</title>
+            </Helmet>
+
             <SearchInput
                 text='movies or TV series'
                 userInput={userInput}
@@ -43,6 +47,6 @@ export default function Home() {
                 setIsSearchButtonPressed={setIsSearchButtonPressed}
             />
             <Outlet context={{ userInput, trending, setTrending, setMovieAndTvSeries, shuffleMovieAndTvSeries, setIsSearchButtonPressed }} />
-        </DocumentTitle>
+        </>
     );
 }

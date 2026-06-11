@@ -1,7 +1,7 @@
 //react libraries and components
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
-import DocumentTitle from 'react-document-title';
+import { Helmet } from 'react-helmet-async';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
 import BookmarkItem from '../../components/atoms/BookmarkItem/BookmarkItem.jsx';
@@ -68,7 +68,11 @@ export default function Details() {
     };
 
     return (
-        <DocumentTitle title='Details of the selected item'>
+        <>
+            <Helmet>
+                <title>Details of {mediaDetails.title || mediaDetails.name}</title>
+            </Helmet>
+        
             {isLoading
                 ? <Loading />
                 :
@@ -121,6 +125,6 @@ export default function Details() {
                     </div>
                 </section>
             }
-        </DocumentTitle>
+        </>
     )
 }
