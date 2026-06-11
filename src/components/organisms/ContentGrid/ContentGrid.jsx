@@ -31,11 +31,11 @@ export default function ContentGrid({ pageName, isTrending, array }) {
                 <h2 className={`${stylesApp.section__title}  text_preset_1  text_white`}>{pageName}</h2>
 
                 {isTrending ? (
-                    <div className={stylesHome.carousel}>
-                        <div className={stylesHome.carousel__viewport} ref={emblaRef}>
+                    <div className={stylesHome.carousel}  role='region'  aria-roledescription='carousel'  aria-label='Trending items carousel'>
+                        <div className={stylesHome.carousel__viewport} ref={emblaRef}  aria-live='polite'>
                             <ul className={stylesHome.carousel__container}>
                                 {array.map(item =>
-                                    <li className={stylesHome.carousel__item} key={item.id}>
+                                    <li className={stylesHome.carousel__item}  key={item.id}  role='group'  aria-roledescription='Movie or TV show card'  aria-label={item.title || item.name}>
                                         <MediaCard
                                             isTrending={true}
                                             release_date={item.first_air_date || item.release_date}
@@ -52,9 +52,9 @@ export default function ContentGrid({ pageName, isTrending, array }) {
                         </div>
                     </div>
                 ) : (
-                    <ul className={stylesApp.grid}>
+                    <ul className={stylesApp.grid}  role='region'  aria-roledescription='group of recommended items'  aria-label='Recommended items'>
                         {array.map(item =>
-                            <li className={stylesApp.grid__item} key={item.id}>
+                            <li className={stylesApp.grid__item}  key={item.id}  role='group'  aria-roledescription='Movie or TV show card'  aria-label={item.title || item.name}>
                                 <MediaCard
                                     isTrending={false}
                                     release_date={item.first_air_date || item.release_date}

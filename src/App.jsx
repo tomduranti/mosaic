@@ -1,6 +1,5 @@
 //react
 import { BrowserRouter, Routes, Route } from 'react-router';
-import { HelmetProvider } from 'react-helmet-async';
 
 //sass
 import styles from './sass/base/_App.module.scss';
@@ -25,7 +24,6 @@ import BookmarkMediaDisplay from './pages/BookmarkMedia/BookmarkMediaDisplay.jsx
 export default function App() {
 
   return (
-    <HelmetProvider>
       <div className={styles.page_wrapper}>
         <BrowserRouter>
           <NavBar />
@@ -50,6 +48,5 @@ export default function App() {
           </Routes>
         </BrowserRouter>
       </div>
-    </HelmetProvider>
   )
 }

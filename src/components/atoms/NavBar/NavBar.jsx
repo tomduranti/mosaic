@@ -41,7 +41,7 @@ export default function NavBar({ setUserInput }) {
                     )}
                 </NavLink>
             </nav>
-            <img className={styles.navbar__avatar} src={avatar} alt='profile picture' />
+            <img className={styles.navbar__avatar}  src={avatar}  alt='profile picture'  tabIndex='0' />
         </div>
     )
 }

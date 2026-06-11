@@ -1,7 +1,6 @@
 //react libraries and components
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
-import { Helmet } from 'react-helmet-async';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
 import BookmarkItem from '../../components/atoms/BookmarkItem/BookmarkItem.jsx';
@@ -69,10 +68,6 @@ export default function Details() {
 
     return (
         <>
-            <Helmet>
-                <title>Details of {mediaDetails.title || mediaDetails.name}</title>
-            </Helmet>
-        
             {isLoading
                 ? <Loading />
                 :

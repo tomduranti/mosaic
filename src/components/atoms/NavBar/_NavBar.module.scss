@@ -114,6 +114,12 @@
         outline: 1px solid $white;
         border-radius: $radius_pill_full;
 
+        //this is needed as the avatar already has outline
+        &:focus-visible {
+            outline: 1px solid $white;
+            outline-offset: 1px;
+        }
+
         @include respond_to(min, m_screen) {
             inline-size: $inline_size--sm;
             block-size: $block_size--sm;
