@@ -26,6 +26,7 @@ export default function Movies() {
 
     return (
         <>
+            <h1 className='hidden'>Movie page</h1>
             <SearchInput
                 text='movies'
                 userInput={userInput}

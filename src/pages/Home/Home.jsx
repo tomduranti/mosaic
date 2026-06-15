@@ -35,6 +35,8 @@ export default function Home() {
 
     return (
         <>
+            <h1 className='hidden'  >Home page</h1>
+            
             <SearchInput
                 text='movies or TV series'
                 userInput={userInput}

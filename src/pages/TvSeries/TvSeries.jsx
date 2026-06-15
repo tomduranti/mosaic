@@ -26,6 +26,8 @@ export default function TvSeries() {
 
     return (
         <>
+            <h1 className='hidden'>TV series page</h1>
+            
             <SearchInput
                 text='TV series'
                 type='tv'

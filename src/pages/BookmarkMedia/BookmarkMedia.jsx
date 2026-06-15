@@ -34,6 +34,8 @@ export default function BookmarkMedia() {
 
     return (
         <>
+            <h1 className='hidden'>Bookmarked items page</h1>
+            
             <SearchInput
                 text='bookmarked items'
                 userInput={userInput}
