@@ -24,7 +24,7 @@ import BookmarkMediaDisplay from './pages/BookmarkMedia/BookmarkMediaDisplay.jsx
 export default function App() {
 
   return (
-      <div className={styles.page_wrapper}>
+      <main className={styles.page_wrapper}  role="main">
         <BrowserRouter>
           <NavBar />
           <Routes>
@@ -47,6 +47,6 @@ export default function App() {
             </Route>
           </Routes>
         </BrowserRouter>
-      </div>
+      </main>
   )
 }
