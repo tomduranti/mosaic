@@ -23,7 +23,6 @@ export default function MediaCard({ isTrending, release_date, poster_path, media
                 (
                     <article className={`${styles.mediacard}  ${styles['mediacard--bigger']}`}>
                         <Link className={styles.mediacard__link} to={`/${isMovie ? 'movie' : 'tv'}/${id}`} style={{ backgroundImage: !poster_path ? `url(${noImageAvailable})` : `${variables.gradient}, url(https://image.tmdb.org/t/p/w500${poster_path})` }} aria-label={`Go to ${title} ${isMovie ? 'movie' : 'tv show'}`} >
-                        <BookmarkItem className={styles.mediacard__button}  id={id}  type={isMovie ? 'movie' : 'tv'} />
                             <div className={`${styles.mediacard__container}  ${styles['mediacard__container--bigger']}`} >
                                 <div className={styles.mediacard__media_info}>
                                     <div className={`${styles.mediacard__media_date_and_type}  text_preset_5  text_white--opaque_75`}>
@@ -38,6 +37,7 @@ export default function MediaCard({ isTrending, release_date, poster_path, media
                                 </div>
                             </div>
                         </Link>
+                        <BookmarkItem className={styles.mediacard__button}  id={id}  type={isMovie ? 'movie' : 'tv'} />
                     </article>
                 ) : (
                     <>

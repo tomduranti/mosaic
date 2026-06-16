@@ -13,7 +13,7 @@ import stylesHome from "../../../pages/Home/_Home.module.scss";
 //functions
 import { formatYear } from "../../../js/utils/date/date.js";
 
-export default function ContentGrid({ pageName, isTrending, array }) {
+export default function ContentGrid({ pageName, isTrending, array, idSkipToSection, idJumpBackToSection }) {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: false,
@@ -45,9 +45,12 @@ export default function ContentGrid({ pageName, isTrending, array }) {
                 role="region"
                 aria-roledescription="carousel"
                 aria-label="Carousel of trending items"
+                id={idJumpBackToSection}
               >
+                {/* This link is just for screen readers */}
                 <a
-                  href="#recommended"
+                  className='display_contents'
+                  href={`#${idSkipToSection}`}
                   aria-label="skip to the next section"
                 ></a>
                 {array.map((item) => (
@@ -76,11 +79,17 @@ export default function ContentGrid({ pageName, isTrending, array }) {
         ) : (
           <ul
             className={stylesApp.grid}
-            id="recommended"
+            id={idSkipToSection}
             role="region"
             aria-roledescription={pageName}
             aria-label={`${pageName} section`}
           >
+            {/* This link is just for screen readers */}
+            <a
+              className='display_contents'
+              href={`#${idJumpBackToSection}`}
+              aria-label="jump back to the previous section"
+            ></a>
             {array.map((item) => (
               <li
                 className={stylesApp.grid__item}

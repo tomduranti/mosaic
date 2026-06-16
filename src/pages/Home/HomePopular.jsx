@@ -30,8 +30,8 @@ export default function HomePopular() {
         <>
             {trending.length > 0 && shuffleMovieAndTvSeries.length > 0
                 ? <>
-                    <ContentGrid pageName={'Trending'} isTrending={true} array={trending} />
-                    <ContentGrid pageName={'Recommended for you'} isTrending={false} array={shuffleMovieAndTvSeries} />
+                    <ContentGrid pageName={'Trending'} isTrending={true} array={trending}  idSkipToSection='recommended' idJumpBackToSection='trending' />
+                    <ContentGrid pageName={'Recommended for you'} isTrending={false} array={shuffleMovieAndTvSeries}  idSkipToSection='recommended' idJumpBackToSection='trending' />
                 </>
                 : <Loading />
             }
