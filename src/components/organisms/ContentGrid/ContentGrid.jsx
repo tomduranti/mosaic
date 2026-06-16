@@ -13,7 +13,13 @@ import stylesHome from "../../../pages/Home/_Home.module.scss";
 //functions
 import { formatYear } from "../../../js/utils/date/date.js";
 
-export default function ContentGrid({ pageName, isTrending, array, idSkipToSection, idJumpBackToSection }) {
+export default function ContentGrid({
+  pageName,
+  isTrending,
+  array,
+  idSkipToSection,
+  idJumpBackToSection,
+}) {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: false,
@@ -48,11 +54,14 @@ export default function ContentGrid({ pageName, isTrending, array, idSkipToSecti
                 id={idJumpBackToSection}
               >
                 {/* This link is just for screen readers */}
-                <a
-                  className='display_contents'
-                  href={`#${idSkipToSection}`}
-                  aria-label="skip to the next section"
-                ></a>
+                {idSkipToSection && idJumpBackToSection ? (
+                  <a
+                    className="display_contents"
+                    href={`#${idSkipToSection}`}
+                    aria-label="skip to the next section"
+                  ></a>
+                ) : null}
+
                 {array.map((item) => (
                   <li
                     className={stylesHome.carousel__item}
@@ -85,11 +94,14 @@ export default function ContentGrid({ pageName, isTrending, array, idSkipToSecti
             aria-label={`${pageName} section`}
           >
             {/* This link is just for screen readers */}
-            <a
-              className='display_contents'
-              href={`#${idJumpBackToSection}`}
-              aria-label="jump back to the previous section"
-            ></a>
+            {idSkipToSection && idJumpBackToSection ? (
+              <a
+                className="display_contents"
+                href={`#${idJumpBackToSection}`}
+                aria-label="jump back to the previous section"
+              ></a>
+            ) : null}
+
             {array.map((item) => (
               <li
                 className={stylesApp.grid__item}

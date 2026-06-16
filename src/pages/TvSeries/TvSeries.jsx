@@ -1,6 +1,6 @@
 //react libraries and components
 import { useState, useEffect } from 'react';
-import { Outlet, useNavigate } from "react-router";
+import { Outlet, useNavigate } from 'react-router';
 import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
 import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
@@ -9,33 +9,37 @@ import Loading from '../../components/atoms/Loading/Loading.jsx';
 import getDataFromApi from '../../js/api/getDataFromApi.js';
 
 export default function TvSeries() {
-    const [tvSeries, setTvSeries] = useState([]);
-    const [userInput, setUserInput] = useState('');
-    const [isSearchButtonPressed, setIsSearchButtonPressed] = useState(false);
-    const navigate = useNavigate();
+  const [tvSeries, setTvSeries] = useState([]);
+  const [userInput, setUserInput] = useState('');
+  const [isSearchButtonPressed, setIsSearchButtonPressed] = useState(false);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        if (userInput && isSearchButtonPressed) {
-            navigate(`search?q=${userInput}&type=tv`);
-        }
-    }, [isSearchButtonPressed]);
+  useEffect(() => {
+    if (userInput && isSearchButtonPressed) {
+      navigate(`search?q=${userInput}&type=tv`);
+    }
+  }, [isSearchButtonPressed]);
 
-    useEffect(() => {
-        setIsSearchButtonPressed(false);
-    }, [userInput]);
+  useEffect(() => {
+    setIsSearchButtonPressed(false);
+  }, [userInput]);
 
-    return (
-        <>
-            <h1 className='hidden'>TV series page</h1>
-            
-            <SearchInput
-                text='TV series'
-                type='tv'
-                userInput={userInput}
-                setUserInput={setUserInput}
-                setIsSearchButtonPressed={setIsSearchButtonPressed}
-            />
-            <Outlet context={{ userInput, tvSeries, setTvSeries, setIsSearchButtonPressed }} />
-        </>
-    )
+  return (
+    <>
+      <h1 className='hidden' aria-label='TV Series page'>
+        TV Series page
+      </h1>
+
+      <SearchInput
+        text='TV series'
+        type='tv'
+        userInput={userInput}
+        setUserInput={setUserInput}
+        setIsSearchButtonPressed={setIsSearchButtonPressed}
+      />
+      <Outlet
+        context={{ userInput, tvSeries, setTvSeries, setIsSearchButtonPressed }}
+      />
+    </>
+  );
 }
