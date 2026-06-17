@@ -6,7 +6,6 @@ import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
 
 //functions
-import getDataFromApi from '../../js/api/getDataFromApi.js';
 import fisherYatesShuffle from '../../js/utils/shuffle/shuffle.js';
 
 export default function Home() {

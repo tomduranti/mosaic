@@ -5,9 +5,6 @@ import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx'
 import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
 
-//functions
-import getDataFromApi from '../../js/api/getDataFromApi.js';
-
 export default function TvSeries() {
   const [tvSeries, setTvSeries] = useState([]);
   const [userInput, setUserInput] = useState('');
@@ -32,7 +29,6 @@ export default function TvSeries() {
 
       <SearchInput
         text='TV series'
-        type='tv'
         userInput={userInput}
         setUserInput={setUserInput}
         setIsSearchButtonPressed={setIsSearchButtonPressed}

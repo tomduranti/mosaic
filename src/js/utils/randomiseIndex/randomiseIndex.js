@@ -1,3 +1,3 @@
-export default function random(arr) {
+export default function randomiseIndex(arr) {
     return Math.floor(Math.random() * arr.length);
 }

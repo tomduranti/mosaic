@@ -1,6 +1,6 @@
 import { options } from './options.js';
 
-export default async function getDataFromApi(category, function_wrapper, input, type, id) {
+export default async function getDataFromApi(category, functionWrapper, input, type, id) {
 
   let url;
 
@@ -49,6 +49,6 @@ export default async function getDataFromApi(category, function_wrapper, input, 
 
   return await fetch(url, options)
     .then(res => res.json())
-    .then(res => function_wrapper(res.results ?? res))
+    .then(res => functionWrapper(res.results ?? res))
     .catch(err => console.error(err));
 }

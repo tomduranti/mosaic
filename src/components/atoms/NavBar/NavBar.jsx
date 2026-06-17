@@ -5,7 +5,7 @@ import styles from "./_NavBar.module.scss";
 import logo from "../../../assets/logo/logo.svg";
 import avatar from "../../../assets/avatar/avatar.png";
 
-export default function NavBar({ setUserInput }) {
+export default function NavBar() {
   return (
     <div className={styles.navbar}>
       <a href="/home" className={styles.navbar__logo}>
@@ -17,7 +17,6 @@ export default function NavBar({ setUserInput }) {
             <NavLink
               className={styles.navbar__link}
               to="home"
-              onClick={() => setUserInput("")}
 
               aria-label='go to home page'
             >
@@ -43,7 +42,6 @@ export default function NavBar({ setUserInput }) {
             <NavLink
               className={styles.navbar__link}
               to="movie"
-              onClick={() => setUserInput("")}
 
               aria-label='go to movie page'
             >
@@ -69,7 +67,6 @@ export default function NavBar({ setUserInput }) {
             <NavLink
               className={styles.navbar__link}
               to="tv"
-              onClick={() => setUserInput("")}
 
               aria-label='go to tv series page'
             >
@@ -95,7 +92,6 @@ export default function NavBar({ setUserInput }) {
             <NavLink
               className={styles.navbar__link}
               to="bookmark"
-              onClick={() => setUserInput("")}
 
               aria-label='go to bookmarked items page'
             >

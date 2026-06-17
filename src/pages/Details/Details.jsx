@@ -12,15 +12,13 @@ import 'react-circular-progressbar/dist/styles.css';
 
 //functions
 import getDataFromApi from '../../js/api/getDataFromApi.js';
-import random from '../../js/utils/random/random.js';
+import randomiseIndex from '../../js/utils/randomiseIndex/randomiseIndex.js';
 import { formatYear, formatRuntime } from '../../js/utils/date/date.js';
-import { toPercentage } from '../../js/utils/math/math.js';
 
 export default function Details() {
   const [mediaDetails, setMediaDetails] = useState([]);
   const [video, setVideo] = useState([]);
   const [key, setKey] = useState('');
-  const [isKeyEmpty, setIsKeyEmpty] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const { id, type } = useParams();
   let trailer = [];
@@ -37,7 +35,7 @@ export default function Details() {
     getDataFromApi('trailer', setVideo, '', type, id).then(() =>
       setIsLoading(false),
     );
-  }, [id]);
+  }, [id, type]);
 
   useEffect(() => {
     trailer = video.filter((item) => item.type === 'Trailer');
@@ -45,14 +43,12 @@ export default function Details() {
 
     if (video.length > 0 && !isLoading) {
       if (trailer.length !== 0) {
-        setIsKeyEmpty(false);
         setKey(
-          trailer.length === 1 ? trailer[0].key : trailer[random(trailer)].key,
+          trailer.length === 1 ? trailer[0].key : trailer[randomiseIndex(trailer)].key,
         );
       } else if (teaser.length !== 0) {
-        setIsKeyEmpty(false);
         setKey(
-          teaser.length === 1 ? teaser[0].key : teaser[random(teaser)].key,
+          teaser.length === 1 ? teaser[0].key : teaser[randomiseIndex(teaser)].key,
         );
       }
     }
@@ -134,7 +130,6 @@ export default function Details() {
                         strokeLinecap: 'round',
                         textSize: '32px',
                         textColor: '#fff',
-                        pathTransitionDuration: 1.5,
                         pathColor: averageVoteColor(),
                       })}
                     />
@@ -143,7 +138,7 @@ export default function Details() {
               </div>
 
               <div className={stylesDetail.media__info}>
-                <BookmarkItem id={mediaDetails.id} />
+                <BookmarkItem id={mediaDetails.id}  type={mediaDetails.type}/>
               </div>
             </div>
             <p
