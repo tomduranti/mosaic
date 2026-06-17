@@ -5,7 +5,13 @@
 .carousel {
   min-width: 0;
 
-  margin-inline-end: -3.4%;
+  margin-inline-end: -4.6%;
+  
+
+  @include respond_to(min, l_screen) {
+    margin-inline-end: -20%;
+  }
+
 
   &__viewport {
     overflow: hidden;

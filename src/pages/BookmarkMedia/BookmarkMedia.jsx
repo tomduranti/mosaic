@@ -1,16 +1,17 @@
 //react libraries and components
-import { useState, useEffect } from "react";
-import { Outlet, useNavigate } from "react-router";
-import ContentGrid from "../../components/organisms/ContentGrid/ContentGrid.jsx";
-import SearchInput from "../../components/atoms/SearchInput/SearchInput.jsx";
-import Loading from "../../components/atoms/Loading/Loading.jsx";
+import { useState, useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router';
+import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
+import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
+import Loading from '../../components/atoms/Loading/Loading.jsx';
 
 //functions
-import getDataFromApi from "../../js/api/getDataFromApi.js";
+import getDataFromApi from '../../js/api/getDataFromApi.js';
 
 export default function BookmarkMedia() {
   const [bookmarkedMedia, setBookmarkedMedia] = useState([]);
-  const [userInput, setUserInput] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [userInput, setUserInput] = useState('');
   const [isSearchButtonPressed, setIsSearchButtonPressed] = useState(false);
   const navigate = useNavigate();
 
@@ -25,28 +26,29 @@ export default function BookmarkMedia() {
   }, [userInput]);
 
   useEffect(() => {
-    const tempArr = JSON.parse(localStorage.getItem("storedId"));
+    const tempArr = JSON.parse(localStorage.getItem('storedId'));
     Promise.all(
-      tempArr.map((obj) =>
-        getDataFromApi("details", (res) => res, "", obj.type, obj.id),
+      tempArr?.map((obj) =>
+        getDataFromApi('details', (res) => res, '', obj.type, obj.id),
       ),
-    ).then((results) => setBookmarkedMedia(results));
+    ).then((results) => setBookmarkedMedia(results))
+    .finally(() => setIsLoading(false));
   }, []);
 
   return (
     <>
-      <h1 className="hidden" aria-label="Bookmarked items page">
+      <h1 className='hidden' aria-label='Bookmarked items page'>
         Bookmarked items page
       </h1>
 
-      <SearchInput
-        text="bookmarked items"
+      {/* <SearchInput
+        text='bookmarked items'
         userInput={userInput}
         setUserInput={setUserInput}
         setIsSearchButtonPressed={setIsSearchButtonPressed}
-      />
+      /> */}
       <Outlet
-        context={{ userInput, bookmarkedMedia, setIsSearchButtonPressed }}
+        context={{ userInput, bookmarkedMedia, isLoading, setIsSearchButtonPressed }}
       />
     </>
   );
