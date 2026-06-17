@@ -7,7 +7,7 @@ import variables from '../../../sass/abstract/_export.module.scss';
 
 export default function Loading() {
     const [isLoading] = useState(true);
-    const color = useState(variables.white);
+    const color = variables.white;
 
     const override = {
         display: "block",

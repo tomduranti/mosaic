@@ -138,7 +138,7 @@ export default function Details() {
               </div>
 
               <div className={stylesDetail.media__info}>
-                <BookmarkItem id={mediaDetails.id}  type={mediaDetails.type}/>
+                <BookmarkItem id={id}  type={type}/>
               </div>
             </div>
             <p
