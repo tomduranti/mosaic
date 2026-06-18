@@ -1,27 +1,18 @@
 @use './variables.scss' as *;
 
-//Flex classes
+// Flex classes
 %flex_center {
     display: flex;
     align-items: center;
 }
 
-%flex_column {
-    display: flex;
-    flex-direction: column;
-}
-
-//Text classes
+// Text classes
 .text_capitalize {
     text-transform: capitalize;
 }
 
 .text_uppercase {
     text-transform: uppercase;
-}
-
-.text_red {
-    color: $red;
 }
 
 .text_white {
@@ -36,7 +27,7 @@
     color: $white--opaque_75;
 }
 
-//component classes
+// component classes
 .hidden {
     position: absolute;
     width: 1px;

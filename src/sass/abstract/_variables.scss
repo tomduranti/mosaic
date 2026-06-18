@@ -1,23 +1,23 @@
 @use "./functions" as *;
 @use "sass:map";
 
-//==========================================================
+// ==========================================================
 //  PRIMITIVES
-//==========================================================
+// ==========================================================
 
-//COLORS
-$black: hsl(0, 0%, 0%);
-$blue--500: hsl(223deg, 23%, 46%);
-$blue--900: hsl(223deg, 36%, 14%);
-$blue--950: hsl(223deg, 30%, 9%);
-$blue--opaque_950: hsla(223deg, 30%, 9%, 50.06%);
-$gradient: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4));
-$red: hsl(4deg, 69%, 50%);
-$white: hsl(0deg, 0%, 100%);
-$white--opaque_50: hsla(0deg, 0%, 100%, 49.79%);
-$white--opaque_75: hsla(0deg, 0%, 100%, 75%);
+// COLORS
+$black: hsl(0deg 0% 0%);
+$blue--500: hsl(223deg 23% 46%);
+$blue--900: hsl(223deg 36% 14%);
+$blue--950: hsl(223deg 30% 9%);
+$blue--opaque_950: hsl(223deg 30% 9% / 50.06%);
+$gradient: linear-gradient(rgb(0 0 0 / 0%), rgb(0 0 0 / 40%));
+$red: hsl(4deg 69% 50%);
+$white: hsl(0deg 0% 100%);
+$white--opaque_50: hsl(0deg 0% 100% / 49.79%);
+$white--opaque_75: hsl(0deg 0% 100% / 75%);
 
-//SPACING
+// SPACING
 $spacing: (
   8: to_rem(8),
   12: to_rem(12),
@@ -29,7 +29,6 @@ $spacing: (
   72: to_rem(72),
   80: to_rem(80),
 );
-
 $special_spacing: (
   1: to_rem(1),
   2: to_rem(2),
@@ -37,9 +36,9 @@ $special_spacing: (
 );
 
 
-//==========================================================
+// ==========================================================
 //  DESIGN TOKENS
-//==========================================================
+// ==========================================================
 
 /* TOKEN TAXONOMY
 * $spacetype_direction_scale_size
@@ -49,7 +48,7 @@ $special_spacing: (
 * size: xs (8), sm (16), md (24), lg (32), xl (40);
 */
 
-//COLORS
+// COLORS
 $background_color_blue--950: $blue--950;
 $background_color_blue--900: $blue--900;
 $background_color_blue--500: $blue--500;
@@ -57,62 +56,43 @@ $background_color_blue--500: $blue--500;
 $fill_blue--500: $blue--500;
 $fill_white: $white;
 
-//SPACING
-//Gap
+// SPACING
+// Gap
 $gap_inline_control--xsm: map.get($spacing, 8);
 $gap_inline_control--sm: map.get($spacing, 16);
-$gap_inline_control--sm_15: calc(map.get($spacing, 16) - map.get($special_spacing, 1));
-$gap_inline_control--sm_19: calc(map.get($spacing, 16) + map.get($special_spacing, 2) + map.get($special_spacing, 1));
 $gap_inline_control--md: map.get($spacing, 24);
 $gap_inline_control--lg_30: calc(map.get($spacing, 32) - map.get($special_spacing, 2));
 $gap_inline_control--lg: map.get($spacing, 32);
 $gap_inline_control--xlg: map.get($spacing, 40);
-
 $gap_block_control--xsm: map.get($spacing, 12);
-$gap_block_control--sm: map.get($spacing, 16);
 $gap_block_control--md: map.get($spacing, 24);
-$gap_block_control--lg_30: calc(map.get($spacing, 32) - map.get($special_spacing, 2));
 $gap_block_control--lg: map.get($spacing, 32);
-$gap_block_control--xlg: map.get($spacing, 40);
 
-//Padding & margin
-$padding_inline_control--xsm: map.get($spacing, 8);
+// Padding & margin
 $padding_inline_control--sm_special: calc(map.get($spacing, 16) + .33px);
 $padding_inline_control--sm: map.get($spacing, 16);
 $padding_inline_control--xxlg: map.get($spacing, 40);
-
 $padding_block_control--xsm: map.get($spacing, 8);
 $padding_block_control--sm_14: calc(map.get($spacing, 16) - map.get($special_spacing, 2));
 $padding_block_control--sm: map.get($spacing, 16);
 $padding_block_control--md: map.get($spacing, 24);
-$padding_block_control--lg: map.get($spacing, 40);
-
-$margin_inline_control--xsm: map.get($spacing, 8);
-$margin_inline_control--lg: map.get($spacing, 32);
 $margin_block_control--xsm: map.get($spacing, 8);
 $margin_block_control--sm: map.get($spacing, 16);
 $margin_block_control--lg: map.get($spacing, 24);
-$margin_block_control--lg_30: calc(map.get($spacing, 32) - map.get($special_spacing, 2));
 $margin_block_control--xlg: map.get($spacing, 32);
-$margin_block_control--xxlg: map.get($spacing, 40);
 $margin_block_control--xxxlg: map.get($spacing, 72);
-
 $margin_block_layout--sm_13: calc(map.get($spacing, 16) - map.get($special_spacing, 2) - map.get($special_spacing, 1));
 $margin_block_layout--lg_23: calc(map.get($spacing, 24) - map.get($special_spacing, 1));
 $margin_block_layout--lg_34: calc(map.get($spacing, 32) + map.get($special_spacing, 2));
 
-//Inline/Block size
+// Inline/Block size
 $inline_size--xsm: map.get($spacing, 24);
 $inline_size--sm: map.get($spacing, 32);
 $inline_size--md: map.get($spacing, 40);
 $inline_size_component--md: map.get($spacing, 40);
-$inline_size_component--lg: calc(map.get($spacing, 56) + map.get($special_spacing, 4));
-$inline_size_component--xlg: calc(map.get($spacing, 40) * 2);
-
 $inline_size_component--lg: calc(map.get($spacing, 80) * 3);
 $inline_size_component--xlg: calc(map.get($spacing, 80) * 4);
 $inline_size_component--xxlg: calc(map.get($spacing, 80) * (4 + .3));
-
 $block_size--xsm: map.get($spacing, 24);
 $block_size--sm: map.get($spacing, 32);
 $block_size--md: map.get($spacing, 40);
@@ -120,15 +100,13 @@ $block_size_component--md: map.get($spacing, 40);
 $block_size_component--lg: calc(map.get($spacing, 56) + map.get($special_spacing, 4));
 $block_size_component--xlg: calc(map.get($spacing, 40) * 2);
 
-//Container
+// Container
 $container_for_section_l_screen: 86.8%;
 $container_for_page_s_screen: 91.5%;
 $container_for_page_m_screen: 93.5%;
 $container_for_page_l_screen: 92.84%;
 
-//Radius
+// Radius
 $radius_pill--xs: to_rem(6);
-$radius_pill--md: to_rem(8);
 $radius_pill--lg: to_rem(10);
-$radius_pill--xlg: to_rem(20);
 $radius_pill_full: 50%;

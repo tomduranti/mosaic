@@ -3,7 +3,6 @@
 @use 'sass:map';
 
 $font_family: 'Outfit', sans-serif;
-
 $presets: (
     1: ($font_family, to_rem(20), 300, 1.25, -0.3px),
     2: ($font_family, to_rem(16), 300, 1.25, 0),

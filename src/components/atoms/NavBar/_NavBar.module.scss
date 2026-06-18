@@ -4,39 +4,31 @@
 
 .navbar {
     @extend %flex_center;
+
     justify-content: space-between;
-
     background-color: $background_color_blue--900;
-
     padding: $padding_block_control--sm $padding_inline_control--sm_special;
 
-    //the following code is needed to let NavBar overflow its parent's container at mobile viewport
+    // the following code is needed to let NavBar overflow its parent's container at mobile viewport
     inline-size: 100vw;
-
     position: relative;
     left: 50%;
     right: 50%;
-
     margin-inline: -50vw;
 
     @include respond_to(min, m_screen) {
         border-radius: $radius_pill--lg;
-
         inline-size: 100%;
-
         left: unset;
         right: unset;
-
         margin-inline: 0;
     }
 
 
     @include respond_to(min, l_screen) {
-        grid-row-start: 1;
-        grid-row-end: 4;
+        grid-row: 1 / 4;
         block-size: 960px;
         flex-direction: column;
-
         padding: 33.7px 28px;
     }
 
@@ -59,6 +51,7 @@
 
     &__links {
         @extend %flex_center;
+
         gap: $gap_inline_control--md;
 
         @include respond_to(min, m_screen) {
@@ -68,8 +61,7 @@
         @include respond_to(min, l_screen) {
             flex-direction: column;
             gap: $gap_inline_control--xlg;
-
-            margin-block-end: auto; //to push avatar image to the bottom limit of container
+            margin-block-end: auto; // to push avatar image to the bottom limit of container
         }
     }
 
@@ -90,7 +82,7 @@
         }
 
 
-        @include respond_to(min, m_screen) {
+        @include respond_to(min, l_screen) {
             inline-size: 22px;
             block-size: 22px;
         }
@@ -99,6 +91,7 @@
 
     &__path {
         fill: $fill_blue--500;
+
         @include transition(fill, .4s, ease);
 
         &--active {
@@ -110,11 +103,10 @@
     &__avatar {
         inline-size: $inline_size--xsm;
         block-size: $block_size--xsm;
-
         outline: 1px solid $white;
         border-radius: $radius_pill_full;
 
-        //this is needed as the avatar already has outline
+        // this is needed as the avatar already has outline
         &:focus-visible {
             outline: 1px solid $white;
             outline-offset: 1px;

@@ -4,15 +4,13 @@
 
 .mediacard {
     inline-size: 100%;
-
     position: relative;
 
 
     @media (pointer: fine) {
-    //glassmorphic effect doesn't activate upon finger touch
+    // glassmorphic effect doesn't activate upon finger touch
         &:hover {
             .mediacard__container {
-
                 &::after,
                 &::before {
                     opacity: 1;
@@ -37,10 +35,8 @@
 
     &__button {
         position: absolute;
-
         top: 2%;
         right: 4%;
-
         z-index: 3;
     }
 
@@ -64,16 +60,12 @@
 
         
         &::after {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgb(255 255 255 / 5%);
             backdrop-filter: blur(7px);
-            -webkit-backdrop-filter: blur(7px);
-
             content: '';
             inset: 0;
             position: absolute;
-
             opacity: 0;
-
             z-index: 1;
 
             @include transition(opacity, .3s, ease-in-out);
@@ -87,17 +79,14 @@
 
 
         &::before {
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            background: linear-gradient(90deg, transparent, rgb(255 255 255 / 80%), transparent);
             block-size: 1px;
             content: '';
-
             position: absolute;
             top: -1px;
             left: 0;
             right: 0;
-            
             opacity: 0;
-
             z-index: 3;
 
             @include transition(opacity, .3s, ease-in-out);
@@ -126,7 +115,6 @@
         display: flex;
         align-items: center;
         gap: $gap_inline_control--xsm;
-
         margin-bottom: $margin_block_control--xsm;
     }
 

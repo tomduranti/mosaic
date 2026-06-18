@@ -12,6 +12,7 @@
 
     path {
         fill: transparent;
+
         @include transition(fill, .3s, ease);
     }
 

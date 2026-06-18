@@ -1,11 +1,9 @@
 @use '../../../sass/abstract/variables' as *;
 @use '../../../sass/abstract/mixins' as *;
-@use '../../../sass/abstract/utils' as *;
 
 .search_input {
     display: flex;
     gap: $gap_inline_control--sm;
-
     position: relative;
 
 
@@ -19,20 +17,15 @@
     }
 
 
-    &:after {
-        background-color: $blue--500;
-
+    &::after {
+        background-color: $background_color_blue--500;
         block-size: 1px;
         inline-size: 0;
-
         content: '';
-
         display: block;
-
         position: absolute;
         bottom: -5px;
-
-        transition: 1s ease;
+        @include transition(inline-size, 1s, ease);
     }
 
 
@@ -54,13 +47,9 @@
 
     &__input {
         caret-color: $red;
-
         color: $white;
-
         cursor: pointer;
-
         inline-size: 100%;
-
         outline: none;
     }
 }

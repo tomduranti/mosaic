@@ -1,6 +1,5 @@
 @use "./variables" as var;
 @use "./functions" as func;
-@use "sass:list";
 @use "sass:map";
 
 @mixin typography($font_family, $font_size, $font_weight, $line_height, $letter_spacing) {
@@ -26,15 +25,11 @@
         @media screen and (#{$minmax}-width: func.to_rem(1440)) {
             @content;
         }
-    }
-
-    @else if $media == m_screen {
+    } @else if $media == m_screen {
         @media screen and (#{$minmax}-width: func.to_rem(768)) {
             @content;
         }
-    }
-
-    @else if $media == s_screen {
+    } @else if $media == s_screen {
         @media screen and (#{$minmax}-width: func.to_rem(375)) {
             @content;
         }
@@ -42,7 +37,6 @@
 }
 
 @mixin link($bg_color) {
-
     @media (pointer: coarse) {
         &:active path {
             fill: $bg_color;

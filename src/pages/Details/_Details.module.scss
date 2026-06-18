@@ -4,12 +4,9 @@
 
 .iframe {
     aspect-ratio: 12 / 9;
-
     inline-size: 100%;
-
     border: none;
     border-radius: $radius_pill--lg;
-
     overflow: hidden;
 
 
@@ -19,11 +16,10 @@
 }
 
 
-//class name duplication to override
-//of the <CircularProgressbar> component
+// class name duplication to override
+// of the <CircularProgressbar> component
 .progress_circle.progress_circle {
     max-inline-size: fit-content;
-
     inline-size: $inline_size_component--md;
     block-size: $block_size_component--md;
 
@@ -40,13 +36,12 @@
     }
 
     :global(.CircularProgressbar-text) {
-        font-family: 'Outfit', sans-serif;
+        font-family: Outfit, sans-serif;
     }
 }
 
 
 .media {
-
     &__visual_content {
         margin-bottom: $margin_block_control--xsm;
     }
