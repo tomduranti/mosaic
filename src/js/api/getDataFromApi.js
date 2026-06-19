@@ -7,43 +7,43 @@ export default async function getDataFromApi(category, functionWrapper, input, t
   switch (category) {
     //Home.jsx
     case 'trending':
-      url = new URL('/api/trending/all/week', window.location.origin);
+      url = new URL('https://api.themoviedb.org/3/trending/all/week');
       break;
     case 'trending_movies':
-      url = new URL('/api/trending/movie/day', window.location.origin);
+      url = new URL('https://api.themoviedb.org/3/trending/movie/day');
       break;
     case 'trending_tv_series':
-      url = new URL('/api/trending/tv/day', window.location.origin);
+      url = new URL('https://api.themoviedb.org/3/trending/tv/day');
       break;
     case 'multi':
-      url = new URL('/api/search/multi', window.location.origin);
+      url = new URL('https://api.themoviedb.org/3/search/multi');
       url.searchParams.set('query', input);
       break;
 
     //Movies.jsx
     case 'recommended_movies':
-      url = new URL('/api/movie/popular', window.location.origin);
+      url = new URL('https://api.themoviedb.org/3/movie/popular');
       break;
     case 'search_movie':
-      url = new URL('/api/search/movie', window.location.origin);
+      url = new URL('https://api.themoviedb.org/3/search/movie');
       url.searchParams.set('query', input);
       break;
 
     //TvSeries.jsx
     case 'recommended_tv_series':
-      url = new URL('/api/tv/popular', window.location.origin);
+      url = new URL('https://api.themoviedb.org/3/tv/popular');
       break;
     case 'search_tv_series':
-      url = new URL('/api/search/tv', window.location.origin);
+      url = new URL('https://api.themoviedb.org/3/search/tv');
       url.searchParams.set('query', input);
       break;
 
     //Details.jsx
     case 'details':
-      url = new URL(`/api/${type}/${id}`, window.location.origin);
+      url = new URL(`https://api.themoviedb.org/3/${type}/${id}`);
       break;
     case 'trailer':
-      url = new URL(`/api/${type}/${id}/videos`, window.location.origin);
+      url = new URL(`https://api.themoviedb.org/3/${type}/${id}/videos`);
       break;
   }
 

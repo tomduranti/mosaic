@@ -1,5 +1,5 @@
 //react
-import { BrowserRouter, Routes, Route } from 'react-router';
+import { HashRouter, Routes, Route } from 'react-router';
 
 //sass
 import styles from './sass/base/_App.module.scss';
@@ -25,7 +25,7 @@ export default function App() {
 
   return (
       <main className={styles.page_wrapper}  role="main">
-        <BrowserRouter>
+        <HashRouter>
           <NavBar />
           <Routes>
             <Route path='/' element={<Navigate to='/home' replace />} />
@@ -46,7 +46,7 @@ export default function App() {
               <Route index element={<BookmarkMediaDisplay />} />
             </Route>
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </main>
   )
 }
