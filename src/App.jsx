@@ -1,5 +1,5 @@
 //react
-import { HashRouter, Routes, Route } from 'react-router';
+import { BrowserRouter, Routes, Route } from 'react-router';
 
 //sass
 import styles from './sass/base/_App.module.scss';
@@ -24,8 +24,8 @@ import BookmarkMediaDisplay from './pages/BookmarkMedia/BookmarkMediaDisplay.jsx
 export default function App() {
 
   return (
-      <main className={styles.page_wrapper}  role="main">
-        <HashRouter>
+      <main className={styles.page_wrapper}  role='main'>
+        <BrowserRouter basename='/mosaic'>
           <NavBar />
           <Routes>
             <Route path='/' element={<Navigate to='/home' replace />} />
@@ -46,7 +46,7 @@ export default function App() {
               <Route index element={<BookmarkMediaDisplay />} />
             </Route>
           </Routes>
-        </HashRouter>
+        </BrowserRouter>
       </main>
   )
 }
