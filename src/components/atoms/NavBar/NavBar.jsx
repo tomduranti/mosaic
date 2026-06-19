@@ -8,7 +8,7 @@ import avatar from "../../../assets/avatar/avatar.png";
 export default function NavBar() {
   return (
     <div className={styles.navbar}>
-      <a href="/home" className={styles.navbar__logo}>
+      <a href="/mosaic/home" className={styles.navbar__logo}>
         <img className={styles.navbar__logo} src={logo} alt="logo" />
       </a>
       <nav aria-label='navigation links'>
