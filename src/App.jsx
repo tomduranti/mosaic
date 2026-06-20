@@ -25,7 +25,7 @@ export default function App() {
 
   return (
       <main className={styles.page_wrapper}  role='main'>
-        <BrowserRouter basename='/mosaic'>
+        <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
           <NavBar />
           <Routes>
             <Route path='/' element={<Navigate to='/home' replace />} />
