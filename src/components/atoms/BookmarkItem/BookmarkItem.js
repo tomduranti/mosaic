@@ -9,7 +9,7 @@ export function getIdFromLocalStorage(idNumber) {
     const arr = JSON.parse(localStorage.getItem("storedId"));
     if (!arr) return false;
 
-    return arr.some(obj => obj.id === idNumber);
+    return arr.some(obj => Number(obj.id) === Number(idNumber));
 }
 
 function toggleLocalStorage(idNumber, typeOfMedia) {
@@ -18,7 +18,7 @@ function toggleLocalStorage(idNumber, typeOfMedia) {
 
     if (getIdFromLocalStorage(idNumber)) {
         //delete that id
-        localArr = localArr.filter(obj => obj.id !== idNumber);
+        localArr = localArr.filter(obj => Number(obj.id) !== Number(idNumber));
     } else {
         //push that id & type to localArr
         localArr.push({ id: idNumber, type: typeOfMedia })
