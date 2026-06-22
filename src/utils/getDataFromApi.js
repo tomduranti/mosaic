@@ -2,6 +2,8 @@ import { options } from './options.js';
 
 export default async function getDataFromApi(category, functionWrapper, input, type, id) {
 
+  if (!category) return;
+
   let url;
 
   switch (category) {
