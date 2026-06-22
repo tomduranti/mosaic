@@ -12,7 +12,7 @@ import '../../../sass/abstract/_utils.scss';
 import variables from '../../../sass/abstract/_export.module.scss';
 
 //functions
-import { formatYear } from '../../../js/utils/date/date.js';
+import { formatYear } from '../../../utils/date.js';
 
 export default function MediaCard({ isTrending, release_date, poster_path, media_type, video, id, avg_rating, title }) {
     const isMovie = media_type === 'movie' || video !== undefined;

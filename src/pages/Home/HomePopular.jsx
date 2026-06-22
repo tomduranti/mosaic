@@ -5,7 +5,7 @@ import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx'
 import Loading from '../../components/atoms/Loading/Loading.jsx';
 
 //functions
-import getDataFromApi from '../../js/api/getDataFromApi.js';
+import getDataFromApi from '../../utils/getDataFromApi.js';
 
 export default function HomePopular() {
     const { trending, setTrending, shuffleMovieAndTvSeries, setMovieAndTvSeries } = useOutletContext();

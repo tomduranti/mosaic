@@ -1,12 +1,11 @@
 //react libraries and components
-import { useState } from 'react';
 import { ClipLoader } from "react-spinners";
 
 //sass
 import variables from '../../../sass/abstract/_export.module.scss';
 
 export default function Loading() {
-    const [isLoading] = useState(true);
+    const isLoading = true;
     const color = variables.white;
 
     const override = {

@@ -1,6 +1,3 @@
-//react libraries and components
-import { useState, useEffect } from 'react';
-
 //sass
 import styles from './_SearchInput.module.scss';
 

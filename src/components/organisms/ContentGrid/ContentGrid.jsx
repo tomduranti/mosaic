@@ -1,5 +1,5 @@
 //react libraries and components
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 import React from "react";
 import useEmblaCarousel from "embla-carousel-react";
@@ -11,7 +11,7 @@ import stylesApp from "../../../sass/base/_App.module.scss";
 import stylesHome from "../../../pages/Home/_Home.module.scss";
 
 //functions
-import { formatYear } from "../../../js/utils/date/date.js";
+import { formatYear } from "../../../utils/date.js";
 
 export default function ContentGrid({
   pageName,

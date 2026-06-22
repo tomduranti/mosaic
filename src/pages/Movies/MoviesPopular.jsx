@@ -1,11 +1,11 @@
-//functions
-import getDataFromApi from '../../js/api/getDataFromApi.js';
-
 //react libraries and components
 import { useEffect } from 'react';
 import { useOutletContext } from "react-router";
 import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
+
+//functions
+import getDataFromApi from '../../utils/getDataFromApi.js';
 
 export default function MoviesPopular() {
     const { movies, setMovies } = useOutletContext();

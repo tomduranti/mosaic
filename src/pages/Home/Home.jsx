@@ -6,7 +6,7 @@ import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
 
 //functions
-import fisherYatesShuffle from '../../js/utils/shuffle/shuffle.js';
+import fisherYatesShuffle from '../../utils/shuffle.js';
 
 export default function Home() {
   const [userInput, setUserInput] = useState('');

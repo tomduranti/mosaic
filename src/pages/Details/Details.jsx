@@ -11,9 +11,9 @@ import stylesApp from '../../sass/base/_App.module.scss';
 import 'react-circular-progressbar/dist/styles.css';
 
 //functions
-import getDataFromApi from '../../js/api/getDataFromApi.js';
-import randomiseIndex from '../../js/utils/randomiseIndex/randomiseIndex.js';
-import { formatYear, formatRuntime } from '../../js/utils/date/date.js';
+import getDataFromApi from '../../utils/getDataFromApi.js';
+import randomiseIndex from '../../utils/randomiseIndex.js';
+import { formatYear, formatRuntime } from '../../utils/date.js';
 
 export default function Details() {
   const [mediaDetails, setMediaDetails] = useState([]);

@@ -6,7 +6,7 @@ import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
 
 //functions
-import getDataFromApi from '../../js/api/getDataFromApi.js';
+import getDataFromApi from '../../utils/getDataFromApi.js';
 
 export default function BookmarkMedia() {
   const [bookmarkedMedia, setBookmarkedMedia] = useState([]);
