@@ -1,7 +1,7 @@
 import BookmarkItem from "./BookmarkItem";
 
 export default {
-    title: 'componenents/atoms/BookmarkItem',
+    title: 'components/atoms/BookmarkItem',
     component: BookmarkItem,
 }
 

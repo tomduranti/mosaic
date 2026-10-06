@@ -22,14 +22,14 @@ Web application where users explore movies and TV shows, get detailed informatio
 
 ### Code highlights
 
-- [single token system, one source of truth](https://github.com/tomduranti/mosaic/blob/cdac8fb834651e6600f63251615810069b0677bc/src/sass/abstract/_variables.scss#L52-L54) to make styles reusable, consistent, and scalable.  Named variables enhance code readibility, and possibly reduce the need of magic numbers
+- [single token system, one source of truth](https://github.com/tomduranti/mosaic/blob/cdac8fb834651e6600f63251615810069b0677bc/src/sass/abstract/_variables.scss#L52-L54) to make styles reusable, consistent, and scalable.  Named variables enhance code readability, and possibly reduce the need of magic numbers
 ```
 $gap_inline_control--xsm: map.get($spacing, 8);
 $gap_inline_control--sm: map.get($spacing, 16);
 $gap_inline_control--md: map.get($spacing, 24);
 ```
 
-- [defensive fetch API call](https://github.com/tomduranti/mosaic/blob/cdac8fb834651e6600f63251615810069b0677bc/src/utils/getDataFromApi.js#L52-L55) with an early return to handle latency or 404, gracefully. The nullish coalescing operator hanldes both arrays or objects
+- [defensive fetch API call](https://github.com/tomduranti/mosaic/blob/cdac8fb834651e6600f63251615810069b0677bc/src/utils/getDataFromApi.js#L52-L55) with an early return to handle latency or 404, gracefully. The nullish coalescing operator handles both arrays or objects
 ```
   return await fetch(url, options)
     .then(res => res.json())
@@ -42,7 +42,7 @@ $gap_inline_control--md: map.get($spacing, 24);
 <Route path=':type/:id' element={<Details />} />
 ```
 
-- fully navigabile page with a [screen reader](https://github.com/tomduranti/mosaic/blob/cdac8fb834651e6600f63251615810069b0677bc/src/components/organisms/ContentGrid/ContentGrid.jsx#L57-L63), with visually hidden links to jump between internal sections of the page so users can past jump items they're not interested in
+- fully navigable page with a [screen reader](https://github.com/tomduranti/mosaic/blob/cdac8fb834651e6600f63251615810069b0677bc/src/components/organisms/ContentGrid/ContentGrid.jsx#L57-L63), with visually hidden links to jump between internal sections of the page so users can bypass items they're not interested in
 ```
 {idSkipToSection && idJumpBackToSection ? (
     <a
@@ -53,7 +53,7 @@ $gap_inline_control--md: map.get($spacing, 24);
 ) : null}
 ```
 
-- file organisation with atomic-style structure, Storybook stories to visualize each component in isolation, and modularized sass to restrict scope to the component
+- file organisation with atomic-style structure, Storybook stories to visualize each component in isolation, and modularised sass to restrict scope to the component
 ```
 src/
 ├── components/
@@ -68,7 +68,7 @@ src/
 ...
 ```
 
-- use of [responsive grid](https://github.com/tomduranti/mosaic/blob/cdac8fb834651e6600f63251615810069b0677bc/src/sass/base/_App.module.scss#L93-L95) to adjust to any screen size, avoiding rigid media querie jumps
+- use of [responsive grid](https://github.com/tomduranti/mosaic/blob/cdac8fb834651e6600f63251615810069b0677bc/src/sass/base/_App.module.scss#L93-L95) to adjust to any screen size, avoiding rigid media queries jumps
 ```
 .grid {
   display: grid;

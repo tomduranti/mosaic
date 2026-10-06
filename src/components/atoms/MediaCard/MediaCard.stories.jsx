@@ -1,7 +1,7 @@
 import MediaCard from "./MediaCard";
 
 export default {
-    title: 'componenents/atoms/MediaCard',
+    title: 'components/atoms/MediaCard',
     component: MediaCard,
 }
 

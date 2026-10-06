@@ -1,7 +1,7 @@
 import NavBar from './NavBar';
 
 export default {
-    title: 'componenents/atoms/NavBar',
+    title: 'components/atoms/NavBar',
     component: NavBar,
 }
 
