@@ -16,29 +16,32 @@ $presets: (
     .text_preset_#{$key} {
         @include typography($value... )
     }
-};
+}
 
+.text_preset_2--medium {
+    font-size: to_rem(24);
+    font-weight: 500;
+}
+
+.text_preset_3--light {
+    font-size: to_rem(18);
+}
+
+.text_preset_5--bigger {
+    font-size: to_rem(16);
+}
 
 @include respond_to(min, m_screen) {
     .text_preset_1 {
         font-size: to_rem(32);
-        line-height: -0.5px;
+        line-height: normal;
     }
 
     .text_preset_2 {
         font-size: to_rem(24);
     }
 
-    .text_preset_2--medium {
-        font-size: to_rem(24);
-        font-weight: 500;
-    }
-
     .text_preset_3 {
-        font-size: to_rem(18);
-    }
-
-    .text_preset_3--light {
         font-size: to_rem(18);
     }
 
@@ -49,9 +52,5 @@ $presets: (
 
     .text_preset_5 {
         font-size: to_rem(13);
-    }
-
-    .text_preset_5--bigger {
-        font-size: to_rem(16);
     }
 }
