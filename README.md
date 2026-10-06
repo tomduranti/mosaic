@@ -1,20 +1,20 @@
 # Mosaic
 
-### Project
+## Project
 
 Web application where users explore movies and TV shows, get detailed information about them, and bookmark them. Built with React and the TMDB API.
   
 ### Built with
 
 - RESTful API
-- React 18 & Vite
-- React Router v6
+- React & Vite
+- React Router
 - Storybook
 - Semantic HTML5
 - Modular Sass, BEM, and responsive & adaptive design
 - Mobile-first workflow
 - WCAG/ARIA compliant, keyboard navigable
-- Cross-browser compatibility (Chrome, Edge, Safari, Opera, Firefox, IE)
+- Cross-browser compatibility (Chrome, Edge, Safari, Opera, Firefox)
 
 ### Screenshot (live site: [mosaic](https://tomduranti.github.io/mosaic/))
 
