@@ -1,7 +1,5 @@
 //react libraries and components
 import { useEffect } from "react";
-
-import React from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import MediaCard from "../../atoms/MediaCard/MediaCard.jsx";

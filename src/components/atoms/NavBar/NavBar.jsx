@@ -1,4 +1,5 @@
 //react libraries and components
+// eslint-disable-next-line no-unused-vars
 import { NavLink } from "react-router";
 
 //sass
