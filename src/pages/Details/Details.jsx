@@ -79,7 +79,6 @@ export default function Details() {
               className={stylesDetail.iframe}
               src={`https://www.youtube.com/embed/${key}?autoplay=1&controls=1&mute=1&playlist=${key}`}
               title={mediaDetails.title || mediaDetails.name}
-              scrolling='auto'
               allow='autoplay'
             ></iframe>
           </div>
@@ -107,7 +106,7 @@ export default function Details() {
                 >
                   {formatYear(
                     mediaDetails.release_date || mediaDetails.first_air_date,
-                  ) || NaN}
+                  ) || 'TBA'}
                 </span>
                 <span
                   className={`${stylesApp.separator}  ${stylesApp['separator--bigger']}  text_preset_5  text_preset_5--bigger  text_white`}
@@ -129,7 +128,7 @@ export default function Details() {
                         pathTransitionDuration: 1.5,
                         strokeLinecap: 'round',
                         textSize: '32px',
-                        textColor: '#fff',
+                        textColor: '$white',
                         pathColor: averageVoteColor(),
                       })}
                     />
