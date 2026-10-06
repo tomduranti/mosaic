@@ -27,7 +27,7 @@ export default function MediaCard({ isTrending, release_date, poster_path, media
                                 <div className={styles.mediacard__media_info}>
                                     <div className={`${styles.mediacard__media_date_and_type}  text_preset_5  text_white--opaque_75`}>
                                         <span className={`${stylesApp.separator}  ${stylesApp['separator--bigger']}`}  aria-hidden='true'>{formatYear(release_date)}</span>
-                                        <div className={`${styles.mediacard__media_category}  ${stylesApp['separator']}  ${stylesApp['separator--bigger']}`}>
+                                        <div className={`${stylesApp['separator']}  ${stylesApp['separator--bigger']}`}>
                                             <img src={isMovie ? movie : tv} alt='' />
                                             <span className='text_capitalize'  aria-hidden='true'>{media_type}</span>
                                         </div>
@@ -52,7 +52,7 @@ export default function MediaCard({ isTrending, release_date, poster_path, media
                             <div className={`${styles.mediacard__media_info}  ${styles.mediacard__text_outside}`}>
                                 <div className={`${styles.mediacard__media_date_and_type}  text_preset_6  text_white--opaque_75`}>
                                     <span className={stylesApp.separator}   aria-hidden='true'>{release_date ? formatYear(release_date) : 'TBA'}</span>
-                                    <div className={`${styles.mediacard__media_category}  ${stylesApp['separator']}`}>
+                                    <div className={stylesApp.separator}>
                                         <img src={isMovie ? movie : tv} alt='' />
                                         <span className='text_capitalize'  aria-hidden='true'>{isMovie ? 'movie' : 'tv'}</span>
                                     </div>

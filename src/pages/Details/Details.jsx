@@ -73,7 +73,7 @@ export default function Details() {
       {isLoading ? (
         <Loading />
       ) : (
-        <section className={`${stylesApp.section}  ${stylesApp['media']}`}>
+        <section className={stylesApp.section}>
           <div className={stylesDetail.media__visual_content}>
             <iframe
               className={stylesDetail.iframe}
@@ -128,7 +128,7 @@ export default function Details() {
                         pathTransitionDuration: 1.5,
                         strokeLinecap: 'round',
                         textSize: '32px',
-                        textColor: '$white',
+                        textColor: '#fff',
                         pathColor: averageVoteColor(),
                       })}
                     />

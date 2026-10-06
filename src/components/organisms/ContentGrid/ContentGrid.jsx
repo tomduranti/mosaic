@@ -102,7 +102,6 @@ export default function ContentGrid({
 
             {array.map((item) => (
               <li
-                className={stylesApp.grid__item}
                 key={item.id}
                 aria-label={`Title: ${item.title || item.name}, ${item.media_type === 'movie' || item.video !== undefined ? 'movie' : 'tv show'}, year: ${formatYear(item.first_air_date) || formatYear(item.release_date)}, `}
               >
