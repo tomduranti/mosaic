@@ -16,9 +16,7 @@ $presets: (
     .text_preset_#{$key} {
         @include typography($value... )
     }
-
-    ;
-}
+};
 
 
 @include respond_to(min, m_screen) {

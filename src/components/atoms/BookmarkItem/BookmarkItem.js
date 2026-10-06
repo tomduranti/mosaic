@@ -6,7 +6,7 @@ export function clickHandler(setter, idNumber, typeOfMedia) {
 }
 
 export function getIdFromLocalStorage(idNumber) {
-    const arr = JSON.parse(localStorage.getItem("storedId"));
+    const arr = JSON.parse(localStorage.getItem('storedId'));
     if (!arr) return false;
 
     return arr.some(obj => Number(obj.id) === Number(idNumber));
@@ -14,7 +14,7 @@ export function getIdFromLocalStorage(idNumber) {
 
 function toggleLocalStorage(idNumber, typeOfMedia) {
 
-    let localArr = JSON.parse(localStorage.getItem("storedId")) || [];
+    let localArr = JSON.parse(localStorage.getItem('storedId')) || [];
 
     if (getIdFromLocalStorage(idNumber)) {
         //delete that id
@@ -25,5 +25,5 @@ function toggleLocalStorage(idNumber, typeOfMedia) {
     }
 
     //push the modified localArr to localStorage
-    localStorage.setItem("storedId", JSON.stringify(localArr));
+    localStorage.setItem('storedId', JSON.stringify(localArr));
 }

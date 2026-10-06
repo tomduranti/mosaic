@@ -1,4 +1,4 @@
-import BookmarkItem from "./BookmarkItem";
+import BookmarkItem from './BookmarkItem';
 
 export default {
     title: 'components/atoms/BookmarkItem',

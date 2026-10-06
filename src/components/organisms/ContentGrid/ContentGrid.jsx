@@ -1,15 +1,15 @@
 //react libraries and components
-import { useEffect } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
-import MediaCard from "../../atoms/MediaCard/MediaCard.jsx";
+import { useEffect } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
+import MediaCard from '../../atoms/MediaCard/MediaCard.jsx';
 
 //scss
-import stylesApp from "../../../sass/base/_App.module.scss";
-import stylesHome from "../../../pages/Home/_Home.module.scss";
+import stylesApp from '../../../sass/base/_App.module.scss';
+import stylesHome from '../../../pages/Home/_Home.module.scss';
 
 //functions
-import { formatYear } from "../../../utils/date.js";
+import { formatYear } from '../../../utils/date.js';
 
 export default function ContentGrid({
   pageName,
@@ -22,7 +22,7 @@ export default function ContentGrid({
     {
       loop: false,
       dragFree: true,
-      align: "start",
+      align: 'start',
     },
     [Autoplay()],
   );
@@ -46,17 +46,17 @@ export default function ContentGrid({
             <div className={stylesHome.carousel__viewport} ref={emblaRef}>
               <ul
                 className={stylesHome.carousel__container}
-                role="region"
-                aria-roledescription="carousel"
-                aria-label="Carousel of trending items"
+                role='region'
+                aria-roledescription='carousel'
+                aria-label='Carousel of trending items'
                 id={idJumpBackToSection}
               >
                 {/* This link is just for screen readers */}
                 {idSkipToSection && idJumpBackToSection ? (
                   <a
-                    className="display_contents"
+                    className='display_contents'
                     href={`#${idSkipToSection}`}
-                    aria-label="skip to the next section"
+                    aria-label='skip to the next section'
                   ></a>
                 ) : null}
 
@@ -64,8 +64,8 @@ export default function ContentGrid({
                   <li
                     className={stylesHome.carousel__item}
                     key={item.id}
-                    role="group"
-                    aria-roledescription="Movie or TV show card"
+                    role='group'
+                    aria-roledescription='Movie or TV show card'
                     aria-label={item.title || item.name}
                   >
                     <MediaCard
@@ -87,16 +87,16 @@ export default function ContentGrid({
           <ul
             className={stylesApp.grid}
             id={idSkipToSection}
-            role="region"
+            role='region'
             aria-roledescription={pageName}
             aria-label={`${pageName} section`}
           >
             {/* This link is just for screen readers */}
             {idSkipToSection && idJumpBackToSection ? (
               <a
-                className="display_contents"
+                className='display_contents'
                 href={`#${idJumpBackToSection}`}
-                aria-label="jump back to the previous section"
+                aria-label='jump back to the previous section'
               ></a>
             ) : null}
 
@@ -104,7 +104,7 @@ export default function ContentGrid({
               <li
                 className={stylesApp.grid__item}
                 key={item.id}
-                aria-label={`Title: ${item.title || item.name}, ${item.media_type === "movie" || item.video !== undefined ? "movie" : "tv show"}, year: ${formatYear(item.first_air_date) || formatYear(item.release_date)}, `}
+                aria-label={`Title: ${item.title || item.name}, ${item.media_type === 'movie' || item.video !== undefined ? 'movie' : 'tv show'}, year: ${formatYear(item.first_air_date) || formatYear(item.release_date)}, `}
               >
                 <MediaCard
                   isTrending={false}

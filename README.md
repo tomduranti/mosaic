@@ -46,9 +46,9 @@ $gap_inline_control--md: map.get($spacing, 24);
 ```
 {idSkipToSection && idJumpBackToSection ? (
     <a
-    className="display_contents"
+    className='display_contents'
     href={`#${idSkipToSection}`}
-    aria-label="skip to the next section"
+    aria-label='skip to the next section'
     ></a>
 ) : null}
 ```
@@ -87,8 +87,8 @@ src/
 <li
     className={stylesHome.carousel__item}
     key={item.id}
-    role="group"
-    aria-roledescription="Movie or TV show card"
+    role='group'
+    aria-roledescription='Movie or TV show card'
     aria-label={item.title || item.name}
 >
 ```

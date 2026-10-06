@@ -1,4 +1,4 @@
-import SearchInput from "./SearchInput";
+import SearchInput from './SearchInput';
 
 export default {
     title: 'components/atoms/SearchInput',
