@@ -24,7 +24,7 @@ import BookmarkMediaDisplay from './pages/BookmarkMedia/BookmarkMediaDisplay.jsx
 export default function App() {
 
   return (
-      <main className={styles.page_wrapper}  role='main'>
+      <main className={styles.page_wrapper}>
         <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
           <NavBar />
           <Routes>
