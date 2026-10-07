@@ -7,7 +7,6 @@ import './sass/main.scss';
 
 //components
 import NavBar from './components/atoms/NavBar/NavBar.jsx';
-import Navigate from './pages/Navigate/Navigate.jsx';
 import Home from './pages/Home/Home.jsx';
 import HomePopular from './pages/Home/HomePopular.jsx';
 import HomeSearch from './pages/Home/HomeSearch.jsx';
@@ -28,7 +27,7 @@ export default function App() {
         <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
           <NavBar />
           <Routes>
-            <Route path='/' element={<Navigate to='/home' replace />} />
+            <Route path='/' element={<Home />} />
             <Route path='home' element={<Home />} >
               <Route index element={<HomePopular />} />
               <Route path='search' element={<HomeSearch />} />
