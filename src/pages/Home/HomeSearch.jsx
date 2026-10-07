@@ -27,7 +27,7 @@ export default function HomeSearch() {
 
     return (
         <>
-            {filteredUserSearch
+            {filteredUserSearch.length > 0
                 ? <ContentGrid pageName={`Found ${filteredUserSearch.length} ${filteredUserSearch.length === 1 ? 'result' : 'results'} for '${query.trim()}'`} isTrending={false} array={filteredUserSearch} />
                 : <Loading />
             }
