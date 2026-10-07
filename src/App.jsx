@@ -2,23 +2,23 @@
 import { BrowserRouter, Routes, Route } from 'react-router';
 
 //sass
-import styles from './sass/base/_App.module.scss';
+import styles from '@base/_App.module.scss';
 import './sass/main.scss';
 
 //components
-import NavBar from './components/atoms/NavBar/NavBar.jsx';
-import Home from './pages/Home/Home.jsx';
-import HomePopular from './pages/Home/HomePopular.jsx';
-import HomeSearch from './pages/Home/HomeSearch.jsx';
-import Movies from './pages/Movies/Movies.jsx';
-import MoviesPopular from './pages/Movies/MoviesPopular.jsx';
-import MoviesSearch from './pages/Movies/MoviesSearch.jsx';
-import TvSeries from './pages/TvSeries/TvSeries.jsx';
-import TvSeriesPopular from './pages/TvSeries/TvSeriesPopular.jsx';
-import TvSeriesSearch from './pages/TvSeries/TvSeriesSearch.jsx';
-import Details from './pages/Details/Details.jsx';
-import BookmarkMedia from './pages/BookmarkMedia/BookmarkMedia.jsx';
-import BookmarkMediaDisplay from './pages/BookmarkMedia/BookmarkMediaDisplay.jsx';
+import NavBar from '@atoms/NavBar/NavBar.jsx';
+import Home from '@pages/Home/Home.jsx';
+import HomePopular from '@pages/Home/HomePopular.jsx';
+import HomeSearch from '@pages/Home/HomeSearch.jsx';
+import Movies from '@pages/Movies/Movies.jsx';
+import MoviesPopular from '@pages/Movies/MoviesPopular.jsx';
+import MoviesSearch from '@pages/Movies/MoviesSearch.jsx';
+import TvSeries from '@pages/TvSeries/TvSeries.jsx';
+import TvSeriesPopular from '@pages/TvSeries/TvSeriesPopular.jsx';
+import TvSeriesSearch from '@pages/TvSeries/TvSeriesSearch.jsx';
+import Details from '@pages/Details/Details.jsx';
+import BookmarkMedia from '@pages/BookmarkMedia/BookmarkMedia.jsx';
+import BookmarkMediaDisplay from '@pages/BookmarkMedia/BookmarkMediaDisplay.jsx';
 
 export default function App() {
 

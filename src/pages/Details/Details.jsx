@@ -2,18 +2,18 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import Loading from '../../components/atoms/Loading/Loading.jsx';
-import BookmarkItem from '../../components/atoms/BookmarkItem/BookmarkItem.jsx';
+import Loading from '@atoms/Loading/Loading.jsx';
+import BookmarkItem from '@atoms/BookmarkItem/BookmarkItem.jsx';
 
 //sass
 import stylesDetail from './_Details.module.scss';
-import stylesApp from '../../sass/base/_App.module.scss';
+import stylesApp from '@base/_App.module.scss';
 import 'react-circular-progressbar/dist/styles.css';
 
 //functions
-import getDataFromApi from '../../utils/getDataFromApi.js';
-import randomiseIndex from '../../utils/randomiseIndex.js';
-import { formatYear, formatRuntime } from '../../utils/date.js';
+import getDataFromApi from '@utils/getDataFromApi.js';
+import randomiseIndex from '@utils/randomiseIndex.js';
+import { formatYear, formatRuntime } from '@utils/date.js';
 
 function ProgressProvider({ valueStart, valueEnd, children }) {
   const [value, setValue] = useState(valueStart);

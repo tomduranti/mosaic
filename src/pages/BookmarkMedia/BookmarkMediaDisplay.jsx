@@ -1,7 +1,7 @@
 //react libraries and components
 import { useOutletContext } from 'react-router';
-import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
-import Loading from '../../components/atoms/Loading/Loading.jsx';
+import ContentGrid from '@organisms/ContentGrid/ContentGrid.jsx';
+import Loading from '@atoms/Loading/Loading.jsx';
 
 export default function BookmarkMediaDisplay() {
   const { bookmarkedMedia, isLoading } = useOutletContext();

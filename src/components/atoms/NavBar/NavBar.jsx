@@ -1,12 +1,12 @@
-//react libraries and components
+//react
 import { NavLink } from 'react-router';
 
 //sass
 import styles from './_NavBar.module.scss';
 
 //assets
-import logo from '../../../assets/logo/logo.svg';
-import avatar from '../../../assets/avatar/avatar.png';
+import logo from '@assets/logo/logo.svg';
+import avatar from '@assets/avatar/avatar.png';
 
 export default function NavBar() {
   return (

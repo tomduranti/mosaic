@@ -1,5 +1,5 @@
-@use '../../../sass/abstract/variables' as *;
-@use '../../../sass/abstract/mixins' as *;
+@use '@abstract/variables' as *;
+@use '@abstract/mixins' as *;
 
 .bookmark {
     inline-size: $inline_size--sm;

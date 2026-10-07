@@ -1,9 +1,9 @@
-//react libraries and components
+//react
 import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router';
 
 //functions
-import getDataFromApi from '../../utils/getDataFromApi.js';
+import getDataFromApi from '@utils/getDataFromApi.js';
 
 export default function BookmarkMedia() {
   const [bookmarkedMedia, setBookmarkedMedia] = useState([]);

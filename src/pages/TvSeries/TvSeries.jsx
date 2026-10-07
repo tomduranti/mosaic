@@ -1,7 +1,7 @@
-//react libraries and components
+//react
 import { useState, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router';
-import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
+import SearchInput from '@atoms/SearchInput/SearchInput.jsx';
 
 export default function TvSeries() {
   const [tvSeries, setTvSeries] = useState([]);

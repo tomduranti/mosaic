@@ -1,18 +1,20 @@
-//react libraries and components
+//react
 import { Link } from 'react-router';
 import BookmarkItem from '../BookmarkItem/BookmarkItem.jsx';
-import movie from '../../../assets/category/category_movie.svg';
-import tv from '../../../assets/category/category_tv.svg';
-import noImageAvailable from '../../../assets/no_image_available/no_image_available.jpg';
+
+//assets
+import movie from '@assets/category/category_movie.svg';
+import tv from '@assets/category/category_tv.svg';
+import noImageAvailable from '@assets/no_image_available/no_image_available.jpg';
 
 //sass
 import styles from './_MediaCard.module.scss';
-import stylesApp from '../../../sass/base/_App.module.scss';
-import '../../../sass/abstract/_utils.scss';
-import variables from '../../../sass/abstract/_export.module.scss';
+import stylesApp from '@base/_App.module.scss';
+import '@abstract/_utils.scss';
+import variables from '@abstract/_export.module.scss';
 
 //functions
-import { formatYear } from '../../../utils/date.js';
+import { formatYear } from '@utils/date.js';
 
 export default function MediaCard({ isTrending, release_date, poster_path, media_type, video, id, avg_rating, title }) {
     const isMovie = media_type === 'movie' || video !== undefined;

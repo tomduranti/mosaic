@@ -2,7 +2,7 @@
 import { ClipLoader } from "react-spinners";
 
 //sass
-import variables from '../../../sass/abstract/_export.module.scss';
+import variables from '@abstract/_export.module.scss';
 
 export default function Loading() {
     let isLoading = true;

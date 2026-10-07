@@ -1,10 +1,10 @@
-//react libraries and components
+//react
 import { useState, useEffect, useMemo } from 'react';
 import { Outlet, useNavigate } from 'react-router';
-import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
+import SearchInput from '@atoms/SearchInput/SearchInput.jsx';
 
 //functions
-import fisherYatesShuffle from '../../utils/shuffle.js';
+import fisherYatesShuffle from '@utils/shuffle.js';
 
 export default function Home() {
   const [userInput, setUserInput] = useState('');

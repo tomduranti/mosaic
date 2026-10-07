@@ -1,15 +1,15 @@
-//react libraries and components
+//react
 import { useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
-import MediaCard from '../../atoms/MediaCard/MediaCard.jsx';
+import MediaCard from '@atoms/MediaCard/MediaCard.jsx';
 
 //scss
-import stylesApp from '../../../sass/base/_App.module.scss';
-import stylesHome from '../../../pages/Home/_Home.module.scss';
+import stylesApp from '@base/_App.module.scss';
+import stylesHome from '@pages/Home/_Home.module.scss';
 
 //functions
-import { formatYear } from '../../../utils/date.js';
+import { formatYear } from '@utils/date.js';
 
 export default function ContentGrid({
   pageName,

@@ -1,6 +1,6 @@
-@use '../../../sass/abstract/variables' as *;
-@use '../../../sass/abstract/functions' as *;
-@use '../../../sass/abstract/mixins' as *;
+@use '@abstract/variables' as *;
+@use '@abstract/functions' as *;
+@use '@abstract/mixins' as *;
 
 .mediacard {
     inline-size: 100%;
