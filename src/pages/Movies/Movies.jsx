@@ -12,12 +12,9 @@ export default function Movies() {
   useEffect(() => {
     if (userInput && isSearchButtonPressed) {
       navigate(`search?q=${userInput}&type=movie`);
+      setIsSearchButtonPressed(false);
     }
   }, [isSearchButtonPressed]);
-
-  useEffect(() => {
-    setIsSearchButtonPressed(false);
-  }, [userInput]);
 
   return (
     <>

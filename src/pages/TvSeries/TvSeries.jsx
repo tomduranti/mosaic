@@ -12,12 +12,9 @@ export default function TvSeries() {
   useEffect(() => {
     if (userInput && isSearchButtonPressed) {
       navigate(`search?q=${userInput}&type=tv`);
+      setIsSearchButtonPressed(false)
     }
   }, [isSearchButtonPressed]);
-
-  useEffect(() => {
-    setIsSearchButtonPressed(false);
-  }, [userInput]);
 
   return (
     <>
