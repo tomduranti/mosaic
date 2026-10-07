@@ -15,6 +15,16 @@ import getDataFromApi from '../../utils/getDataFromApi.js';
 import randomiseIndex from '../../utils/randomiseIndex.js';
 import { formatYear, formatRuntime } from '../../utils/date.js';
 
+function ProgressProvider({ valueStart, valueEnd, children }) {
+  const [value, setValue] = useState(valueStart);
+
+  useEffect(() => {
+    setValue(valueEnd);
+  }, [valueEnd]);
+
+  return children(value);
+}
+
 export default function Details() {
   const [mediaDetails, setMediaDetails] = useState({});
   const [video, setVideo] = useState([]);
@@ -55,16 +65,6 @@ export default function Details() {
       }
     }
   }, [isLoading]);
-
-  function ProgressProvider({ valueStart, valueEnd, children }) {
-    const [value, setValue] = useState(valueStart);
-
-    useEffect(() => {
-      setValue(valueEnd);
-    }, [valueEnd]);
-
-    return children(value);
-  }
 
   return (
     <>
