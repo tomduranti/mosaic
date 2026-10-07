@@ -16,7 +16,7 @@ import randomiseIndex from '../../utils/randomiseIndex.js';
 import { formatYear, formatRuntime } from '../../utils/date.js';
 
 export default function Details() {
-  const [mediaDetails, setMediaDetails] = useState([]);
+  const [mediaDetails, setMediaDetails] = useState({});
   const [video, setVideo] = useState([]);
   const [key, setKey] = useState('');
   const [isLoading, setIsLoading] = useState(true);
@@ -25,8 +25,10 @@ export default function Details() {
   let teaser = [];
 
   const averageVoteColor = () => {
-    if (mediaDetails.vote_average?.toPrecision(2) * 10 < 40) return '#DB2360';
-    if (mediaDetails.vote_average?.toPrecision(2) * 10 < 70) return '#D2D531';
+    if (mediaDetails.length === 0) return;
+    const averageVoteNumeric = +mediaDetails.vote_average?.toPrecision(2) * 10;
+    if (averageVoteNumeric < 40) return '#DB2360';
+    if (averageVoteNumeric < 70) return '#0a0a03';
     return '#21D07A';
   };
 
