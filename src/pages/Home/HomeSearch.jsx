@@ -15,7 +15,7 @@ export default function HomeSearch() {
 
     const { setIsSearchButtonPressed } = useOutletContext();
     //this filtered array to exclude meaningless results
-    const filteredUserSearch = userSearch.filter(item => item.video !== undefined && item.vote_average !== 0);
+    const filteredUserSearch = userSearch.filter(item => item.vote_average !== 0);
 
     useEffect(() => {
         setIsSearchButtonPressed(false);
