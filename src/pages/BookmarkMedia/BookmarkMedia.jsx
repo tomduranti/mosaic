@@ -1,9 +1,6 @@
 //react libraries and components
 import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router';
-import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
-import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
-import Loading from '../../components/atoms/Loading/Loading.jsx';
 
 //functions
 import getDataFromApi from '../../utils/getDataFromApi.js';
@@ -11,19 +8,6 @@ import getDataFromApi from '../../utils/getDataFromApi.js';
 export default function BookmarkMedia() {
   const [bookmarkedMedia, setBookmarkedMedia] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [userInput, setUserInput] = useState('');
-  // const [isSearchButtonPressed, setIsSearchButtonPressed] = useState(false);
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (userInput && isSearchButtonPressed) {
-  //     navigate(`search?q=${userInput}&type=bookmarked`);
-  //   }
-  // }, [isSearchButtonPressed]);
-
-  // useEffect(() => {
-  //   setIsSearchButtonPressed(false);
-  // }, [userInput]);
 
   useEffect(() => {
     const tempArr = JSON.parse(localStorage.getItem('storedId'));
@@ -41,12 +25,6 @@ export default function BookmarkMedia() {
         Bookmarked items page
       </h1>
 
-      {/* <SearchInput
-        text='bookmarked items'
-        userInput={userInput}
-        setUserInput={setUserInput}
-        setIsSearchButtonPressed={setIsSearchButtonPressed}
-      /> */}
       <Outlet
         context={{ bookmarkedMedia, isLoading }}
       />

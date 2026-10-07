@@ -28,6 +28,3 @@ storybook-static
 
 # .env variables
 .env
-
-#lint
-.stylelintrc.json

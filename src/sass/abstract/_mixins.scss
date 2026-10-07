@@ -1,6 +1,4 @@
-@use "./variables" as var;
-@use "./functions" as func;
-@use "sass:map";
+@use './functions' as func;
 
 @mixin typography($font_family, $font_size, $font_weight, $line_height, $letter_spacing) {
     font-family: $font_family;

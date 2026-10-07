@@ -15,8 +15,18 @@ import getDataFromApi from '../../utils/getDataFromApi.js';
 import randomiseIndex from '../../utils/randomiseIndex.js';
 import { formatYear, formatRuntime } from '../../utils/date.js';
 
+function ProgressProvider({ valueStart, valueEnd, children }) {
+  const [value, setValue] = useState(valueStart);
+
+  useEffect(() => {
+    setValue(valueEnd);
+  }, [valueEnd]);
+
+  return children(value);
+}
+
 export default function Details() {
-  const [mediaDetails, setMediaDetails] = useState([]);
+  const [mediaDetails, setMediaDetails] = useState({});
   const [video, setVideo] = useState([]);
   const [key, setKey] = useState('');
   const [isLoading, setIsLoading] = useState(true);
@@ -25,8 +35,10 @@ export default function Details() {
   let teaser = [];
 
   const averageVoteColor = () => {
-    if (mediaDetails.vote_average?.toPrecision(2) * 10 < 40) return '#DB2360';
-    if (mediaDetails.vote_average?.toPrecision(2) * 10 < 70) return '#D2D531';
+    if (mediaDetails.length === 0) return;
+    const averageVoteNumeric = +mediaDetails.vote_average?.toPrecision(2) * 10;
+    if (averageVoteNumeric < 40) return '#DB2360';
+    if (averageVoteNumeric < 70) return '#0a0a03';
     return '#21D07A';
   };
 
@@ -54,16 +66,6 @@ export default function Details() {
     }
   }, [isLoading]);
 
-  function ProgressProvider({ valueStart, valueEnd, children }) {
-    const [value, setValue] = useState(valueStart);
-
-    useEffect(() => {
-      setValue(valueEnd);
-    }, [valueEnd]);
-
-    return children(value);
-  }
-
   return (
     <>
       <h1 className='hidden' aria-label='Detail page'>
@@ -73,13 +75,12 @@ export default function Details() {
       {isLoading ? (
         <Loading />
       ) : (
-        <section className={`${stylesApp.section}  ${stylesApp['media']}`}>
+        <section className={stylesApp.section}>
           <div className={stylesDetail.media__visual_content}>
             <iframe
               className={stylesDetail.iframe}
               src={`https://www.youtube.com/embed/${key}?autoplay=1&controls=1&mute=1&playlist=${key}`}
               title={mediaDetails.title || mediaDetails.name}
-              scrolling='auto'
               allow='autoplay'
             ></iframe>
           </div>
@@ -107,7 +108,7 @@ export default function Details() {
                 >
                   {formatYear(
                     mediaDetails.release_date || mediaDetails.first_air_date,
-                  ) || NaN}
+                  ) || 'TBA'}
                 </span>
                 <span
                   className={`${stylesApp.separator}  ${stylesApp['separator--bigger']}  text_preset_5  text_preset_5--bigger  text_white`}

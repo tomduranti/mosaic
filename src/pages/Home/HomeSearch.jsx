@@ -1,8 +1,7 @@
 //react libraries and components
 import { useState, useEffect } from 'react';
-import { useOutletContext, useSearchParams } from "react-router";
+import { useOutletContext, useSearchParams } from 'react-router';
 import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
-import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
 
 //functions
@@ -16,7 +15,7 @@ export default function HomeSearch() {
 
     const { setIsSearchButtonPressed } = useOutletContext();
     //this filtered array to exclude meaningless results
-    const filteredUserSearch = userSearch.filter(item => item.video !== undefined && item.vote_average !== 0);
+    const filteredUserSearch = userSearch.filter(item => item.vote_average !== 0);
 
     useEffect(() => {
         setIsSearchButtonPressed(false);
@@ -28,7 +27,7 @@ export default function HomeSearch() {
 
     return (
         <>
-            {filteredUserSearch
+            {filteredUserSearch.length > 0
                 ? <ContentGrid pageName={`Found ${filteredUserSearch.length} ${filteredUserSearch.length === 1 ? 'result' : 'results'} for '${query.trim()}'`} isTrending={false} array={filteredUserSearch} />
                 : <Loading />
             }

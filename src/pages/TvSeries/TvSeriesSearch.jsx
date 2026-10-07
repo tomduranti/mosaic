@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useOutletContext, useSearchParams } from "react-router";
+import { useOutletContext, useSearchParams } from 'react-router';
 import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
-import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
 
 //functions
@@ -27,7 +26,7 @@ export default function TvSeriesSearch() {
 
     return (
         <>
-            {filteredUserSearch
+            {filteredUserSearch.length > 0
                 ? <ContentGrid pageName={`Found ${filteredUserSearch.length} ${filteredUserSearch.length === 1 ? 'result' : 'results'} for '${query.trim()}'`} isTrending={false} array={filteredUserSearch} />
                 : <Loading />
             }

@@ -48,11 +48,11 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type="number"] {
+input[type='number'] {
   appearance: textfield;
 }
 
-input[type="radio"] {
+input[type='radio'] {
   /* Add if not using autoprefixer */
   appearance: none;
 

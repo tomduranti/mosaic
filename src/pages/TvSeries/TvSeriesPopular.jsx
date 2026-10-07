@@ -1,6 +1,6 @@
 //react libraries and components
 import { useEffect } from 'react';
-import { useOutletContext } from "react-router";
+import { useOutletContext } from 'react-router';
 import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
 import Loading from '../../components/atoms/Loading/Loading.jsx';
 

@@ -1,9 +1,7 @@
 //react libraries and components
 import { useState, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router';
-import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
 import SearchInput from '../../components/atoms/SearchInput/SearchInput.jsx';
-import Loading from '../../components/atoms/Loading/Loading.jsx';
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
@@ -14,12 +12,9 @@ export default function Movies() {
   useEffect(() => {
     if (userInput && isSearchButtonPressed) {
       navigate(`search?q=${userInput}&type=movie`);
+      setIsSearchButtonPressed(false);
     }
   }, [isSearchButtonPressed]);
-
-  useEffect(() => {
-    setIsSearchButtonPressed(false);
-  }, [userInput]);
 
   return (
     <>

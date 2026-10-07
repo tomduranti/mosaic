@@ -1,0 +1,6 @@
+@use '../abstract/variables' as *;
+
+body {
+    background-color: $background_color_blue--950;
+    block-size: 100%;
+}
