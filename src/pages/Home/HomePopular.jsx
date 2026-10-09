@@ -1,7 +1,7 @@
 //react libraries and components
 import { useEffect } from 'react';
 import { useOutletContext } from 'react-router';
-import ContentGrid from '@organisms/ContentGrid/ContentGrid.jsx';
+import CardGridLayout from '@templates/CardGridLayout/CardGridLayout.jsx';
 import Loading from '@atoms/Loading/Loading.jsx';
 
 //functions
@@ -30,8 +30,8 @@ export default function HomePopular() {
         <>
             {trending.length > 0 && shuffleMovieAndTvSeries.length > 0
                 ? <>
-                    <ContentGrid pageName={'Trending'} isTrending={true} array={trending}  idSkipToSection='recommended' idJumpBackToSection='trending' />
-                    <ContentGrid pageName={'Recommended for you'} isTrending={false} array={shuffleMovieAndTvSeries}  idSkipToSection='recommended' idJumpBackToSection='trending' />
+                    <CardGridLayout pageName={'Trending'} isTrending={true} array={trending}  idSkipToSection='recommended' idJumpBackToSection='trending' />
+                    <CardGridLayout pageName={'Recommended for you'} isTrending={false} array={shuffleMovieAndTvSeries}  idSkipToSection='recommended' idJumpBackToSection='trending' />
                 </>
                 : <Loading />
             }

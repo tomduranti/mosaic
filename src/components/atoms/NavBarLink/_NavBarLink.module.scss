@@ -1,0 +1,34 @@
+@use '@abstract/variables' as *;
+@use '@abstract/mixins' as *;
+
+.link {
+    inline-size: 16px;
+    block-size: 16px;
+
+    &:hover {
+        .navbar__path {
+            fill: $red;
+        }
+    }
+
+    @include respond_to(min, m_screen) {
+        inline-size: 20px;
+        block-size: 20px;
+    }
+
+
+    @include respond_to(min, l_screen) {
+        inline-size: 22px;
+        block-size: 22px;
+    }
+}
+
+.path {
+    fill: $fill_blue--500;
+
+    @include transition(fill, .4s, ease);
+
+    &--active {
+        fill: $fill_white;
+    }
+}

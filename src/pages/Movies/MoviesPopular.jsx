@@ -1,7 +1,7 @@
 //react libraries and components
 import { useEffect } from 'react';
 import { useOutletContext } from 'react-router';
-import ContentGrid from '@organisms/ContentGrid/ContentGrid.jsx';
+import CardGridLayout from '@templates/CardGridLayout/CardGridLayout.jsx';
 import Loading from '@atoms/Loading/Loading.jsx';
 
 //functions
@@ -17,7 +17,7 @@ export default function MoviesPopular() {
     return (
         <>
             {movies.length > 0
-                ? <ContentGrid pageName={'Movies'} isTrending={false} array={movies} />
+                ? <CardGridLayout pageName={'Movies'} isTrending={false} array={movies} />
                 : <Loading />
             }
         </>

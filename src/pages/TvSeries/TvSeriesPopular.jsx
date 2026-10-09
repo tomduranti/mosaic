@@ -1,7 +1,7 @@
 //react libraries and components
 import { useEffect } from 'react';
 import { useOutletContext } from 'react-router';
-import ContentGrid from '@organisms/ContentGrid/ContentGrid.jsx';
+import CardGridLayout from '@templates/CardGridLayout/CardGridLayout.jsx';
 import Loading from '@atoms/Loading/Loading.jsx';
 
 //functions
@@ -17,7 +17,7 @@ export default function TvSeriesPopular() {
     return (
         <>
             {tvSeries.length > 0
-                ? <ContentGrid pageName={'TV Series'} isTrending={false} array={tvSeries} />
+                ? <CardGridLayout pageName={'TV Series'} isTrending={false} array={tvSeries} />
                 : <Loading />
             }
         </>

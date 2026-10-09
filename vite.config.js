@@ -20,11 +20,12 @@ export default defineConfig({
       '@atoms': path.resolve(__dirname, 'src/components/atoms'),
       '@molecules': path.resolve(__dirname, 'src/components/molecules'),
       '@organisms': path.resolve(__dirname, 'src/components/organisms'),
+      '@templates': path.resolve(__dirname, 'src/components/templates'),
       '@pages': path.resolve(__dirname, 'src/pages'),
       '@assets': path.resolve(__dirname, 'src/assets'),
-      '@base': path.resolve(__dirname, 'src/sass/base'),
-      '@abstract': path.resolve(__dirname, 'src/sass/abstract'),
-      '@utils': path.resolve(__dirname, 'src/utils'),
+      '@base': path.resolve(__dirname, 'src/scss/base'),
+      '@abstract': path.resolve(__dirname, 'src/scss/abstract'),
+      '@utils': path.resolve(__dirname, 'src/utils')
     },
   },
 })

@@ -1,0 +1,17 @@
+@use '@abstract/variables' as *;
+@use '@abstract/mixins' as *;
+
+.logo {
+    inline-size: 25px;
+    block-size: 20px;
+
+    @include respond_to(min, m_screen) {
+        inline-size: $inline_size--sm;
+        block-size: 25px;
+    }
+
+    @include respond_to(min, l_screen) {
+        margin-block-end: $margin_block_control--xxxlg;
+        block-size: 28px;
+    }
+}

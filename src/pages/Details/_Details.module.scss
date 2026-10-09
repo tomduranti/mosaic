@@ -2,50 +2,7 @@
 @use '@abstract/mixins.scss' as *;
 
 
-.iframe {
-    aspect-ratio: 12 / 9;
-    inline-size: 100%;
-    border: none;
-    border-radius: $radius_pill--lg;
-    overflow: hidden;
-
-
-    @include respond_to(min, m_screen) {
-        aspect-ratio: 16 / 9;
-    }
-}
-
-
-// class name duplication to override
-// of the <CircularProgressbar> component
-.progress_circle.progress_circle {
-    max-inline-size: fit-content;
-    inline-size: $inline_size_component--md;
-    block-size: $block_size_component--md;
-
-
-    @include respond_to(min, m_screen) {
-        inline-size: $inline_size_component--lg;
-        block-size: $block_size_component--lg;
-    }
-
-
-    @include respond_to(min, l_screen) {
-        inline-size: $inline_size_component--xlg;
-        block-size: $block_size_component--xlg;
-    }
-
-    :global(.CircularProgressbar-text) {
-        font-family: Outfit, sans-serif;
-    }
-}
-
-
 .media {
-    &__visual_content {
-        margin-bottom: $margin_block_control--xsm;
-    }
-
 
     &__title {
         margin-block-end: $margin_block_control--xsm;

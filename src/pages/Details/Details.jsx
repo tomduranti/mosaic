@@ -1,29 +1,22 @@
-//react libraries and components
+//react
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import Loading from '@atoms/Loading/Loading.jsx';
 import BookmarkItem from '@atoms/BookmarkItem/BookmarkItem.jsx';
+import Player from '@atoms/Player/Player.jsx';
+import ProgressCircle from '@atoms/ProgressCircle/ProgressCircle.jsx';
 
 //sass
-import stylesDetail from './_Details.module.scss';
-import stylesApp from '@base/_App.module.scss';
-import 'react-circular-progressbar/dist/styles.css';
+import styles from './_Details.module.scss';
+import '@base/_base.scss';
+import '@abstract/_utils.scss';
 
 //functions
 import getDataFromApi from '@utils/getDataFromApi.js';
 import randomiseIndex from '@utils/randomiseIndex.js';
 import { formatYear, formatRuntime } from '@utils/date.js';
+import { separator } from '@utils/separator.js';
 
-function ProgressProvider({ valueStart, valueEnd, children }) {
-  const [value, setValue] = useState(valueStart);
-
-  useEffect(() => {
-    setValue(valueEnd);
-  }, [valueEnd]);
-
-  return children(value);
-}
 
 export default function Details() {
   const [mediaDetails, setMediaDetails] = useState({});
@@ -31,16 +24,20 @@ export default function Details() {
   const [key, setKey] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const { id, type } = useParams();
+  const mediaTitle = mediaDetails.title || mediaDetails.name;
+  const mediaGenre = mediaDetails.genres?.map(item => (
+    <span className={`text_preset_5  text_preset_5--bigger  text_white`} key={item.id}>{item.name}</span>
+  ));
+  const mediaParagraph = mediaDetails.overview;
+  const mediaYear = formatYear(
+    mediaDetails.release_date || mediaDetails.first_air_date,
+  ) || 'TBA';
+  const mediaSeason = formatRuntime(mediaDetails.runtime) ||
+    mediaDetails.number_of_seasons +
+      `${mediaDetails.number_of_seasons === 1 ? ' season' : ' seasons'}`;
   let trailer = [];
   let teaser = [];
 
-  const averageVoteColor = () => {
-    if (mediaDetails.length === 0) return;
-    const averageVoteNumeric = +mediaDetails.vote_average?.toPrecision(2) * 10;
-    if (averageVoteNumeric < 40) return '#DB2360';
-    if (averageVoteNumeric < 70) return '#0a0a03';
-    return '#21D07A';
-  };
 
   useEffect(() => {
     getDataFromApi('details', setMediaDetails, '', type, id);
@@ -66,90 +63,34 @@ export default function Details() {
     }
   }, [isLoading]);
 
+  if (isLoading) return <Loading />;
+
+
   return (
     <>
-      <h1 className='hidden' aria-label='Detail page'>
-        Detail page
-      </h1>
+      <h1 className='hidden' aria-label='Detail page'>Detail page</h1>
       
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <section className={stylesApp.section}>
-          <div className={stylesDetail.media__visual_content}>
-            <iframe
-              className={stylesDetail.iframe}
-              src={`https://www.youtube.com/embed/${key}?autoplay=1&controls=1&mute=1&playlist=${key}`}
-              title={mediaDetails.title || mediaDetails.name}
-              allow='autoplay'
-            ></iframe>
-          </div>
+      <section className='section_layout'>
+        <Player search={key} item={mediaDetails} />
 
-          <div className={stylesDetail.media__body}>
-            <h2
-              className={`${stylesDetail.media__title}  text_preset_1  text_white`}
-            >
-              {mediaDetails.title || mediaDetails.name}
-            </h2>
-            <div className={stylesDetail.media__genre}>
-              {mediaDetails.genres?.map((item) => (
-                <span
-                  className={`text_preset_5  text_preset_5--bigger  text_white`}
-                  key={item.id}
-                >
-                  {item.name}
-                </span>
-              ))}
+        <div className={styles.media__body}>
+          <h2 className={`${styles.media__title}  text_preset_1  text_white`}>{mediaTitle}</h2>
+          <div className={styles.media__genre}>{mediaGenre}</div>
+          <div className={styles.media__info}>
+            <div className={styles.media__detail}>
+              <span className={`${separator}  ${'separator--bigger'}  text_preset_5  text_preset_5--bigger  text_white`}>{mediaYear}</span>
+              <span className={`${separator}  ${'separator--bigger'}  text_preset_5  text_preset_5--bigger  text_white`}>{mediaSeason}</span>
+              <ProgressCircle array={mediaDetails} />
             </div>
-            <div className={stylesDetail.media__info}>
-              <div className={stylesDetail.media__detail}>
-                <span
-                  className={`${stylesApp.separator}  ${stylesApp['separator--bigger']}  text_preset_5  text_preset_5--bigger  text_white`}
-                >
-                  {formatYear(
-                    mediaDetails.release_date || mediaDetails.first_air_date,
-                  ) || 'TBA'}
-                </span>
-                <span
-                  className={`${stylesApp.separator}  ${stylesApp['separator--bigger']}  text_preset_5  text_preset_5--bigger  text_white`}
-                >
-                  {formatRuntime(mediaDetails.runtime) ||
-                    mediaDetails.number_of_seasons +
-                      `${mediaDetails.number_of_seasons === 1 ? ' season' : ' seasons'}`}
-                </span>
-                <ProgressProvider
-                  valueStart={0}
-                  valueEnd={mediaDetails.vote_average?.toPrecision(2) * 10}
-                >
-                  {(value) => (
-                    <CircularProgressbar
-                      className={`${stylesDetail.progress_circle}  text_preset_5  text_preset_5--bigger`}
-                      value={value}
-                      text={`${value}%`}
-                      styles={buildStyles({
-                        pathTransitionDuration: 1.5,
-                        strokeLinecap: 'round',
-                        textSize: '32px',
-                        textColor: '#fff',
-                        pathColor: averageVoteColor(),
-                      })}
-                    />
-                  )}
-                </ProgressProvider>
-              </div>
 
-              <div className={stylesDetail.media__info}>
-                <BookmarkItem id={id}  type={type}/>
-              </div>
+            {/* check  why you need media__info class around BookmarkItem */}
+            <div className={styles.media__info}>
+              <BookmarkItem id={id}  type={type}/>
             </div>
-            <p
-              className={`${stylesDetail.media__overview}  text_preset_3--light  text_white`}
-            >
-              {mediaDetails.overview}
-            </p>
           </div>
-        </section>
-      )}
+          <p className={`${styles.media__overview}  text_preset_3--light  text_white`}>{mediaParagraph}</p>
+        </div>
+      </section>
     </>
   );
 }

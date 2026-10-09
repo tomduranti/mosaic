@@ -1,6 +1,6 @@
 //react libraries and components
 import { useOutletContext } from 'react-router';
-import ContentGrid from '@organisms/ContentGrid/ContentGrid.jsx';
+import CardGridLayout from '@templates/CardGridLayout/CardGridLayout.jsx';
 import Loading from '@atoms/Loading/Loading.jsx';
 
 export default function BookmarkMediaDisplay() {
@@ -13,20 +13,21 @@ export default function BookmarkMediaDisplay() {
   const tvShows = bookmarkedMedia.filter((item) => !isMovie(item));
   const isArray = movies.length > 0 || tvShows.length > 0;
 
+  if (isLoading) return <Loading />;
+
   return (
     <>
-      {!isLoading ? (
-        isArray ? (
+        {isArray ? (
           <>
             {movies.length > 0 && (
-              <ContentGrid
+              <CardGridLayout
                 pageName={'Bookmarked movies'}
                 isTrending={false}
                 array={movies}
               />
             )}
             {tvShows.length > 0 && (
-              <ContentGrid
+              <CardGridLayout
                 pageName={'Bookmarked TV shows'}
                 isTrending={false}
                 array={tvShows}
@@ -34,13 +35,11 @@ export default function BookmarkMediaDisplay() {
             )}
           </>
         ) : (
-          <p className='text_preset_2 text_white'>
+          <p className='text_preset_2  text_white'>
             There are no bookmarked items
           </p>
         )
-      ) : (
-        <Loading />
-      )}
+      }
     </>
   );
 }

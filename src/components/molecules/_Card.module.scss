@@ -1,16 +1,17 @@
 @use '@abstract/variables' as *;
-@use '@abstract/functions' as *;
 @use '@abstract/mixins' as *;
 
-.mediacard {
+.card {
     inline-size: 100%;
     position: relative;
 
 
     @media (pointer: fine) {
-    // glassmorphic effect doesn't activate upon finger touch
+
+        // glassmorphic effect doesn't activate upon finger touch
         &:hover {
-            .mediacard__container {
+            .card__container {
+
                 &::after,
                 &::before {
                     opacity: 1;
@@ -33,14 +34,6 @@
     }
 
 
-    &__button {
-        position: absolute;
-        top: 2%;
-        right: 4%;
-        z-index: 3;
-    }
-
-
     &__link {
         inline-size: 100%;
         border-radius: $radius_pill--xs;
@@ -58,7 +51,7 @@
         position: relative;
         overflow: hidden;
 
-        
+
         &::after {
             background: rgb(255 255 255 / 5%);
             backdrop-filter: blur(7px);
@@ -105,21 +98,16 @@
     }
 
 
-    &__media_info {
+    &__button {
+        position: absolute;
+        top: 2%;
+        right: 4%;
+        z-index: 3;
+    }
+
+
+    &__info {
         order: 2;
         padding-block-start: $padding_block_control--sm_14;
-    }
-
-
-    &__media_date_and_type {
-        display: flex;
-        align-items: center;
-        gap: $gap_inline_control--xsm;
-        margin-bottom: $margin_block_control--xsm;
-    }
-
-
-    &__text_outside {
-        padding-block-start: $padding_block_control--xsm;
     }
 }

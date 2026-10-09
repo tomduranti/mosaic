@@ -1,12 +1,6 @@
 //react
 import { BrowserRouter, Routes, Route } from 'react-router';
-
-//sass
-import styles from '@base/_App.module.scss';
-import './sass/main.scss';
-
-//components
-import NavBar from '@atoms/NavBar/NavBar.jsx';
+import NavBar from '@organisms/NavBar/NavBar.jsx';
 import Home from '@pages/Home/Home.jsx';
 import HomePopular from '@pages/Home/HomePopular.jsx';
 import HomeSearch from '@pages/Home/HomeSearch.jsx';
@@ -20,10 +14,14 @@ import Details from '@pages/Details/Details.jsx';
 import BookmarkMedia from '@pages/BookmarkMedia/BookmarkMedia.jsx';
 import BookmarkMediaDisplay from '@pages/BookmarkMedia/BookmarkMediaDisplay.jsx';
 
-export default function App() {
+//sass
+import '@base/_base.scss';
+import './scss/main.scss';
 
+
+export default function App() {
   return (
-      <main className={styles.page_wrapper}>
+      <main className='page_wrapper'>
         <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
           <NavBar />
           <Routes>
