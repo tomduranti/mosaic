@@ -1,6 +1,6 @@
 import { options } from './options.js';
 
-export default async function getDataFromApi(category, functionWrapper, input, type, id) {
+export async function getDataFromApi(category, functionWrapper, input, type, id) {
 
   if (!category) return;
 

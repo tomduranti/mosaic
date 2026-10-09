@@ -5,7 +5,7 @@ import CardGridLayout from '@templates/CardGridLayout/CardGridLayout.jsx';
 import Loading from '@atoms/Loading/Loading.jsx';
 
 //functions
-import getDataFromApi from '@utils/getDataFromApi.js';
+import { getDataFromApi } from '@utils/index.js';
 
 export default function HomeSearch() {
     const [userSearch, setUserSearch] = useState([]);

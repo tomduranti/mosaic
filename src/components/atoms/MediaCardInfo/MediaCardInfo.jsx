@@ -6,8 +6,7 @@ import movieIcon from '@assets/category/category_movie.svg';
 import tvIcon from '@assets/category/category_tv.svg';
 
 //functions
-import { formatYear } from '@utils/date.js';
-import { separator } from '@utils/separator.js';
+import { formatYear, separator } from '@utils/index.js';
 
 export default function MediaCardInfo({ releaseDate, isMovie, avgRating, bigger = false }) {
   return (

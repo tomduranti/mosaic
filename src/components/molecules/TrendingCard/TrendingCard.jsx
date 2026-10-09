@@ -11,7 +11,7 @@ import styles from '../_Card.module.scss';
 import variables from '@abstract/_export.module.scss';
 
 //functions
-import { getPosterUrl } from '@utils/getPosterUrl.js';
+import { getPosterUrl } from '@utils/index.js';
 
 
 export default function TrendingCard({ id, title, posterPath, releaseDate, avgRating, mediaType, video }) {

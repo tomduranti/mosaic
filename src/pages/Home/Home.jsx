@@ -4,7 +4,7 @@ import { Outlet, useNavigate } from 'react-router';
 import SearchInput from '@atoms/SearchInput/SearchInput.jsx';
 
 //functions
-import fisherYatesShuffle from '@utils/shuffle.js';
+import { fisherYatesShuffle } from '@utils/index.js';
 
 export default function Home() {
   const [userInput, setUserInput] = useState('');

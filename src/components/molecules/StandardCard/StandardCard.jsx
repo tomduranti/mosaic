@@ -11,7 +11,7 @@ import stylesStandardCard from './_StandardCard.module.scss';
 import styles from '../_Card.module.scss';
 
 //functions
-import { getPosterUrl } from '@utils/getPosterUrl.js';
+import { getPosterUrl } from '@utils/index.js';
 
 
 export default function StandardCard({ id, title, posterPath, releaseDate, avgRating, mediaType, video }) {

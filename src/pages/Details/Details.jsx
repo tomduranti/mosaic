@@ -12,10 +12,7 @@ import '@base/_base.scss';
 import '@abstract/_utils.scss';
 
 //functions
-import getDataFromApi from '@utils/getDataFromApi.js';
-import randomiseIndex from '@utils/randomiseIndex.js';
-import { formatYear, formatRuntime } from '@utils/date.js';
-import { separator } from '@utils/separator.js';
+import { formatYear, formatRuntime, separator, randomiseIndex, getDataFromApi } from '@utils/index.js';
 
 
 export default function Details() {
