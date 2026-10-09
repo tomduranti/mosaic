@@ -66,24 +66,18 @@ export default function Details() {
   return (
     <>
       <h1 className='hidden' aria-label='Detail page'>Detail page</h1>
-      
       <section className='section_layout'>
         <Player search={key} item={mediaDetails} />
-
         <div className={styles.media__body}>
           <h2 className={`${styles.media__title}  text_preset_1  text_white`}>{mediaTitle}</h2>
           <div className={styles.media__genre}>{mediaGenre}</div>
           <div className={styles.media__info}>
             <div className={styles.media__detail}>
-              <span className={`${separator}  ${'separator--bigger'}  text_preset_5  text_preset_5--bigger  text_white`}>{mediaYear}</span>
-              <span className={`${separator}  ${'separator--bigger'}  text_preset_5  text_preset_5--bigger  text_white`}>{mediaSeason}</span>
+              <span className={`separator  ${'separator--bigger'}  text_preset_5  text_preset_5--bigger  text_white`}>{mediaYear}</span>
+              <span className={`separator  ${'separator--bigger'}  text_preset_5  text_preset_5--bigger  text_white`}>{mediaSeason}</span>
               <ProgressCircle array={mediaDetails} />
             </div>
-
-            {/* check  why you need media__info class around BookmarkItem */}
-            <div className={styles.media__info}>
-              <BookmarkItem id={id}  type={type}/>
-            </div>
+            <BookmarkItem id={id}  type={type} />
           </div>
           <p className={`${styles.media__overview}  text_preset_3--light  text_white`}>{mediaParagraph}</p>
         </div>
