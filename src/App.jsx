@@ -13,14 +13,19 @@ import TvSeriesSearch from '@pages/TvSeries/TvSeriesSearch.jsx';
 import Details from '@pages/Details/Details.jsx';
 import BookmarkMedia from '@pages/BookmarkMedia/BookmarkMedia.jsx';
 import BookmarkMediaDisplay from '@pages/BookmarkMedia/BookmarkMediaDisplay.jsx';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 //sass
 import '@base/_base.scss';
 import './scss/main.scss';
 
+// Create a client
+const queryClient = new QueryClient();
 
 export default function App() {
   return (
+    <QueryClientProvider client={queryClient}>
       <main className='page_wrapper'>
         <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
           <NavBar />
@@ -45,5 +50,7 @@ export default function App() {
           </Routes>
         </BrowserRouter>
       </main>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   )
 }

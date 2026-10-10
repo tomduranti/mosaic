@@ -1,4 +1,4 @@
-export function fisherYatesShuffle(array) {
+export function shuffleArray(array) {
     let currentIndex = array.length;
     while (currentIndex !== 0) {
 

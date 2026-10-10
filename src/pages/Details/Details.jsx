@@ -1,6 +1,7 @@
 //react
-import { useState, useEffect } from 'react';
+import { useMemo } from 'react';
 import { useParams } from 'react-router';
+import { useQuery } from '@tanstack/react-query';
 import Loading from '@atoms/Loading/Loading.jsx';
 import BookmarkItem from '@atoms/BookmarkItem/BookmarkItem.jsx';
 import Player from '@atoms/Player/Player.jsx';
@@ -12,15 +13,34 @@ import '@base/_base.scss';
 import '@abstract/_utils.scss';
 
 //functions
-import { formatYear, formatRuntime, separator, randomiseIndex, getDataFromApi } from '@utils/index.js';
+import { formatYear, formatRuntime, randomiseIndex, getDataFromApi } from '@utils/index.js';
 
 
 export default function Details() {
-  const [mediaDetails, setMediaDetails] = useState({});
-  const [video, setVideo] = useState([]);
-  const [key, setKey] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
   const { id, type } = useParams();
+
+  const details = useQuery({
+    queryKey: ['details', type, id],
+    queryFn: () => getDataFromApi('details', '', type, id),
+  });
+
+  const videos = useQuery({
+    queryKey: ['trailer', type, id],
+    queryFn: () => getDataFromApi('trailer', '', type, id),
+  });
+
+  const key = useMemo(() => {
+    if (!videos.data?.length) return '';
+    const trailers = videos.data.filter(video => video.type === 'Trailer');
+    const teasers = videos.data.filter(video => video.type === 'Teaser');
+    const pool = trailers.length ? trailers : teasers;
+    if (!pool.length) return '';
+    return pool.length === 1 ? pool[0].key : pool[randomiseIndex(pool)].key;
+  }, [videos.data]);
+
+  if (details.isPending || videos.isPending) return <Loading />;
+
+  const mediaDetails = details.data;
   const mediaTitle = mediaDetails.title || mediaDetails.name;
   const mediaGenre = mediaDetails.genres?.map(item => (
     <span className={`text_preset_5  text_preset_5--bigger  text_white`} key={item.id}>{item.name}</span>
@@ -31,37 +51,7 @@ export default function Details() {
   ) || 'TBA';
   const mediaSeason = formatRuntime(mediaDetails.runtime) ||
     mediaDetails.number_of_seasons +
-      `${mediaDetails.number_of_seasons === 1 ? ' season' : ' seasons'}`;
-  let trailer = [];
-  let teaser = [];
-
-
-  useEffect(() => {
-    getDataFromApi('details', setMediaDetails, '', type, id);
-    getDataFromApi('trailer', setVideo, '', type, id).then(() =>
-      setIsLoading(false),
-    );
-  }, [id, type]);
-
-  useEffect(() => {
-    trailer = video.filter((item) => item.type === 'Trailer');
-    teaser = video.filter((item) => item.type === 'Teaser');
-
-    if (video.length > 0 && !isLoading) {
-      if (trailer.length !== 0) {
-        setKey(
-          trailer.length === 1 ? trailer[0].key : trailer[randomiseIndex(trailer)].key,
-        );
-      } else if (teaser.length !== 0) {
-        setKey(
-          teaser.length === 1 ? teaser[0].key : teaser[randomiseIndex(teaser)].key,
-        );
-      }
-    }
-  }, [isLoading]);
-
-  if (isLoading) return <Loading />;
-
+    `${mediaDetails.number_of_seasons === 1 ? ' season' : ' seasons'}`;
 
   return (
     <>
@@ -77,7 +67,7 @@ export default function Details() {
               <span className={`separator  ${'separator--bigger'}  text_preset_5  text_preset_5--bigger  text_white`}>{mediaSeason}</span>
               <ProgressCircle array={mediaDetails} />
             </div>
-            <BookmarkItem id={id}  type={type} />
+            <BookmarkItem id={id} type={type} />
           </div>
           <p className={`${styles.media__overview}  text_preset_3--light  text_white`}>{mediaParagraph}</p>
         </div>

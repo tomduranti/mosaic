@@ -1,25 +1,7 @@
 //react libraries and components
-import { useEffect } from 'react';
-import { useOutletContext } from 'react-router';
-import CardGridLayout from '@templates/CardGridLayout/CardGridLayout.jsx';
-import Loading from '@atoms/Loading/Loading.jsx';
+import ChildPagePopular from '@templates/ChildPagePopular/ChildPagePopular.jsx';
 
-//functions
-import { getDataFromApi } from '@utils/index.js';
 
-export default function TvSeriesPopular() {
-    const {tvSeries, setTvSeries} = useOutletContext();
-
-    useEffect(() => {
-        getDataFromApi('recommended_tv_series', setTvSeries);
-    }, [])
-
-    return (
-        <>
-            {tvSeries.length > 0
-                ? <CardGridLayout pageName={'TV Series'} isTrending={false} array={tvSeries} />
-                : <Loading />
-            }
-        </>
-    )
+export default function MoviesPopular() {
+    return <ChildPagePopular queryKey='recommended, tv' apiKeyword='recommended_tv_series' pageName='TV Series' />;
 }

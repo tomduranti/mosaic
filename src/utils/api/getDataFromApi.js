@@ -1,6 +1,6 @@
 import { options } from './options.js';
 
-export async function getDataFromApi(category, functionWrapper, input, type, id) {
+export async function getDataFromApi(category, input, type, id) {
 
   if (!category) return;
 
@@ -49,8 +49,15 @@ export async function getDataFromApi(category, functionWrapper, input, type, id)
       break;
   }
 
-  return await fetch(url, options)
-    .then(res => res.json())
-    .then(res => functionWrapper(res.results ?? res))
-    .catch(err => console.error(err));
+  try {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+    const result = await response.json();
+    const data = await result.results ?? result;
+    return data;
+  } catch (error) {
+    console.error(error.message);
+  }
 }
