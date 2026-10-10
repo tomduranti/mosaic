@@ -1,0 +1,45 @@
+@use '@abstract/variables.scss' as *;
+@use '@abstract/mixins.scss' as *;
+
+
+.carousel {
+  min-width: 0;
+  margin-inline-end: -4.6%;
+
+
+  @include respond_to(min, l_screen) {
+    margin-inline-end: -20%;
+  }
+
+
+  &__viewport {
+    overflow: hidden;
+  }
+
+
+  &__container {
+    display: flex;
+    touch-action: pan-y pinch-zoom;
+    margin-left: calc($padding_inline_control--sm * -1);
+
+    @include respond_to(min, m_screen) {
+      margin-left: calc($padding_inline_control--xxlg * -1);
+    }
+  }
+
+
+  &__item {
+    flex: 0 0 $inline_size_component--lg;
+    min-width: 0;
+    padding-inline-start: $padding_inline_control--sm;
+
+    @include respond_to(min, m_screen) {
+      flex: 0 0 $inline_size_component--xlg;
+      padding-inline-start: $padding_inline_control--xxlg;
+    }
+
+    @include respond_to(min, l_screen) {
+      flex: 0 0 $inline_size_component--xxlg;
+    }
+  }
+}

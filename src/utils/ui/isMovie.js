@@ -1,0 +1,1 @@
+export const isMovie = item => item.media_type === 'movie' || item.video !== undefined;

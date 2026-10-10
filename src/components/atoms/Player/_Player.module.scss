@@ -1,0 +1,20 @@
+@use '@abstract/variables.scss' as *;
+@use '@abstract/mixins.scss' as *;
+
+
+.iframe_container {
+    margin-bottom: $margin_block_control--xsm;
+}
+
+.iframe {
+    aspect-ratio: 12 / 9;
+    inline-size: 100%;
+    border: none;
+    border-radius: $radius_pill--lg;
+    overflow: hidden;
+
+
+    @include respond_to(min, m_screen) {
+        aspect-ratio: 16 / 9;
+    }
+}

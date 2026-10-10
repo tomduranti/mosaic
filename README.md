@@ -7,6 +7,7 @@ Web application where users explore movies and TV shows, get detailed informatio
 ### Built with
 
 - RESTful API
+- TanStack Query
 - React & Vite
 - React Router
 - Storybook
@@ -31,10 +32,17 @@ $gap_inline_control--md: map.get($spacing, 24);
 
 - [defensive fetch API call](https://github.com/tomduranti/mosaic/blob/cdac8fb834651e6600f63251615810069b0677bc/src/utils/getDataFromApi.js#L52-L55) with an early return to handle latency or 404, gracefully. The nullish coalescing operator handles both arrays or objects
 ```
-  return await fetch(url, options)
-    .then(res => res.json())
-    .then(res => functionWrapper(res.results ?? res))
-    .catch(err => console.error(err));
+  try {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+    const result = await response.json();
+    const data = await result.results ?? result;
+    return data;
+  } catch (error) {
+    console.error(error.message);
+  }
 ```
 
 - [Single-Page Application + URL parameter fetching](https://github.com/tomduranti/mosaic/blob/cdac8fb834651e6600f63251615810069b0677bc/src/App.jsx#L44), with React Router offers a seamless page change. Parameters are always and easily retrievable. Use of nested routes and Outlets 
@@ -53,17 +61,18 @@ $gap_inline_control--md: map.get($spacing, 24);
 ) : null}
 ```
 
-- file organisation with atomic-style structure, Storybook stories to visualize each component in isolation, and modularised sass to restrict scope to the component
+- file organisation with atomic-style structure, Storybook stories to visualize each component in isolation, and modularised sass to restrict scope to the component. Plus, use of barrels and aliases to avert fragile relative paths. 
 ```
 src/
 ├── components/
 │   ├── atoms/
-│   │   └── MediaCard/
-│   │       ├── atom.jsx
-│   │       ├── _atom.module.scss
-│   │       └── atom.stories.jsx
+│   │   └── Atom/
+│   │       ├── Atom.jsx
+│   │       ├── _Atom.module.scss
+│   │       └── Atom.stories.jsx
 │   ├── molecules/
 │   └── organisms/
+│   └── templates/
 │
 ...
 ```
@@ -96,11 +105,16 @@ src/
 ## Changelog
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+#### [v1.0.1] — 10-10-2026
+![FIXED](https://img.shields.io/badge/FIXED-orange)
+- race conditions due to useEffect chains, hence improving performance
+- typos in the readme file
+
 #### [v1.0.0] — 23-05-2026
-- Browse trending/upcoming, and popular movies and TV shows via TMDB API
-- View details, ratings, genre, and trailers for any title
-- Bookmark items, persisted in localStorage (no account required)
-- Fully keyboard-navigable and screen-reader compliant (WCAG/ARIA)
+- browse trending/upcoming, and popular movies and TV shows via TMDB API
+- view details, ratings, genre, and trailers for any title
+- bookmark items, persisted in localStorage (no account required)
+- fully keyboard-navigable and screen-reader compliant (WCAG/ARIA)
 
 ## Roadmap
 

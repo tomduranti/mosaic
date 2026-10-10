@@ -1,0 +1,5 @@
+@use '@abstract/variables' as *;
+
+.text_outside {
+    padding-block-start: $padding_block_control--xsm;
+}

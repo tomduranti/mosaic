@@ -1,0 +1,26 @@
+@use '@abstract/variables.scss' as *;
+@use '@abstract/mixins.scss' as *;
+
+// class name duplication to override
+// of the <CircularProgressbar> component
+.progress_circle.progress_circle {
+    max-inline-size: fit-content;
+    inline-size: $inline_size_component--md;
+    block-size: $block_size_component--md;
+
+
+    @include respond_to(min, m_screen) {
+        inline-size: $inline_size_component--lg;
+        block-size: $block_size_component--lg;
+    }
+
+
+    @include respond_to(min, l_screen) {
+        inline-size: $inline_size_component--xlg;
+        block-size: $block_size_component--xlg;
+    }
+
+    :global(.CircularProgressbar-text) {
+        font-family: Outfit, sans-serif;
+    }
+}
