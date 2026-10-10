@@ -1,40 +1,30 @@
 //react libraries and components
-import { useEffect } from 'react';
-import { useOutletContext } from 'react-router';
-import ContentGrid from '../../components/organisms/ContentGrid/ContentGrid.jsx';
-import Loading from '../../components/atoms/Loading/Loading.jsx';
+import { useMemo } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import CardGridLayout from '@templates/CardGridLayout/CardGridLayout.jsx';
+import CarouselCardGrid from '@organisms/CarouselCardGrid/CarouselCardGrid.jsx';
+import Loading from '@atoms/Loading/Loading.jsx';
 
 //functions
-import getDataFromApi from '../../utils/getDataFromApi.js';
+import { getDataFromApi, shuffleArray } from '@utils/index.js';
+
 
 export default function HomePopular() {
-    const { trending, setTrending, shuffleMovieAndTvSeries, setMovieAndTvSeries } = useOutletContext();
+    const carousel = useQuery({ queryKey: ['carousel'], queryFn: () => getDataFromApi('trending') });
+    const movies = useQuery({ queryKey: ['trending', 'movies'], queryFn: () => getDataFromApi('trending_movies') });
+    const tvSeries = useQuery({ queryKey: ['trending', 'tv'], queryFn: () => getDataFromApi('trending_tv_series') });
 
-    useEffect(() => {
-        getDataFromApi('trending', setTrending);
-        getDataFromApi('trending_movies', data => {
-            setMovieAndTvSeries(prev =>
-                ({ ...prev, movies: data })
-            )
-        }
-        );
-        getDataFromApi('trending_tv_series', data => {
-            setMovieAndTvSeries(prev =>
-                ({ ...prev, tv_series: data })
-            )
-        }
-        );
-    }, []);
+    const shuffled = useMemo(() => {
+        if (!movies.data || !tvSeries.data) return [];
+        return shuffleArray([...movies.data, ...tvSeries.data]);
+    }, [movies.data, tvSeries.data]);
+
+    if (carousel.isPending || movies.isPending || tvSeries.isPending) return <Loading />;
 
     return (
         <>
-            {trending.length > 0 && shuffleMovieAndTvSeries.length > 0
-                ? <>
-                    <ContentGrid pageName={'Trending'} isTrending={true} array={trending}  idSkipToSection='recommended' idJumpBackToSection='trending' />
-                    <ContentGrid pageName={'Recommended for you'} isTrending={false} array={shuffleMovieAndTvSeries}  idSkipToSection='recommended' idJumpBackToSection='trending' />
-                </>
-                : <Loading />
-            }
+            <CarouselCardGrid array={carousel.data} jump={['recommended', 'trending']} />
+            <CardGridLayout pageName={'Recommended for you'} array={shuffled} />
         </>
-    )
+    );
 }

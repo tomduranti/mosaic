@@ -1,0 +1,51 @@
+@use '@abstract/variables' as *;
+@use '@abstract/mixins' as *;
+@use '@abstract/utils' as *;
+
+.navbar {
+    @extend %flex_center;
+
+    justify-content: space-between;
+    background-color: $background_color_blue--900;
+    padding: $padding_block_control--sm $padding_inline_control--sm_special;
+
+    // the following code is needed to let NavBar overflow its parent's container at mobile viewport
+    inline-size: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-inline: -50vw;
+
+    @include respond_to(min, m_screen) {
+        border-radius: $radius_pill--lg;
+        inline-size: 100%;
+        left: unset;
+        right: unset;
+        margin-inline: 0;
+    }
+
+
+    @include respond_to(min, l_screen) {
+        grid-row: 1 / 4;
+        block-size: 960px;
+        flex-direction: column;
+        padding: 33.7px 28px;
+    }
+
+
+    &__link_list {
+        @extend %flex_center;
+
+        gap: $gap_inline_control--md;
+
+        @include respond_to(min, m_screen) {
+            gap: $gap_inline_control--lg;
+        }
+
+        @include respond_to(min, l_screen) {
+            flex-direction: column;
+            gap: $gap_inline_control--xlg;
+            margin-block-end: auto; // to push avatar image to the bottom limit of container
+        }
+    }
+}
