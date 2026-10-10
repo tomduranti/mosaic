@@ -1,5 +1,5 @@
-@use '../../../sass/abstract/variables' as *;
-@use '../../../sass/abstract/mixins' as *;
+@use '@abstract/variables' as *;
+@use '@abstract/mixins' as *;
 
 .search_input {
     display: flex;
@@ -50,6 +50,6 @@
         color: $white;
         cursor: pointer;
         inline-size: 100%;
-        outline: none;
+        outline-style: none;
     }
 }

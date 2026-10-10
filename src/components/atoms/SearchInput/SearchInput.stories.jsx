@@ -1,7 +1,7 @@
-import SearchInput from "./SearchInput";
+import SearchInput from './SearchInput';
 
 export default {
-    title: 'componenents/atoms/SearchInput',
+    title: 'components/atoms/SearchInput',
     component: SearchInput,
 }
 

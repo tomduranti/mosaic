@@ -1,34 +1,36 @@
 //react
 import { BrowserRouter, Routes, Route } from 'react-router';
+import NavBar from '@organisms/NavBar/NavBar.jsx';
+import Home from '@pages/Home/Home.jsx';
+import HomePopular from '@pages/Home/HomePopular.jsx';
+import HomeSearch from '@pages/Home/HomeSearch.jsx';
+import Movies from '@pages/Movies/Movies.jsx';
+import MoviesPopular from '@pages/Movies/MoviesPopular.jsx';
+import MoviesSearch from '@pages/Movies/MoviesSearch.jsx';
+import TvSeries from '@pages/TvSeries/TvSeries.jsx';
+import TvSeriesPopular from '@pages/TvSeries/TvSeriesPopular.jsx';
+import TvSeriesSearch from '@pages/TvSeries/TvSeriesSearch.jsx';
+import Details from '@pages/Details/Details.jsx';
+import BookmarkMedia from '@pages/BookmarkMedia/BookmarkMedia.jsx';
+import BookmarkMediaDisplay from '@pages/BookmarkMedia/BookmarkMediaDisplay.jsx';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 //sass
-import styles from './sass/base/_App.module.scss';
-import './sass/main.scss';
+import '@base/_base.scss';
+import './scss/main.scss';
 
-//components
-import NavBar from './components/atoms/NavBar/NavBar.jsx';
-import Navigate from './pages/Navigate/Navigate.jsx';
-import Home from './pages/Home/Home.jsx';
-import HomePopular from './pages/Home/HomePopular.jsx';
-import HomeSearch from './pages/Home/HomeSearch.jsx';
-import Movies from './pages/Movies/Movies.jsx';
-import MoviesPopular from './pages/Movies/MoviesPopular.jsx';
-import MoviesSearch from './pages/Movies/MoviesSearch.jsx';
-import TvSeries from './pages/TvSeries/TvSeries.jsx';
-import TvSeriesPopular from './pages/TvSeries/TvSeriesPopular.jsx';
-import TvSeriesSearch from './pages/TvSeries/TvSeriesSearch.jsx';
-import Details from './pages/Details/Details.jsx';
-import BookmarkMedia from './pages/BookmarkMedia/BookmarkMedia.jsx';
-import BookmarkMediaDisplay from './pages/BookmarkMedia/BookmarkMediaDisplay.jsx';
+// Create a client
+const queryClient = new QueryClient();
 
 export default function App() {
-
   return (
-      <main className={styles.page_wrapper}  role='main'>
+    <QueryClientProvider client={queryClient}>
+      <main className='page_wrapper'>
         <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
           <NavBar />
           <Routes>
-            <Route path='/' element={<Navigate to='/home' replace />} />
+            <Route path='/' element={<Home />} />
             <Route path='home' element={<Home />} >
               <Route index element={<HomePopular />} />
               <Route path='search' element={<HomeSearch />} />
@@ -48,5 +50,7 @@ export default function App() {
           </Routes>
         </BrowserRouter>
       </main>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   )
 }

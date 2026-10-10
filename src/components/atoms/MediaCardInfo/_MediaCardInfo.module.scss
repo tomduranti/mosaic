@@ -1,0 +1,8 @@
+@use '@abstract/variables' as *;
+
+.media_card_info {
+    display: flex;
+    align-items: center;
+    gap: $gap_inline_control--xsm;
+    margin-bottom: $margin_block_control--xsm;
+}

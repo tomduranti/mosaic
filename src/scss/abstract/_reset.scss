@@ -1,0 +1,61 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  font-size: 100%;
+  vertical-align: baseline;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+a,
+img,
+picture,
+video,
+canvas,
+svg {
+  display: inline-block;
+  max-inline-size: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+input,
+fieldset,
+button,
+textarea,
+select,
+a {
+  font: inherit;
+  border: none;
+  background-color: transparent;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  appearance: textfield;
+}
+
+input[type='radio'] {
+  /* Add if not using autoprefixer */
+  appearance: none;
+
+  /* For iOS < 15 to remove gradient background */
+  background-color: transparent;
+}
