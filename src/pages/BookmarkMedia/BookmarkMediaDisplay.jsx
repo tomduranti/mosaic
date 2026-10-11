@@ -8,7 +8,7 @@ import { getDataFromApi, getItemFromLocalStorage, isMovie } from '@utils/index.j
 
 export default function BookmarkMediaDisplay() {
   const localStorageArray = getItemFromLocalStorage();
-  if (localStorageArray.length === 0) return <p className='text_preset_2  text_white'>There are no bookmarked items</p>;
+  if (localStorageArray === null || localStorageArray.length === 0) return <p className='text_preset_2  text_white'>There are no bookmarked items</p>;
 
   const data = useQueries({
     queries: localStorageArray.map(obj => ({
