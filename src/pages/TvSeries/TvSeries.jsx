@@ -9,5 +9,5 @@ export default function TvSeries() {
     if (userInput) navigate(`search?q=${userInput}&type=tv`)
   };
 
-  return <ParentPageLayout pageTitle='TV series' text='tv series' handler={onSearch} />;
+  return <ParentPageLayout pageTitle='TV series' text='TV series' handler={onSearch} />;
 }

@@ -1,5 +1,5 @@
 //react
-import { BrowserRouter, Routes, Route } from 'react-router';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
 import NavBar from '@organisms/NavBar/NavBar.jsx';
 import Home from '@pages/Home/Home.jsx';
 import HomePopular from '@pages/Home/HomePopular.jsx';
@@ -30,7 +30,7 @@ export default function App() {
         <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
           <NavBar />
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<Navigate to='/home' replace />} />
             <Route path='home' element={<Home />} >
               <Route index element={<HomePopular />} />
               <Route path='search' element={<HomeSearch />} />
