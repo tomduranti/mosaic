@@ -29,7 +29,7 @@ export default function BookmarkMediaDisplay() {
   return (
     <>
       { moviesLength && <CardGridLayout pageName={'Bookmarked movies'} array={movies} /> }
-      { tvShowsLength && <CardGridLayout pageName={'Bookmarked TV shows'} array={tvShows} /> }
+      { tvShowsLength && <CardGridLayout pageName={'Bookmarked TV series'} array={tvShows} /> }
     </>
   );
 }
